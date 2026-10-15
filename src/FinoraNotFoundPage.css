@@ -1,0 +1,826 @@
+/* Finora React 404 Component Stylesheet with About & Contact Sections */
+
+.finora-404-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F6F7FC;
+  color: #18213D;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.finora-ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-lavender {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 600px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(199, 184, 255, 0.4) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.glow-blue {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-40%, -30%);
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(72, 185, 245, 0.25) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* Header */
+.finora-404-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  background: rgba(246, 247, 252, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232, 235, 243, 0.7);
+}
+
+.header-container-react {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.finora-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.finora-brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7957FF 0%, #20275D 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(121, 87, 255, 0.28);
+}
+
+.finora-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #11183F;
+  letter-spacing: -0.4px;
+}
+
+.brand-tag {
+  font-size: 11px;
+  color: #75809A;
+  font-weight: 500;
+}
+
+.header-nav-bundle {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-links-react {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-btn-link {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #18213D;
+  cursor: pointer;
+  transition: color 160ms ease;
+  padding: 4px;
+}
+
+.nav-btn-link:hover {
+  color: #7957FF;
+}
+
+.finora-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #20275D;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #E8EBF3;
+  cursor: pointer;
+  transition: all 160ms ease;
+  white-space: nowrap;
+}
+
+.finora-header-btn i {
+  color: #7957FF;
+  font-size: 16px;
+}
+
+.finora-header-btn:hover {
+  background: #FFFFFF;
+  border-color: #7957FF;
+  color: #7957FF;
+  box-shadow: 0 2px 6px rgba(17, 24, 63, 0.05);
+}
+
+/* Main 404 Visual Content */
+.finora-404-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 60px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.finora-illustration-box {
+  width: 100%;
+  max-width: 480px;
+  height: 230px;
+  margin-bottom: 24px;
+}
+
+.finora-404-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.react-numeral-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 110px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.react-floating-browser {
+  animation: reactFloat 5s ease-in-out infinite alternate;
+}
+
+.react-floating-card {
+  animation: reactFloatReverse 6s ease-in-out infinite alternate;
+}
+
+@keyframes reactFloat {
+  0% { transform: translate(230px, 85px); }
+  100% { transform: translate(230px, 78px); }
+}
+
+@keyframes reactFloatReverse {
+  0% { transform: translate(55px, 60px) rotate(-8deg); }
+  100% { transform: translate(55px, 66px) rotate(-6deg); }
+}
+
+.finora-404-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #18213D;
+  margin-bottom: 12px;
+}
+
+.finora-404-desc {
+  font-size: 16px;
+  color: #75809A;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 8px;
+}
+
+.finora-404-helper {
+  font-size: 14px;
+  color: #7957FF;
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.finora-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.finora-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #7957FF;
+  color: #FFFFFF;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.22);
+  transition: all 160ms ease;
+}
+
+.finora-btn-primary:hover {
+  background-color: #6742f8;
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 24px rgba(121, 87, 255, 0.26);
+}
+
+.finora-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #FFFFFF;
+  color: #18213D;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #E8EBF3;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.finora-btn-secondary:hover {
+  background-color: #FAFBFF;
+  border-color: #D0D5E5;
+  color: #7957FF;
+  transform: translateY(-1.5px);
+}
+
+.finora-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #75809A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  transition: all 160ms ease;
+}
+
+.finora-back-link:hover {
+  color: #7957FF;
+  background-color: rgba(121, 87, 255, 0.1);
+}
+
+.finora-quick-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.quick-nav-header {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #75809A;
+  margin-bottom: 12px;
+}
+
+.quick-nav-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #20275D;
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.badge-item i {
+  color: #7957FF;
+}
+
+.badge-item:hover {
+  border-color: #7957FF;
+  color: #7957FF;
+  transform: translateY(-1px);
+}
+
+.finora-search-widget {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  box-shadow: 0 2px 6px rgba(17, 24, 63, 0.04);
+}
+
+.search-bar:focus-within {
+  border-color: #7957FF;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.14);
+}
+
+.search-icon {
+  color: #75809A;
+  margin-right: 8px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  padding: 6px 0;
+  background: transparent;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #75809A;
+  cursor: pointer;
+}
+
+.search-results-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(17, 24, 63, 0.08);
+  padding: 8px;
+  z-index: 50;
+  max-height: 250px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.route-result-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.route-result-item i {
+  color: #7957FF;
+  font-size: 16px;
+}
+
+.route-result-item:hover {
+  background: rgba(121, 87, 255, 0.08);
+}
+
+.route-name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #11183F;
+}
+
+.route-desc {
+  font-size: 11.5px;
+  color: #75809A;
+}
+
+.search-none {
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #75809A;
+}
+
+/* 3. About Finora Container */
+.about-finora-container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 20px auto 40px;
+  padding: 48px 24px;
+  border-top: 1px solid rgba(232, 235, 243, 0.9);
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.pill-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #7957FF;
+  background: rgba(121, 87, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.section-title-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #11183F;
+  margin-bottom: 14px;
+}
+
+.about-text-content {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #75809A;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.about-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-block {
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: left;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.feature-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(17, 24, 63, 0.06);
+}
+
+.icon-circ {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.icon-circ.mint { background: rgba(35, 185, 129, 0.12); color: #10B981; }
+.icon-circ.violet { background: rgba(121, 87, 255, 0.12); color: #7957FF; }
+.icon-circ.blue { background: rgba(72, 185, 245, 0.14); color: #0284C7; }
+
+.feature-block h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #11183F;
+  margin-bottom: 8px;
+}
+
+.feature-block p {
+  font-size: 13.5px;
+  color: #75809A;
+  line-height: 1.55;
+}
+
+/* 4. Contact Container */
+.contact-support-container {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 60px;
+  padding: 32px 24px 40px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-sub-text {
+  font-size: 15px;
+  color: #75809A;
+  margin-bottom: 14px;
+}
+
+.email-link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #7957FF;
+  background: rgba(121, 87, 255, 0.08);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(121, 87, 255, 0.2);
+  margin-bottom: 28px;
+}
+
+.contact-form-box {
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(17, 24, 63, 0.05);
+  text-align: left;
+}
+
+.alert-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.alert-box.success {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.alert-box.error {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.form-grid-react {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-grid-react .full {
+  grid-column: 1 / -1;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-item label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #18213D;
+}
+
+.form-item input,
+.form-item textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #E8EBF3;
+  border-radius: 8px;
+  background: #FAFBFD;
+  outline: none;
+  transition: all 160ms ease;
+}
+
+.form-item input:focus,
+.form-item textarea:focus {
+  background: #FFFFFF;
+  border-color: #7957FF;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.12);
+}
+
+.form-item input.err,
+.form-item textarea.err {
+  border-color: #EF4444;
+  background: #FFF9F9;
+}
+
+.err-msg {
+  font-size: 12px;
+  color: #EF4444;
+  font-weight: 500;
+}
+
+.form-submit-row {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #7957FF;
+  color: #FFFFFF;
+  font-size: 14.5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.contact-submit-btn:hover:not(:disabled) {
+  background: #6742f8;
+  transform: translateY(-1.5px);
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.finora-404-footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(232, 235, 243, 0.7);
+  font-size: 13px;
+  color: #75809A;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links button {
+  background: none;
+  border: none;
+  color: #75809A;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+
+.footer-links button:hover {
+  color: #7957FF;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 63, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-dialog {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 16px 36px rgba(17, 24, 63, 0.12);
+  text-align: left;
+}
+
+.modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal-top h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #11183F;
+}
+
+.modal-top button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #75809A;
+  cursor: pointer;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #75809A;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modal-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-dismiss {
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: #7957FF;
+  color: #FFFFFF;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .about-cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container-react {
+    flex-wrap: wrap;
+  }
+  .header-nav-bundle {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .about-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .form-grid-react {
+    grid-template-columns: 1fr;
+  }
+  .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .finora-btn-row {
+    flex-direction: column;
+  }
+  .finora-btn-primary,
+  .finora-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .finora-404-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

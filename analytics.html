@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics & Reports — Finora Expense Tracker</title>
+  <meta name="description" content="Understand your spending, track your savings, review income sources, and make smarter financial decisions with Finora Analytics & Reports.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Analytics Stylesheet -->
+  <link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-dashboard-line"></i>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions -->
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-wallet-3-line"></i>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-shopping-bag-3-line"></i>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics (ACTIVE: Violet rounded highlight, white icon and label) -->
+          <a href="analytics.html" class="nav-item-link active" id="nav-analytics" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-pie-chart-2-fill"></i>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-funds-line"></i>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-flag-line"></i>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-price-tag-3-line"></i>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-repeat-line"></i>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-settings-4-line"></i>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">
+            <i class="ri-logout-box-r-line"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <span>Dashboard</span>
+              <span aria-hidden="true">/</span>
+              <span class="active">Analytics & Reports</span>
+            </div>
+            <h1>Analytics & Reports</h1>
+            <p>Understand your spending, track your savings, and make smarter financial decisions.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search analytics..." aria-label="Search reports and transactions">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile -->
+          <div class="user-profile" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">User</span>
+            </div>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 8 Preview</span>
+            <span>Switch reporting context to test all required UI states:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-state="standard">Standard (Oct 2026)</button>
+            <button class="demo-btn" data-state="income-only">Income Only</button>
+            <button class="demo-btn" data-state="expenses-only">Expenses Only</button>
+            <button class="demo-btn" data-state="empty">Empty Period</button>
+            <button class="demo-btn" data-state="api-error">API Error State</button>
+          </div>
+        </section>
+
+        <!-- API Error Alert Banner (Hidden by default) -->
+        <div id="api-error-banner" style="display: none; background: #FFF5F6; border: 1px solid #F06575; border-radius: 12px; padding: 16px 20px; color: #D63D4F;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="ri-error-warning-fill" style="font-size: 20px;"></i>
+              <div>
+                <strong>Failed to load analytics records from server.</strong>
+                <div style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">Unable to reach <code>/api/analytics/summary</code>. Please check your network connection.</div>
+              </div>
+            </div>
+            <button id="retry-btn" class="btn-secondary" style="border-color: #F06575; color: #D63D4F;">
+              <i class="ri-refresh-line"></i> Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty State Banner (Hidden by default) -->
+        <div id="empty-state-banner" class="empty-state-card" style="display: none;">
+          <div class="empty-icon-wrap">
+            <i class="ri-file-chart-line"></i>
+          </div>
+          <h3>No financial activity found for this period</h3>
+          <p>You haven't recorded any income or expense transactions in this date range yet.</p>
+          <div style="display: flex; justify-content: center; gap: 12px;">
+            <a href="add-income.html" class="btn-secondary" style="color: #23B981; border-color: #23B981;">
+              <i class="ri-add-line"></i> Add Income
+            </a>
+            <a href="add-expense.html" class="btn-secondary" style="color: #F06575; border-color: #F06575;">
+              <i class="ri-add-line"></i> Add Expense
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Report Controls and Filters Section -->
+        <section class="report-controls-row" aria-label="Report Filters and Export Controls">
+          <div class="controls-left">
+            <!-- Period Selector -->
+            <div class="control-item">
+              <label for="period-select">Period:</label>
+              <select id="period-select" class="period-select">
+                <option value="This Month" selected>This Month</option>
+                <option value="Last Month">Last Month</option>
+                <option value="Last 3 Months">Last 3 Months</option>
+                <option value="Last 6 Months">Last 6 Months</option>
+                <option value="This Year">This Year</option>
+                <option value="Last Year">Last Year</option>
+                <option value="Custom Range">Custom Range</option>
+              </select>
+            </div>
+
+            <!-- Date Range Indicator / Inputs -->
+            <div class="date-range-display" id="date-range-display">
+              <i class="ri-calendar-line"></i>
+              <span>01 Oct 2026 – 31 Oct 2026</span>
+            </div>
+
+            <div class="custom-date-inputs" id="custom-date-inputs">
+              <input type="date" class="custom-date-input" value="2026-10-01" aria-label="Start date">
+              <span style="color: #75809A;">to</span>
+              <input type="date" class="custom-date-input" value="2026-10-31" aria-label="End date">
+            </div>
+
+            <!-- Transaction Type Segmented Control -->
+            <div class="segmented-control" role="group" aria-label="Transaction Type Filter">
+              <button class="segment-btn active" data-type="All">All</button>
+              <button class="segment-btn" data-type="Income">Income</button>
+              <button class="segment-btn" data-type="Expenses">Expenses</button>
+            </div>
+          </div>
+
+          <!-- Actions: Export CSV & Download Report -->
+          <div class="controls-right">
+            <button class="btn-secondary" id="export-csv-btn">
+              <i class="ri-file-excel-2-line"></i>
+              <span>Export CSV</span>
+            </button>
+            <button class="btn-secondary" id="download-report-btn">
+              <i class="ri-file-pdf-line"></i>
+              <span>Download Report</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Main Analytics Area Container -->
+        <div id="main-analytics-area" style="display: flex; flex-direction: column; gap: 24px;">
+
+          <!-- 4. Financial Overview Cards (4 Cards) -->
+          <section class="overview-cards-grid" aria-label="Financial Overview Summary">
+            <!-- Card 1: Total Income -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Income</span>
+                <div class="overview-icon-bubble icon-bubble-green">
+                  <i class="ri-arrow-up-circle-line"></i>
+                </div>
+              </div>
+              <div class="overview-value-row">
+                <div class="overview-value" id="overview-income">₹0.00</div>
+              </div>
+              <div class="overview-card-footer">
+                <span class="trend-badge positive">
+                  <i class="ri-arrow-right-up-line"></i> 0%
+                </span>
+                <span class="overview-card-subtext">vs previous period</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Total Expenses -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Expenses</span>
+                <div class="overview-icon-bubble icon-bubble-coral">
+                  <i class="ri-arrow-down-circle-line"></i>
+                </div>
+              </div>
+              <div class="overview-value-row">
+                <div class="overview-value" id="overview-expense" style="color: #D63D4F;">₹0.00</div>
+              </div>
+              <div class="overview-card-footer">
+                <span class="trend-badge negative">
+                  <i class="ri-arrow-right-down-line"></i> 0%
+                </span>
+                <span class="overview-card-subtext">vs previous period</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Net Savings -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Net Savings</span>
+                <div class="overview-icon-bubble icon-bubble-violet">
+                  <i class="ri-safe-2-line"></i>
+                </div>
+              </div>
+              <div class="overview-value-row">
+                <div class="overview-value" id="overview-savings">₹0.00</div>
+              </div>
+              <div class="overview-card-footer">
+                <span class="trend-badge positive">
+                  <i class="ri-arrow-right-up-line"></i> 0%
+                </span>
+                <span class="overview-card-subtext">Income minus expenses</span>
+              </div>
+            </div>
+
+            <!-- Card 4: Savings Rate -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Savings Rate</span>
+                <div class="overview-icon-bubble icon-bubble-blue">
+                  <i class="ri-pie-chart-line"></i>
+                </div>
+              </div>
+              <div class="overview-value-row">
+                <div class="overview-value" id="overview-rate" style="color: #2F9AD4;">0.0%</div>
+              </div>
+              <div class="overview-card-footer">
+                <span class="trend-badge positive">
+                  <i class="ri-check-line"></i> Healthy
+                </span>
+                <span class="overview-card-subtext">of total income saved</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. Main Analytics Grid (65% Main Chart vs 35% Donut Breakdown) -->
+          <section class="analytics-two-col-grid" aria-label="Income vs Expenses and Spending Breakdown">
+            <!-- 65% Main Chart: Income vs Expenses -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <h2>Income vs Expenses</h2>
+                  <p>Compare how much you earn and spend over time.</p>
+                </div>
+                <div class="card-actions-group">
+                  <div class="interval-pills" role="group" aria-label="Chart Interval">
+                    <button class="interval-pill" data-interval="Weekly">Weekly</button>
+                    <button class="interval-pill active" data-interval="Monthly">Monthly</button>
+                    <button class="interval-pill" data-interval="Yearly">Yearly</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SVG Grouped Bar Chart -->
+              <div class="chart-container">
+                <svg id="bar-chart-svg" class="bar-chart-svg" viewBox="0 0 640 240" preserveAspectRatio="none" aria-label="Grouped bar chart showing monthly income and expenses"></svg>
+              </div>
+
+              <!-- Legend -->
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-color-dot dot-income"></span>
+                  <span>Income</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color-dot dot-expense"></span>
+                  <span>Expenses</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 35% Expense Category Breakdown Donut -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <h2>Spending by Category</h2>
+                  <p>See which categories account for your expenses.</p>
+                </div>
+              </div>
+
+              <div class="donut-breakdown-wrapper">
+                <!-- SVG Donut Chart -->
+                <div class="donut-chart-container">
+                  <svg id="donut-chart-svg" class="donut-chart-svg" viewBox="0 0 210 210" aria-label="Donut chart showing category breakdown"></svg>
+                  <div class="donut-center-content">
+                    <div class="donut-center-label">Total Expenses</div>
+                    <div class="donut-center-val" id="donut-center-val">₹33,180</div>
+                  </div>
+                </div>
+
+                <!-- Category Legend List -->
+                <div class="category-legend-list" id="category-legend-list">
+                  <!-- Populated dynamically via JS -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6. Full Width Monthly Spending Trend Line Chart -->
+          <section class="card" aria-label="Monthly Spending Trend">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h2>Monthly Spending Trend</h2>
+                <p>Track how your spending changes over time compared with your income and savings.</p>
+              </div>
+              <div class="chart-legend" style="margin-top: 0;">
+                <div class="legend-item">
+                  <span class="legend-color-dot dot-income"></span>
+                  <span>Income</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color-dot dot-expense"></span>
+                  <span>Expenses</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color-dot dot-savings"></span>
+                  <span>Net Savings</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <svg id="trend-line-chart-svg" class="trend-line-chart-svg" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-label="Multi-line chart tracking 6-month financial trajectory"></svg>
+            </div>
+          </section>
+
+          <!-- 7. Secondary Analytics Grid (3 Columns) -->
+          <section class="secondary-analytics-grid" aria-label="Income Sources, Financial Insights, and Savings Analysis">
+            
+            <!-- Column 1: Income Source Analysis -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <h2>Income Sources</h2>
+                  <p>Understand where your income comes from.</p>
+                </div>
+              </div>
+              <div class="source-bars-stack" id="source-bars-stack">
+                <!-- Dynamic bars -->
+              </div>
+            </div>
+
+            <!-- Column 2: Financial Insights -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <h2>Financial Insights</h2>
+                  <p>A quick summary of your financial activity.</p>
+                </div>
+              </div>
+
+              <div class="insights-stack">
+                <!-- Row 1: Spending Pattern -->
+                <div class="insight-row">
+                  <div class="insight-icon-box">
+                    <i class="ri-restaurant-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h4>Spending Pattern</h4>
+                    <p>Your highest spending category this period is <strong>Food & Dining</strong> at 34% of expenses.</p>
+                  </div>
+                </div>
+
+                <!-- Row 2: Savings Progress -->
+                <div class="insight-row">
+                  <div class="insight-icon-box" style="color: #23B981;">
+                    <i class="ri-shield-check-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h4>Savings Progress</h4>
+                    <p>You saved <strong>57.7%</strong> of your recorded income during this period, exceeding your 40% goal.</p>
+                  </div>
+                </div>
+
+                <!-- Row 3: Income Trend -->
+                <div class="insight-row">
+                  <div class="insight-icon-box" style="color: #48B9F5;">
+                    <i class="ri-line-chart-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h4>Income Trend</h4>
+                    <p>Your income increased by <strong>+12.4%</strong> compared with the previous period.</p>
+                  </div>
+                </div>
+
+                <!-- Row 4: Budget Awareness -->
+                <div class="insight-row">
+                  <div class="insight-icon-box" style="color: #F5B544;">
+                    <i class="ri-alert-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h4>Budget Awareness</h4>
+                    <p>Your spending in <strong>Shopping</strong> is approaching 80% of its monthly limit.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 3: Savings Analysis -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <h2>Savings Analysis</h2>
+                  <p>See how much of your income remains after spending.</p>
+                </div>
+              </div>
+
+              <div class="savings-metrics-grid">
+                <div class="savings-metric-box">
+                  <label>Total Income</label>
+                  <div class="val" id="savings-income-val" style="color: #23B981;">₹78,500</div>
+                </div>
+                <div class="savings-metric-box">
+                  <label>Total Expenses</label>
+                  <div class="val" id="savings-expense-val" style="color: #F06575;">₹33,180</div>
+                </div>
+                <div class="savings-metric-box">
+                  <label>Net Savings</label>
+                  <div class="val" id="savings-net-val" style="color: #7957FF;">₹45,320</div>
+                </div>
+                <div class="savings-metric-box">
+                  <label>Savings Rate</label>
+                  <div class="val" id="savings-rate-val" style="color: #48B9F5;">57.7%</div>
+                </div>
+              </div>
+
+              <!-- Compound Allocation Bar -->
+              <div class="savings-bar-wrapper">
+                <div class="savings-bar-labels">
+                  <span>Expenses (42.3%)</span>
+                  <span>Savings (57.7%)</span>
+                </div>
+                <div class="savings-compound-bar">
+                  <div class="compound-segment-expenses" id="savings-bar-expense" style="width: 42.3%;"></div>
+                  <div class="compound-segment-savings" id="savings-bar-savings" style="width: 57.7%;"></div>
+                </div>
+              </div>
+
+              <div class="savings-note">
+                <i class="ri-information-line"></i> Net savings are calculated as recorded income minus recorded expenses for the selected period.
+              </div>
+            </div>
+          </section>
+
+          <!-- 8. Recent Financial Activity Table Card -->
+          <section class="card activity-table-card" aria-label="Recent Financial Activity Contributing to Reports">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h2>Recent Financial Activity</h2>
+                <p>Review the transactions contributing to these reports.</p>
+              </div>
+              <a href="transactions.html" class="btn-secondary" style="font-size: 0.8125rem;">
+                <span>View All Transactions</span>
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="activity-table">
+                <thead>
+                  <tr>
+                    <th>Transaction</th>
+                    <th>Category / Source</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="activity-table-body">
+                  <!-- Dynamic Rows -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </div> <!-- /main-analytics-area -->
+
+      </div> <!-- /content-container -->
+
+    </main>
+
+  </div> <!-- /app-layout -->
+
+  <!-- Tooltip container -->
+  <div id="chart-tooltip" class="chart-tooltip" role="tooltip"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notice" class="toast-notice" role="status" aria-live="polite">
+    <i class="ri-checkbox-circle-fill" style="color: #23B981; font-size: 18px;"></i>
+    <span id="toast-text">Operation completed</span>
+  </div>
+
+  <!-- Auth, Currency Utility & Client Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

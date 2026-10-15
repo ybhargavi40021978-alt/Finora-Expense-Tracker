@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Finora Expense Tracker</title>
+  <meta name="description" content="Sign in to your Finora account to track your income, manage expenses, set budgets, and build your financial future.">
+  
+  <!-- Modern Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  
+  <!-- Canvas: 1440 x 1024 Full Viewport Split Layout -->
+  <div class="login-layout-wrapper">
+    
+    <!-- ======================================================================
+         1. LEFT ILLUSTRATION PANEL (Approximately 46% width)
+         ====================================================================== -->
+    <aside class="left-panel" aria-label="Finora Showcase">
+      
+      <!-- Ambient Lighting & Decorative Glows -->
+      <div class="panel-glow panel-glow-violet" aria-hidden="true"></div>
+      <div class="panel-glow panel-glow-blue" aria-hidden="true"></div>
+      
+      <!-- Top Brand Logo (~48px horizontal padding, ~36px top padding) -->
+      <div class="panel-top-bar">
+        <a href="index.html" class="brand-link" id="brand-logo" title="Back to Finora Home">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+              <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+              <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+              <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+            </svg>
+          </div>
+          <span class="brand-name">Finora</span>
+        </a>
+      </div>
+
+      <!-- Center 3D Financial Illustration & Floating Elements -->
+      <div class="panel-illustration-area">
+        <div class="illustration-stage" id="illustration-stage">
+          
+          <!-- 3D Character Illustration Asset -->
+          <div class="illustration-wrapper">
+            <img 
+              src="assets/finora-login-character.jpg" 
+              alt="Person managing money with modern mobile finance app" 
+              class="illustration-img"
+              id="login-character-img"
+              loading="eager"
+            />
+            <div class="illustration-vignette" aria-hidden="true"></div>
+          </div>
+
+          <!-- Floating Micro Card: Income Growth Badge -->
+          <div class="panel-floating-badge badge-growth" data-parallax="0.04">
+            <div class="badge-icon-mint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#43D9A3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <div class="badge-text-group">
+              <span class="b-sub">Weekly Savings</span>
+              <span class="b-main">+$940.00 <strong class="text-mint">+18.5%</strong></span>
+            </div>
+          </div>
+
+          <!-- Floating Micro Card: Security Vault Pill -->
+          <div class="panel-floating-badge badge-vault" data-parallax="0.06">
+            <span class="vault-dot"></span>
+            <span>256-bit Encrypted Vault</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Supporting Copy: Headline & Tagline -->
+      <div class="panel-copy-area">
+        <h2 class="panel-headline">
+          Better Money Habits,<br>
+          Brighter Future
+        </h2>
+        <p class="panel-tagline">Track. Plan. Save. Grow.</p>
+      </div>
+
+    </aside>
+
+    <!-- ======================================================================
+         2. RIGHT LOGIN PANEL (Approximately 54% width, Clean White Background)
+         ====================================================================== -->
+    <main class="right-panel">
+      
+      <!-- Mobile Top Brand Bar (Visible only on small screens) -->
+      <div class="mobile-brand-bar">
+        <a href="index.html" class="mobile-brand-link">
+          <div class="brand-icon small">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+              <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+              <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+              <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+            </svg>
+          </div>
+          <span class="brand-name dark">Finora</span>
+        </a>
+      </div>
+
+      <!-- Centered Form Container (Max width ~400px) -->
+      <div class="form-container">
+        
+        <!-- Welcome Heading -->
+        <div class="form-header">
+          <h1 class="welcome-heading">Welcome Back!</h1>
+          <p class="welcome-subtext">Sign in to your account to continue.</p>
+        </div>
+
+        <!-- Feedback Alert Banner (Dynamically shown on error or success) -->
+        <div class="alert-banner" id="login-alert" role="alert" aria-live="polite" style="display: none;">
+          <div class="alert-icon" id="alert-icon"></div>
+          <span class="alert-message" id="alert-message"></span>
+        </div>
+
+        <!-- Login Form -->
+        <form class="login-form" id="login-form" autocomplete="off" novalidate>
+          
+          <!-- Decoy inputs to trap aggressive browser autofill engines -->
+          <div style="opacity:0; position:absolute; top:0; left:-9999px; height:0; width:0; z-index:-1; overflow:hidden;" aria-hidden="true">
+            <input type="text" name="trap_username" tabindex="-1" autocomplete="username" />
+            <input type="password" name="trap_password" tabindex="-1" autocomplete="current-password" />
+          </div>
+
+          <!-- 1. Email Address Field -->
+          <div class="form-group" id="group-email">
+            <label for="email-input" class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- Mail Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                inputmode="email"
+                id="email-input" 
+                name="log_email_noautofill" 
+                class="form-input" 
+                placeholder="you@example.com" 
+                autocomplete="one-time-code"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+            </div>
+            <span class="field-error" id="email-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 2. Password Field -->
+          <div class="form-group" id="group-password">
+            <label for="password-input" class="form-label">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- Lock Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="password-input" 
+                name="log_pwd_noautofill" 
+                class="form-input has-trailing" 
+                placeholder="Enter your password" 
+                autocomplete="new-password"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+              <!-- Trailing Eye Toggle Button -->
+              <button 
+                type="button" 
+                class="btn-toggle-password" 
+                id="btn-toggle-password" 
+                aria-label="Show password"
+                title="Toggle password visibility"
+              >
+                <!-- Eye Open Icon -->
+                <svg id="eye-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Off Icon (hidden initially) -->
+                <svg id="eye-icon-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="password-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 3. Remember-me & Forgot Password Row -->
+          <div class="remember-row">
+            <label class="checkbox-container">
+              <input type="checkbox" id="remember-me" name="remember" />
+              <span class="custom-checkbox" aria-hidden="true">
+                <svg width="11" height="9" viewBox="0 0 12 10" fill="none">
+                  <polyline points="1.5 5 4.5 8 10.5 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="checkbox-label">Remember me</span>
+            </label>
+            <a href="#forgot" class="link-forgot-password" id="link-forgot-password">Forgot password?</a>
+          </div>
+
+          <!-- 4. Primary Login Button -->
+          <button type="submit" class="btn-primary-login" id="btn-login">
+            <span class="btn-text">Login</span>
+            <span class="btn-spinner" aria-hidden="true" style="display: none;"></span>
+          </button>
+
+          <!-- 5. Divider with "or" -->
+          <div class="form-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-text">or</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <!-- 6. Google Sign-In Button -->
+          <button type="button" class="btn-google-login" id="btn-google">
+            <span class="google-icon" aria-hidden="true">
+              <!-- Official multicolor Google G SVG -->
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.04 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+            </span>
+            <span class="google-text">Continue with Google</span>
+          </button>
+
+          <!-- 7. Registration Navigation Link -->
+          <p class="register-footer">
+            Don't have an account? 
+            <a href="register.html" class="link-register" id="link-register">Register</a>
+          </p>
+
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Password Recovery Flow Modal -->
+  <div class="recovery-modal-backdrop" id="recovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="recovery-dialog">
+      <div class="recovery-header">
+        <div class="recovery-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7957FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h3 class="recovery-title">Reset Your Password</h3>
+        <p class="recovery-subtitle">Enter your email and we'll send you a password recovery link.</p>
+        <button type="button" class="recovery-close" id="recovery-close" aria-label="Close modal">✕</button>
+      </div>
+      <form class="recovery-form" id="recovery-form">
+        <div class="form-group">
+          <label for="recovery-email" class="form-label">Registered Email</label>
+          <input type="email" id="recovery-email" class="form-input" placeholder="you@example.com" required>
+        </div>
+        <button type="submit" class="btn-primary-login" id="btn-recovery-submit">Send Reset Link</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

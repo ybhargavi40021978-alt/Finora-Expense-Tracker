@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile & Settings — Finora Expense Tracker</title>
+  <meta name="description" content="Manage personal profile, regional preferences, notification thresholds, account security, appearance, and financial data export in Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Modern Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Settings Page Stylesheet -->
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fillOpacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-dashboard-line"></i></span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions -->
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-exchange-dollar-line"></i></span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-wallet-3-line"></i></span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-shopping-bag-3-line"></i></span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-pie-chart-line"></i></span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-funds-line"></i></span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-flag-line"></i></span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-price-tag-3-line"></i></span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-repeat-line"></i></span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings (ACTIVE: Screen 14) -->
+          <a href="settings.html" class="nav-item-link active" id="nav-settings" aria-current="page">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-settings-4-line"></i></span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true"><i class="ri-logout-box-r-line"></i></span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <a href="dashboard.html">Dashboard</a>
+              <span aria-hidden="true">/</span>
+              <span class="active">Settings</span>
+            </div>
+            <h1 class="header-page-title">Profile & Settings</h1>
+            <p class="header-page-subtitle">Manage your profile, preferences, and account security.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search settings..." aria-label="Search settings">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile Dropdown Menu -->
+          <div class="user-profile-menu" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <span class="user-name">Account</span>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+
+            <!-- Dropdown Popover -->
+            <div class="profile-dropdown-popover" id="profile-popover" role="menu">
+              <div class="dropdown-user-header">
+                <div class="dropdown-user-name">My Account</div>
+                <div class="dropdown-user-email">Account Settings</div>
+              </div>
+              <button class="dropdown-item" role="menuitem" onclick="document.querySelector('[data-tab=\'tab-profile\']').click();">
+                <i class="ri-user-3-line"></i> View Profile
+              </button>
+              <button class="dropdown-item" role="menuitem" onclick="document.querySelector('[data-tab=\'tab-preferences\']').click();">
+                <i class="ri-settings-3-line"></i> Settings
+              </button>
+              <button class="dropdown-item" role="menuitem" onclick="alert('Finora Support: support@finora.io');">
+                <i class="ri-question-line"></i> Help & Support
+              </button>
+              <div style="border-top: 1px solid var(--color-border-subtle); margin: 4px 0;"></div>
+              <button class="dropdown-item text-danger" id="dropdown-logout" role="menuitem">
+                <i class="ri-logout-box-r-line"></i> Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 14 Preview</span>
+            <span>Switch scenarios to test profile and setting behaviors:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-demo="standard">Standard (Saved)</button>
+            <button class="demo-btn" data-demo="unsaved">Unsaved Changes State</button>
+            <button class="demo-btn" data-demo="2fa">2FA Enabled State</button>
+            <button class="demo-btn" data-demo="appearance">Appearance & Theme</button>
+            <button class="demo-btn" data-demo="error">API Error Toast</button>
+          </div>
+        </section>
+
+        <!-- Unsaved Changes Banner Alert -->
+        <div class="unsaved-banner" id="unsaved-banner" role="alert">
+          <div class="unsaved-banner-text">
+            <i class="ri-alert-line" style="font-size: 20px;"></i>
+            <span>You have unsaved changes in your settings. Remember to save before navigating away.</span>
+          </div>
+          <div class="unsaved-banner-actions">
+            <button class="btn-secondary" id="btn-discard-changes" style="padding: 6px 14px; font-size: 0.8125rem;">Discard</button>
+            <button class="btn-primary" onclick="document.querySelector('.settings-panel.active form').requestSubmit();" style="padding: 6px 14px; font-size: 0.8125rem;">Save Changes</button>
+          </div>
+        </div>
+
+        <!-- Mobile Horizontal Tab Bar -->
+        <div class="settings-mobile-tabs" role="tablist" aria-label="Settings Categories Mobile">
+          <button class="settings-mobile-tab-btn active" data-tab="tab-profile"><i class="ri-user-3-line"></i> Profile</button>
+          <button class="settings-mobile-tab-btn" data-tab="tab-preferences"><i class="ri-equalizer-line"></i> Preferences</button>
+          <button class="settings-mobile-tab-btn" data-tab="tab-notifications"><i class="ri-notification-3-line"></i> Notifications</button>
+          <button class="settings-mobile-tab-btn" data-tab="tab-security"><i class="ri-shield-keyhole-line"></i> Security</button>
+          <button class="settings-mobile-tab-btn" data-tab="tab-appearance"><i class="ri-palette-line"></i> Appearance</button>
+          <button class="settings-mobile-tab-btn" data-tab="tab-account"><i class="ri-database-2-line"></i> Account</button>
+        </div>
+
+        <!-- ==================================================================
+             Two-Column Settings Layout (240px Navigation + Content Panel)
+             ================================================================== -->
+        <div class="settings-layout-wrapper">
+          
+          <!-- Left Settings Navigation Sidebar -->
+          <nav class="settings-nav-sidebar" aria-label="Settings Navigation">
+            <ul class="settings-nav-list" role="tablist">
+              <li>
+                <button class="settings-nav-btn active" data-tab="tab-profile" role="tab" aria-selected="true">
+                  <i class="ri-user-3-line" aria-hidden="true"></i>
+                  <span>My Profile</span>
+                </button>
+              </li>
+              <li>
+                <button class="settings-nav-btn" data-tab="tab-preferences" role="tab" aria-selected="false">
+                  <i class="ri-equalizer-line" aria-hidden="true"></i>
+                  <span>Preferences</span>
+                </button>
+              </li>
+              <li>
+                <button class="settings-nav-btn" data-tab="tab-notifications" role="tab" aria-selected="false">
+                  <i class="ri-notification-3-line" aria-hidden="true"></i>
+                  <span>Notifications</span>
+                </button>
+              </li>
+              <li>
+                <button class="settings-nav-btn" data-tab="tab-security" role="tab" aria-selected="false">
+                  <i class="ri-shield-keyhole-line" aria-hidden="true"></i>
+                  <span>Security</span>
+                </button>
+              </li>
+              <li>
+                <button class="settings-nav-btn" data-tab="tab-appearance" role="tab" aria-selected="false">
+                  <i class="ri-palette-line" aria-hidden="true"></i>
+                  <span>Appearance</span>
+                </button>
+              </li>
+              <li>
+                <button class="settings-nav-btn" data-tab="tab-account" role="tab" aria-selected="false">
+                  <i class="ri-database-2-line" aria-hidden="true"></i>
+                  <span>Account Management</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Right Content Area (Panels) -->
+          <div class="settings-panels-container">
+
+            <!-- ==============================================================
+                 Panel 1: My Profile (Personal Information)
+                 ============================================================== -->
+            <section class="settings-panel active" id="tab-profile" role="tabpanel">
+              <div class="settings-card">
+                
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Personal Information</h2>
+                    <p class="card-subtitle">Keep your account details up to date.</p>
+                  </div>
+                  <span class="badge-verified"><i class="ri-shield-check-fill"></i> Verified Account</span>
+                </div>
+
+                <!-- Profile Photo Row -->
+                <div class="profile-photo-row">
+                  <div class="avatar-large-wrapper">
+                    <img 
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80" 
+                      alt="User photo" 
+                      class="avatar-large"
+                      id="avatar-preview-img"
+                    />
+                    <div class="avatar-fallback" id="avatar-fallback">ME</div>
+                  </div>
+                  <div class="photo-meta-col">
+                    <h3 class="photo-user-name">
+                      <span id="display-profile-name">My Profile</span>
+                      <span class="badge-verified"><i class="ri-checkbox-circle-fill"></i> Email Verified</span>
+                    </h3>
+                    <p class="photo-helper-text">Recommended size 400×400px. Maximum upload size 5MB (PNG, JPG, WebP).</p>
+                    <div class="photo-actions-group">
+                      <input type="file" id="file-input-photo" accept="image/*" style="display: none;">
+                      <button type="button" class="btn-primary" id="btn-change-photo" style="padding: 7px 14px; font-size: 0.8125rem;">
+                        <i class="ri-camera-line"></i> Change Photo
+                      </button>
+                      <button type="button" class="btn-secondary" id="btn-remove-photo" style="padding: 7px 14px; font-size: 0.8125rem;">
+                        Remove Photo
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Personal Information Form -->
+                <form id="form-profile">
+                  <div class="form-grid-2col">
+                    
+                    <!-- Full Name -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-full-name">
+                        Full Name <span class="form-label-required">*</span>
+                      </label>
+                      <input 
+                        type="text" 
+                        class="form-input" 
+                        id="profile-full-name" 
+                        placeholder="Enter your full name" 
+                        required
+                      />
+                      <span class="form-error-msg">Full Name is required.</span>
+                    </div>
+
+                    <!-- Display Name -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-display-name">
+                        Display Name
+                      </label>
+                      <input 
+                        type="text" 
+                        class="form-input" 
+                        id="profile-display-name" 
+                        placeholder="Used for greetings"
+                      />
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-email">
+                        Email Address
+                      </label>
+                      <div class="input-with-action">
+                        <input 
+                          type="email" 
+                          class="form-input" 
+                          id="profile-email" 
+                          placeholder="you@example.com"
+                          readonly
+                        />
+                        <button type="button" class="input-action-btn" onclick="alert('A verification link will be sent to your new email address.');">
+                          Change Email
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Phone Number with Country Selector -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-phone-number">
+                        Phone Number
+                      </label>
+                      <div style="display: flex; gap: 8px;">
+                        <select class="form-select" id="profile-phone-code" style="width: 100px; flex-shrink: 0;">
+                          <option value="+91" selected>🇮🇳 +91</option>
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+65">🇸🇬 +65</option>
+                        </select>
+                        <input 
+                          type="tel" 
+                          class="form-input" 
+                          id="profile-phone-number" 
+                          value="98765 43210" 
+                          placeholder="Enter phone number"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-dob">
+                        Date of Birth
+                      </label>
+                      <input 
+                        type="date" 
+                        class="form-input" 
+                        id="profile-dob" 
+                        value="1995-08-14"
+                      />
+                    </div>
+
+                    <!-- Country / Region -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-country">
+                        Country / Region
+                      </label>
+                      <select class="form-select" id="profile-country">
+                        <option value="India" selected>India</option>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Canada">Canada</option>
+                      </select>
+                    </div>
+
+                    <!-- Preferred Language -->
+                    <div class="form-group">
+                      <label class="form-label" for="profile-language">
+                        Preferred Language
+                      </label>
+                      <select class="form-select" id="profile-language">
+                        <option value="en-IN" selected>English (India)</option>
+                        <option value="en-US">English (United States)</option>
+                        <option value="hi-IN">Hindi (हिंदी)</option>
+                      </select>
+                    </div>
+
+                    <!-- About Me -->
+                    <div class="form-group full-width">
+                      <label class="form-label" for="profile-about">
+                        About Me
+                      </label>
+                      <textarea 
+                        class="form-textarea" 
+                        id="profile-about" 
+                        rows="3" 
+                        placeholder="Short personal bio or financial notes..."
+                      >Product Designer & Financial Planner. Passionate about mindful spending and long-term investments.</textarea>
+                    </div>
+
+                  </div>
+
+                  <div class="card-actions-footer">
+                    <button type="button" class="btn-secondary" id="btn-cancel-profile">Cancel</button>
+                    <button type="submit" class="btn-primary" id="btn-save-profile">
+                      <i class="ri-check-line"></i> Save Changes
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </section>
+
+            <!-- ==============================================================
+                 Panel 2: Regional & Financial Preferences
+                 ============================================================== -->
+            <section class="settings-panel" id="tab-preferences" role="tabpanel">
+              <div class="settings-card">
+                
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Regional & Financial Preferences</h2>
+                    <p class="card-subtitle">Personalize how Finora displays your financial information.</p>
+                  </div>
+                </div>
+
+                <form id="form-preferences">
+                  
+                  <!-- Currency Settings -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-money-rupee-circle-line" style="color: var(--accent-color);"></i> Currency Settings
+                  </h3>
+
+                  <div class="form-grid-2col" style="margin-bottom: var(--space-4);">
+                    <div class="form-group">
+                      <label class="form-label" for="pref-currency">Preferred Currency</label>
+                      <select class="form-select" id="pref-currency">
+                        <option value="INR" selected>INR — Indian Rupee (₹)</option>
+                        <option value="USD">USD — US Dollar ($)</option>
+                        <option value="EUR">EUR — Euro (€)</option>
+                        <option value="GBP">GBP — British Pound (£)</option>
+                        <option value="AED">AED — UAE Dirham (د.إ)</option>
+                        <option value="JPY">JPY — Japanese Yen (¥)</option>
+                      </select>
+                    </div>
+
+                    <div class="preview-box">
+                      <div>
+                        <div class="preview-box-label">Currency Symbol</div>
+                        <div class="preview-box-value" id="currency-preview-val">INR (₹)</div>
+                      </div>
+                      <div>
+                        <div class="preview-box-label">Number Format</div>
+                        <div class="preview-box-value" id="currency-number-preview">₹1,25,450.00</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="info-note" style="margin-bottom: var(--space-6);">
+                    <i class="ri-information-line" style="font-size: 18px; flex-shrink: 0;"></i>
+                    <span><strong>Advisory:</strong> Changing display currency affects how amounts are formatted throughout the app. Stored transaction figures in your database remain unaltered.</span>
+                  </div>
+
+                  <!-- Date & Time Preferences -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-calendar-event-line" style="color: var(--accent-color);"></i> Date & Time Preferences
+                  </h3>
+
+                  <div class="form-grid-2col" style="margin-bottom: var(--space-6);">
+                    <div class="form-group">
+                      <label class="form-label" for="pref-date-format">Date Format</label>
+                      <select class="form-select" id="pref-date-format">
+                        <option value="DD/MM/YYYY" selected>DD/MM/YYYY (15/10/2026)</option>
+                        <option value="MM/DD/YYYY">MM/DD/YYYY (10/15/2026)</option>
+                        <option value="YYYY-MM-DD">YYYY-MM-DD (2026-10-15)</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-time-format">Time Format</label>
+                      <select class="form-select" id="pref-time-format">
+                        <option value="12h" selected>12-hour (02:30 PM)</option>
+                        <option value="24h">24-hour (14:30)</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-timezone">Time Zone</label>
+                      <select class="form-select" id="pref-timezone">
+                        <option value="Asia/Kolkata" selected>Asia/Kolkata (IST, UTC+5:30)</option>
+                        <option value="UTC">UTC (Coordinated Universal Time)</option>
+                        <option value="America/New_York">America/New_York (EDT, UTC-4:00)</option>
+                        <option value="Europe/London">Europe/London (BST, UTC+1:00)</option>
+                        <option value="Asia/Dubai">Asia/Dubai (GST, UTC+4:00)</option>
+                        <option value="Asia/Singapore">Asia/Singapore (SGT, UTC+8:00)</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-first-day">First Day of Week</label>
+                      <select class="form-select" id="pref-first-day">
+                        <option value="Monday" selected>Monday</option>
+                        <option value="Sunday">Sunday</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                      <div class="preview-box">
+                        <span class="preview-box-label">Live Date & Time Preview:</span>
+                        <span class="preview-box-value" id="datetime-preview-val">15/10/2026 • 02:30 PM</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Financial Display Preferences -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-eye-line" style="color: var(--accent-color);"></i> Financial Display Preferences
+                  </h3>
+
+                  <div class="toggle-group-list" style="margin-bottom: var(--space-6);">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Show Cents / Decimal Places</div>
+                        <div class="toggle-description">Display decimal figures (e.g. ₹1,250.00 instead of ₹1,250).</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="pref-show-cents" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Compact Number Formatting for Charts</div>
+                        <div class="toggle-description">Shorten large numbers on summary graphs (e.g. ₹45K instead of ₹45,000).</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="pref-compact-numbers">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Mask Balance Amounts by Default (Privacy Mode)</div>
+                        <div class="toggle-description">Conceals financial balances as •••••• until hovered or clicked.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="pref-hide-balances">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Confirm Before Deleting Financial Records</div>
+                        <div class="toggle-description">Require modal confirmation before removing transactions or budgets.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="pref-confirm-delete" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Show Category Icons Throughout App</div>
+                        <div class="toggle-description">Display visual colored category icons in transaction tables and cards.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="pref-show-icons" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Default Transaction Preferences -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-add-circle-line" style="color: var(--accent-color);"></i> Default Transaction Preferences
+                  </h3>
+
+                  <div class="form-grid-2col">
+                    <div class="form-group">
+                      <label class="form-label" for="pref-default-type">Default Transaction Type</label>
+                      <select class="form-select" id="pref-default-type">
+                        <option value="Expense" selected>Expense</option>
+                        <option value="Income">Income</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-default-date">Default Transaction Date</label>
+                      <select class="form-select" id="pref-default-date">
+                        <option value="Today" selected>Today</option>
+                        <option value="Last Used Date">Last Used Date</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-default-method">Preferred Payment Method</label>
+                      <select class="form-select" id="pref-default-method">
+                        <option value="UPI" selected>UPI</option>
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Cash">Cash</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pref-default-category">Default Category</label>
+                      <select class="form-select" id="pref-default-category">
+                        <option value="Food & Dining" selected>Food & Dining</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Bills & Utilities">Bills & Utilities</option>
+                        <option value="Shopping">Shopping</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card-actions-footer">
+                    <button type="button" class="btn-secondary" id="btn-reset-preferences">Reset to Defaults</button>
+                    <button type="submit" class="btn-primary" id="btn-save-preferences">
+                      <i class="ri-check-line"></i> Save Preferences
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </section>
+
+            <!-- ==============================================================
+                 Panel 3: Notifications
+                 ============================================================== -->
+            <section class="settings-panel" id="tab-notifications" role="tabpanel">
+              <div class="settings-card">
+                
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Notification Preferences</h2>
+                    <p class="card-subtitle">Choose what Finora should notify you about.</p>
+                  </div>
+                  <button type="button" class="btn-secondary" id="btn-send-test-notification" style="font-size: 0.8125rem;">
+                    <i class="ri-notification-badge-line"></i> Send Test Notification
+                  </button>
+                </div>
+
+                <form id="form-notifications">
+                  
+                  <!-- Budget Alerts -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-funds-line" style="color: var(--accent-color);"></i> Budget Alerts
+                  </h3>
+
+                  <div class="toggle-group-list" style="margin-bottom: var(--space-4);">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Approaching Budget Limit</div>
+                        <div class="toggle-description">Notify when category spending reaches your warning threshold.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-budget-approaching" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div style="padding: 0 0 12px 0;">
+                      <label class="form-label">Warning Alert Threshold (% of limit):</label>
+                      <div class="threshold-selector">
+                        <button type="button" class="threshold-chip" data-threshold="50%">50%</button>
+                        <button type="button" class="threshold-chip" data-threshold="75%">75%</button>
+                        <button type="button" class="threshold-chip" data-threshold="80%">80%</button>
+                        <button type="button" class="threshold-chip active" data-threshold="90%">90%</button>
+                        <button type="button" class="threshold-chip" data-threshold="100%">100%</button>
+                      </div>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Budget Limit Reached</div>
+                        <div class="toggle-description">Send an alert when spending hits exactly 100% of budget allocation.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-budget-reached" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Budget Exceeded Alert</div>
+                        <div class="toggle-description">High-priority warning when an expense causes a budget overrun.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-budget-exceeded" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Recurring Reminders -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-repeat-line" style="color: var(--accent-color);"></i> Recurring Transaction Reminders
+                  </h3>
+
+                  <div class="toggle-group-list" style="margin-bottom: var(--space-6);">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Enable Recurring Reminders</div>
+                        <div class="toggle-description">Send automated alerts for upcoming recurring subscriptions and bills.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-recurring-enabled" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="form-group" style="max-width: 320px;">
+                      <label class="form-label" for="notif-reminder-timing">Default Reminder Timing</label>
+                      <select class="form-select" id="notif-reminder-timing">
+                        <option value="Day of payment">Day of payment (Morning)</option>
+                        <option value="1 day before" selected>1 day before</option>
+                        <option value="2 days before">2 days before</option>
+                        <option value="3 days before">3 days before</option>
+                      </select>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Due-Today Notifications</div>
+                        <div class="toggle-description">Push notification on the morning when a recurring payment is due.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-due-today" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Overdue or Unconfirmed Reminders</div>
+                        <div class="toggle-description">Alert when a scheduled bill was expected but hasn't been logged yet.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-overdue" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Financial Activity & Summaries -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-line-chart-line" style="color: var(--accent-color);"></i> Financial Activity & Summaries
+                  </h3>
+
+                  <div class="toggle-group-list" style="margin-bottom: var(--space-6);">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Large Expense Alert</div>
+                        <div class="toggle-description">Trigger an alert when a single expense exceeds a specified amount.</div>
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <input type="number" class="form-input" id="notif-large-threshold" value="5000" style="width: 110px;" />
+                        <span style="font-size: 0.8125rem; color: var(--color-secondary-text);">₹</span>
+                        <label class="switch">
+                          <input type="checkbox" id="notif-large-enabled" checked>
+                          <span class="slider"></span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Weekly Spending Digest</div>
+                        <div class="toggle-description">Summary of money spent and top spending categories every Sunday.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-weekly-summary" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Monthly Financial Summary</div>
+                        <div class="toggle-description">Comprehensive analytics report on net savings on the 1st of each month.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-monthly-summary" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Savings Goal Progress & Milestones</div>
+                        <div class="toggle-description">Congratulatory alerts when hitting 25%, 50%, 75%, and 100% of goals.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-goal-progress" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Delivery Channels -->
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-mail-send-line" style="color: var(--accent-color);"></i> Delivery Channels
+                  </h3>
+
+                  <div class="toggle-group-list">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">In-App Notification Bell</div>
+                        <div class="toggle-description">Display badges and notification items in the top header.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Email Notifications</div>
+                        <div class="toggle-description">Send alerts to your registered account email address.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-channel-email" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Browser Desktop Push Notifications</div>
+                        <div class="toggle-description">Instant OS alerts even when Finora is open in a background tab.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="notif-channel-push">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card-actions-footer">
+                    <button type="submit" class="btn-primary" id="btn-save-notifications">
+                      <i class="ri-check-line"></i> Save Notification Settings
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </section>
+
+            <!-- ==============================================================
+                 Panel 4: Security
+                 ============================================================== -->
+            <section class="settings-panel" id="tab-security" role="tabpanel">
+              <div class="settings-card">
+                
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Account Security</h2>
+                    <p class="card-subtitle">Manage credentials, review active sessions, and configure two-factor authentication.</p>
+                  </div>
+                </div>
+
+                <!-- Change Password Form -->
+                <form id="form-change-password" style="margin-bottom: var(--space-6);">
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-lock-password-line" style="color: var(--accent-color);"></i> Change Password
+                  </h3>
+
+                  <div class="form-grid-2col">
+                    
+                    <!-- Current Password -->
+                    <div class="form-group full-width">
+                      <label class="form-label" for="current-password">Current Password</label>
+                      <div class="input-with-action">
+                        <input 
+                          type="password" 
+                          class="form-input" 
+                          id="current-password" 
+                          placeholder="Enter your current password" 
+                          required
+                        />
+                        <button type="button" class="input-action-btn btn-toggle-pw" data-target="current-password">
+                          <i class="ri-eye-line"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- New Password -->
+                    <div class="form-group">
+                      <label class="form-label" for="new-password">New Password</label>
+                      <div class="input-with-action">
+                        <input 
+                          type="password" 
+                          class="form-input" 
+                          id="new-password" 
+                          placeholder="At least 8 characters" 
+                          required
+                        />
+                        <button type="button" class="input-action-btn btn-toggle-pw" data-target="new-password">
+                          <i class="ri-eye-line"></i>
+                        </button>
+                      </div>
+                      
+                      <!-- Password Strength Meter -->
+                      <div class="password-strength-bar">
+                        <div class="strength-segment"></div>
+                        <div class="strength-segment"></div>
+                        <div class="strength-segment"></div>
+                        <div class="strength-segment"></div>
+                      </div>
+
+                      <div class="password-requirements">
+                        <span class="req-item" id="req-len"><i class="ri-checkbox-circle-fill"></i> Minimum 8 characters</span>
+                        <span class="req-item" id="req-upper"><i class="ri-checkbox-circle-fill"></i> At least 1 uppercase letter</span>
+                        <span class="req-item" id="req-lower"><i class="ri-checkbox-circle-fill"></i> At least 1 lowercase letter</span>
+                        <span class="req-item" id="req-num"><i class="ri-checkbox-circle-fill"></i> At least 1 number</span>
+                        <span class="req-item" id="req-sym"><i class="ri-checkbox-circle-fill"></i> At least 1 special character</span>
+                      </div>
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <div class="form-group">
+                      <label class="form-label" for="confirm-password">Confirm New Password</label>
+                      <div class="input-with-action">
+                        <input 
+                          type="password" 
+                          class="form-input" 
+                          id="confirm-password" 
+                          placeholder="Re-type your new password" 
+                          required
+                        />
+                        <button type="button" class="input-action-btn btn-toggle-pw" data-target="confirm-password">
+                          <i class="ri-eye-line"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div style="display: flex; justify-content: flex-end; margin-top: var(--space-4);">
+                    <button type="submit" class="btn-primary" id="btn-save-password">
+                      <i class="ri-lock-password-line"></i> Save New Password
+                    </button>
+                  </div>
+                </form>
+
+                <div style="border-top: 1px solid var(--color-border-subtle); margin-bottom: var(--space-6);"></div>
+
+                <!-- Two-Factor Authentication (2FA) -->
+                <div style="margin-bottom: var(--space-6);">
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-shield-flash-line" style="color: var(--accent-color);"></i> Two-Factor Authentication (2FA)
+                  </h3>
+                  
+                  <div class="twofa-status-card">
+                    <div class="twofa-info">
+                      <div class="twofa-icon-shield">
+                        <i class="ri-shield-keyhole-line"></i>
+                      </div>
+                      <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                          <h4 style="font-size: 0.9375rem; font-weight: 700; color: var(--color-main-text);">Authenticator App (TOTP)</h4>
+                          <span class="badge-verified" id="badge-2fa-status" style="background-color: #FDEEF0; color: #F06575;">Disabled</span>
+                        </div>
+                        <p style="font-size: 0.8125rem; color: var(--color-secondary-text); margin-top: 2px;">
+                          Protect your account by requiring an authenticator code (Google Authenticator, Authy, or 1Password) on every login.
+                        </p>
+                      </div>
+                    </div>
+                    <button type="button" class="btn-primary" id="btn-configure-2fa" style="flex-shrink: 0;">
+                      Configure 2FA
+                    </button>
+                  </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--color-border-subtle); margin-bottom: var(--space-6);"></div>
+
+                <!-- Active Sessions -->
+                <div style="margin-bottom: var(--space-6);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3 style="font-size: 0.9375rem; font-weight: 700; color: var(--color-main-text);">
+                      <i class="ri-device-line" style="color: var(--accent-color);"></i> Active Sessions
+                    </h3>
+                    <button type="button" class="btn-secondary" id="btn-sign-out-others" style="font-size: 0.75rem; padding: 6px 12px;">
+                      Sign Out Other Sessions
+                    </button>
+                  </div>
+
+                  <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                    <!-- Current Session -->
+                    <div class="session-item">
+                      <div class="session-left">
+                        <div class="session-icon-tile">
+                          <i class="ri-computer-line"></i>
+                        </div>
+                        <div class="session-details">
+                          <div class="session-title">
+                            Chrome on Windows 11
+                            <span class="badge-active-now">This Device</span>
+                          </div>
+                          <div class="session-sub">Mumbai, India • Active now • IP: 103.21.***.***</div>
+                        </div>
+                      </div>
+                      <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-income);">Current</span>
+                    </div>
+
+                    <!-- Other Simulated Session -->
+                    <div class="session-item" id="session-other-device">
+                      <div class="session-left">
+                        <div class="session-icon-tile">
+                          <i class="ri-smartphone-line"></i>
+                        </div>
+                        <div class="session-details">
+                          <div class="session-title">
+                            Safari on iPhone 15 Pro
+                          </div>
+                          <div class="session-sub">Bangalore, India • Last active 2 hours ago</div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px;" onclick="document.getElementById('session-other-device').style.display='none';">
+                        Revoke
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Security Alerts -->
+                <div>
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-alarm-warning-line" style="color: var(--accent-color);"></i> Login & Security Alerts
+                  </h3>
+
+                  <div class="toggle-group-list">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">New Login from Unrecognized Device</div>
+                        <div class="toggle-description">Immediate security notification whenever your account is accessed from a new IP or browser.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="sec-new-login" checked>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Password Change Confirmation</div>
+                        <div class="toggle-description">Send confirmation email whenever your credentials or security keys are modified.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- ==============================================================
+                 Panel 5: Appearance
+                 ============================================================== -->
+            <section class="settings-panel" id="tab-appearance" role="tabpanel">
+              <div class="settings-card">
+                
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Appearance & Accessibility</h2>
+                    <p class="card-subtitle">Personalize your color theme, brand accent, and accessible display controls.</p>
+                  </div>
+                </div>
+
+                <!-- Theme Selection -->
+                <div style="margin-bottom: var(--space-6);">
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-contrast-2-line" style="color: var(--accent-color);"></i> Interface Theme
+                  </h3>
+
+                  <div class="theme-selector-grid">
+                    <!-- Light Theme -->
+                    <div class="theme-card active" data-theme="light">
+                      <div class="theme-preview-box theme-preview-light">
+                        <div style="width: 40%; height: 6px; background: #C7B8FF; border-radius: 4px;"></div>
+                        <div style="width: 80%; height: 10px; background: #FFFFFF; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-top: 4px;"></div>
+                        <div style="width: 60%; height: 8px; background: #E8EBF3; border-radius: 4px; margin-top: 4px;"></div>
+                      </div>
+                      <div class="theme-label-row">
+                        <span>Light Mode</span>
+                        <i class="ri-sun-line" style="color: #F5B544;"></i>
+                      </div>
+                    </div>
+
+                    <!-- Dark Theme -->
+                    <div class="theme-card" data-theme="dark">
+                      <div class="theme-preview-box theme-preview-dark">
+                        <div style="width: 40%; height: 6px; background: #7957FF; border-radius: 4px;"></div>
+                        <div style="width: 80%; height: 10px; background: #141A3E; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); margin-top: 4px;"></div>
+                        <div style="width: 60%; height: 8px; background: #222B59; border-radius: 4px; margin-top: 4px;"></div>
+                      </div>
+                      <div class="theme-label-row">
+                        <span>Dark Mode</span>
+                        <i class="ri-moon-line" style="color: #7957FF;"></i>
+                      </div>
+                    </div>
+
+                    <!-- System Theme -->
+                    <div class="theme-card" data-theme="system">
+                      <div class="theme-preview-box theme-preview-system">
+                        <div style="width: 50%; height: 6px; background: #7957FF; border-radius: 4px;"></div>
+                        <div style="width: 80%; height: 10px; background: #FFFFFF; border-radius: 4px; margin-top: 4px;"></div>
+                      </div>
+                      <div class="theme-label-row">
+                        <span>System Auto</span>
+                        <i class="ri-computer-line" style="color: #48B9F5;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accent Color Picker -->
+                <div style="margin-bottom: var(--space-6);">
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-paint-brush-line" style="color: var(--accent-color);"></i> Accent Color
+                  </h3>
+
+                  <div class="accent-color-grid">
+                    <div class="accent-option active" data-color="#7957FF">
+                      <div class="accent-swatch" style="background-color: #7957FF;"><i class="ri-check-line"></i></div>
+                      <span class="accent-name">Finora Violet</span>
+                    </div>
+
+                    <div class="accent-option" data-color="#48B9F5">
+                      <div class="accent-swatch" style="background-color: #48B9F5;"><i class="ri-check-line"></i></div>
+                      <span class="accent-name">Electric Blue</span>
+                    </div>
+
+                    <div class="accent-option" data-color="#23B981">
+                      <div class="accent-swatch" style="background-color: #23B981;"><i class="ri-check-line"></i></div>
+                      <span class="accent-name">Mint Teal</span>
+                    </div>
+
+                    <div class="accent-option" data-color="#F06575">
+                      <div class="accent-swatch" style="background-color: #F06575;"><i class="ri-check-line"></i></div>
+                      <span class="accent-name">Coral Rose</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accessibility Preferences -->
+                <div>
+                  <h3 style="font-size: 0.9375rem; font-weight: 700; margin-bottom: 12px; color: var(--color-main-text);">
+                    <i class="ri-accessibility-line" style="color: var(--accent-color);"></i> Accessibility Preferences
+                  </h3>
+
+                  <div class="toggle-group-list">
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Reduce Motion & Animations</div>
+                        <div class="toggle-description">Minimizes smooth page transitions and disables parallax card effects.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="chk-reduce-motion">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Increase Base Text Size</div>
+                        <div class="toggle-description">Enlarges application typography (+10%) for enhanced legibility.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="chk-large-text">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+
+                    <div class="toggle-row">
+                      <div class="toggle-text">
+                        <div class="toggle-title">Enhanced Contrast Mode</div>
+                        <div class="toggle-description">Sharpens borders, dividers, and typography against workspace backgrounds.</div>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" id="chk-high-contrast">
+                        <span class="slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- ==============================================================
+                 Panel 6: Account Management (Export, Connected Services, Danger)
+                 ============================================================== -->
+            <section class="settings-panel" id="tab-account" role="tabpanel">
+              
+              <!-- Download Financial Data -->
+              <div class="settings-card">
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Download Your Financial Data</h2>
+                    <p class="card-subtitle">Export a complete, portable copy of your personal finance records.</p>
+                  </div>
+                </div>
+
+                <div class="form-grid-2col">
+                  <div class="form-group">
+                    <label class="form-label" for="export-format">Export Format</label>
+                    <select class="form-select" id="export-format">
+                      <option value="csv" selected>CSV (Comma-Separated Values for Excel, Sheets)</option>
+                      <option value="json">JSON (Structured Developer Data)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="export-scope">Data Scope</label>
+                    <select class="form-select" id="export-scope">
+                      <option value="all" selected>All Time (Complete History)</option>
+                      <option value="ytd">Year to Date (2026)</option>
+                      <option value="last30">Last 30 Days</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="card-actions-footer">
+                  <button type="button" class="btn-primary" id="btn-export-data">
+                    <i class="ri-download-2-line"></i> Download Financial Data
+                  </button>
+                </div>
+              </div>
+
+              <!-- Connected Services -->
+              <div class="settings-card">
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Connected Services & Backups</h2>
+                    <p class="card-subtitle">Manage automated encrypted cloud backups and banking sync integrations.</p>
+                  </div>
+                </div>
+
+                <div class="service-item-row">
+                  <div class="service-left">
+                    <div class="service-icon" style="color: #48B9F5;">
+                      <i class="ri-google-drive-line"></i>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-main-text);">Google Drive Automated Backup</div>
+                      <div style="font-size: 0.75rem; color: var(--color-secondary-text);">Encrypted cloud sync • Last synced today at 09:30 AM</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px;" onclick="showToast('Google Drive backup sync completed.', 'success');">
+                      Sync Now
+                    </button>
+                    <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px; color: var(--color-expense);" onclick="alert('Google Drive backup disconnected.');">
+                      Disconnect
+                    </button>
+                  </div>
+                </div>
+
+                <div class="service-item-row">
+                  <div class="service-left">
+                    <div class="service-icon" style="color: #7957FF;">
+                      <i class="ri-bank-line"></i>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.875rem; font-weight: 600; color: var(--color-main-text);">Open Banking Aggregator (Account Aggregator API)</div>
+                      <div style="font-size: 0.75rem; color: var(--color-secondary-text);">Not connected • Enables automated transaction imports</div>
+                    </div>
+                  </div>
+                  <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px;" onclick="alert('Open Banking authorization portal under development.');">
+                    Connect Service
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sign Out Card -->
+              <div class="settings-card">
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title">Sign Out</h2>
+                    <p class="card-subtitle">End your current authenticated Finora session on this browser.</p>
+                  </div>
+                  <button type="button" class="btn-secondary" id="btn-sign-out">
+                    <i class="ri-logout-box-r-line"></i> Sign Out
+                  </button>
+                </div>
+              </div>
+
+              <!-- Destructive: Delete Account Card -->
+              <div class="settings-card destructive-card">
+                <div class="card-header-group">
+                  <div class="card-title-group">
+                    <h2 class="card-title destructive-header">Delete Account</h2>
+                    <p class="card-subtitle">Permanently remove your Finora account and all associated financial records.</p>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.8125rem; color: #9A2433; line-height: 1.5;">
+                  Deleting your account will irreversibly remove your profile, 148 transactions, 8 budgets, 6 savings goals, and custom categories. This operation cannot be undone. We recommend downloading your financial export first.
+                </p>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: var(--space-2);">
+                  <button type="button" class="btn-danger" id="btn-open-delete-modal">
+                    <i class="ri-delete-bin-line"></i> Delete My Account
+                  </button>
+                </div>
+              </div>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ======================================================================
+       Modals: 2FA Setup Modal
+       ====================================================================== -->
+  <div class="modal-overlay" id="modal-2fa" role="dialog" aria-modal="true" aria-labelledby="modal-2fa-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-2fa-title">Configure Two-Factor Authentication</h3>
+        <button class="modal-close-btn" id="btn-close-2fa" aria-label="Close dialog">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.8125rem; color: var(--color-secondary-text);">
+          Scan this QR code using your mobile authenticator app (Google Authenticator, Authy, or Microsoft Authenticator):
+        </p>
+        
+        <!-- Mock QR Code Tile -->
+        <div style="display: flex; justify-content: center; align-items: center; padding: 16px; background-color: var(--color-workspace); border-radius: var(--radius-md); border: 1px dashed var(--color-border);">
+          <div style="width: 140px; height: 140px; background: #FFFFFF; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            <i class="ri-qr-code-line" style="font-size: 110px; color: var(--color-deep-navy);"></i>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--color-secondary-text); text-align: center;">
+          Can't scan? Enter secret key manually: <code style="background: var(--color-workspace); padding: 2px 6px; border-radius: 4px; font-weight: 700; color: var(--color-primary-violet);">FNRA-9821-XKQZ-4402</code>
+        </div>
+
+        <div class="form-group" style="margin-top: 8px;">
+          <label class="form-label" for="input-totp-code">Enter 6-Digit Verification Code</label>
+          <input 
+            type="text" 
+            class="form-input" 
+            id="input-totp-code" 
+            placeholder="e.g. 542 891" 
+            maxlength="6" 
+            style="letter-spacing: 0.2em; font-size: 1.125rem; font-weight: 700; text-align: center;"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btn-cancel-2fa">Cancel</button>
+        <button type="button" class="btn-primary" id="btn-verify-2fa">
+          <i class="ri-shield-check-line"></i> Verify & Enable 2FA
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Modals: Delete Account Confirmation Modal
+       ====================================================================== -->
+  <div class="modal-overlay" id="modal-delete-account" role="dialog" aria-modal="true" aria-labelledby="modal-delete-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-delete-title" style="color: var(--color-expense);">
+          <i class="ri-error-warning-fill"></i> Permanently Delete Account?
+        </h3>
+        <button class="modal-close-btn" id="btn-close-delete" aria-label="Close dialog">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.875rem; color: var(--color-main-text); line-height: 1.5;">
+          This action will permanently delete your Finora profile and purge all registered records:
+        </p>
+        <ul style="font-size: 0.8125rem; color: var(--color-secondary-text); margin-left: 20px; line-height: 1.6;">
+          <li>148 recorded financial transactions</li>
+          <li>8 category budgets and historical alert data</li>
+          <li>6 savings goals and contribution records</li>
+          <li>Encrypted profile and authentication credentials</li>
+        </ul>
+
+        <div class="form-group" style="margin-top: 12px;">
+          <label class="form-label" for="input-delete-confirm" style="color: var(--color-expense);">
+            Type <strong>DELETE</strong> to confirm permanent removal:
+          </label>
+          <input 
+            type="text" 
+            class="form-input" 
+            id="input-delete-confirm" 
+            placeholder="DELETE" 
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btn-cancel-delete">Cancel</button>
+        <button type="button" class="btn-danger" id="btn-confirm-delete" disabled>
+          <i class="ri-delete-bin-line"></i> Permanently Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Page Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

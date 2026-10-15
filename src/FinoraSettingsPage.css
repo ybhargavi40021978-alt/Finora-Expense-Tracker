@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Finora Expense Tracker — React Component Stylesheet: Profile & Settings
+   ========================================================================== */
+
+.finora-settings-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F6F7FC;
+  color: #18213D;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.finora-settings-sidebar {
+  width: 220px;
+  background-color: #171D4C;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 16px 0;
+  flex-shrink: 0;
+}
+
+.finora-settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 12px;
+}
+
+.finora-settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: #A8B1D4;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.finora-settings-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
+
+.finora-settings-nav-item.active {
+  background-color: #7957FF;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.4);
+}
+
+.finora-settings-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.finora-settings-header {
+  height: 72px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8EBF3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.finora-settings-content {
+  padding: 24px 32px 40px 32px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.finora-settings-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+}
+
+.finora-settings-tabs-card {
+  background: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 16px rgba(17, 24, 63, 0.04);
+  height: fit-content;
+}
+
+.finora-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  color: #75809A;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.finora-tab-btn:hover {
+  background-color: #F6F7FC;
+  color: #18213D;
+}
+
+.finora-tab-btn.active {
+  background-color: #F2EEFF;
+  color: #7957FF;
+  font-weight: 600;
+}
+
+.finora-panel-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(17, 24, 63, 0.04);
+}
+
+.finora-input-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.finora-input-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18213D;
+}
+
+.finora-input-text {
+  height: 42px;
+  border: 1px solid #E8EBF3;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-size: 0.875rem;
+  outline: none;
+  color: #18213D;
+}
+
+.finora-input-text:focus {
+  border-color: #7957FF;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.12);
+}
+
+@media (max-width: 860px) {
+  .finora-settings-grid {
+    grid-template-columns: 1fr;
+  }
+}

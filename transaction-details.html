@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Details — Finora Expense Tracker</title>
+  <meta name="description" content="View full transaction details, inspect category allocations and payment metadata, review audit history, and manage records in Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Modern Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Transaction Details Stylesheet -->
+  <link rel="stylesheet" href="css/transaction-details.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fillOpacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-dashboard-line"></i>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions (ACTIVE: This page inspects an individual transaction record) -->
+          <a href="transactions.html" class="nav-item-link active" id="nav-transactions" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-wallet-3-line"></i>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-shopping-bag-3-line"></i>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-pie-chart-line"></i>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-funds-line"></i>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-flag-line"></i>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-price-tag-3-line"></i>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-repeat-line"></i>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-settings-4-line"></i>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">
+            <i class="ri-logout-box-r-line"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <a href="dashboard.html" style="color: inherit;">Dashboard</a>
+              <span aria-hidden="true">/</span>
+              <a href="transactions.html" style="color: inherit;">Transactions</a>
+              <span aria-hidden="true">/</span>
+              <span class="active">Transaction Details</span>
+            </div>
+            <a href="transactions.html" class="btn-back-link">
+              <i class="ri-arrow-left-line"></i> Back to Transactions
+            </a>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search transactions..." aria-label="Search transactions">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile -->
+          <div class="user-profile" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">User</span>
+            </div>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 13 Preview</span>
+            <span>Switch transaction data and scenarios to test all UI behaviors:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-demo="standard">Standard (Expense: ₹1,250)</button>
+            <button class="demo-btn" data-demo="income">Income (Salary: ₹65,000)</button>
+            <button class="demo-btn" data-demo="overbudget">Over-Budget Splurge</button>
+            <button class="demo-btn" data-demo="no-receipt">No Receipt / Notes</button>
+            <button class="demo-btn" data-demo="not-found">Not Found (404)</button>
+            <button class="demo-btn" data-demo="api-error">API Error</button>
+          </div>
+        </section>
+
+        <!-- API Error Alert Banner (Hidden by default) -->
+        <div id="api-error-banner" style="display: none; background: #FFF5F6; border: 1px solid #F06575; border-radius: 12px; padding: 16px 20px; color: #D63D4F;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="ri-error-warning-fill" style="font-size: 20px;"></i>
+              <div>
+                <strong>Failed to load transaction data from server.</strong>
+                <div style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">Unable to reach <code>/api/transactions/:id</code>. Please check network.</div>
+              </div>
+            </div>
+            <button id="retry-btn" class="btn-secondary" style="border-color: #F06575; color: #D63D4F;">
+              <i class="ri-refresh-line"></i> Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Not Found 404 State (Hidden by default) -->
+        <div id="not-found-state" style="display: none; background: #FFFFFF; border: 1px dashed var(--border-color); border-radius: 14px; padding: 60px 24px; text-align: center; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: #F2EFFF; color: #7957FF; display: flex; align-items: center; justify-content: center; font-size: 1.85rem;">
+            <i class="ri-file-search-line"></i>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700;">Transaction not found</h3>
+          <p style="font-size: 0.875rem; color: #75809A; max-width: 400px; line-height: 1.5;">
+            The transaction may have been deleted, or you may not have permission to view it.
+          </p>
+          <a href="transactions.html" class="btn-primary" style="margin-top: 8px;">
+            <i class="ri-arrow-left-line"></i> Back to Transactions
+          </a>
+        </div>
+
+        <!-- Main Details Content Wrapper -->
+        <div id="main-details-content" style="display: flex; flex-direction: column; gap: 24px;">
+
+          <!-- ======================================================================
+               3. TRANSACTION HEADER ROW
+               ====================================================================== -->
+          <section class="txn-header-row" aria-label="Transaction Header">
+            <div class="txn-header-left">
+              <div class="category-icon-tile">
+                <i id="header-cat-icon" class="ri-restaurant-line"></i>
+              </div>
+              <div class="txn-title-meta">
+                <h2 id="header-txn-title">Food & Dining</h2>
+                <div class="txn-meta-badges">
+                  <span class="ref-code-text" id="header-ref-id">TXN-2026-10482</span>
+                  <span class="badge-pill type-expense" id="header-type-badge">Expense</span>
+                  <span class="badge-pill status-completed" id="header-status-badge">
+                    <i class="ri-checkbox-circle-fill"></i> Completed
+                  </span>
+                  <span style="font-size: 0.77rem; color: #75809A;" id="header-date">October 14, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="txn-header-right">
+              <button class="btn-primary" id="btn-edit-txn">
+                <i class="ri-edit-line"></i> Edit Transaction
+              </button>
+              
+              <div class="more-actions-container">
+                <button class="btn-secondary" id="more-actions-btn" aria-haspopup="true" aria-expanded="false">
+                  More Actions <i class="ri-arrow-down-s-line"></i>
+                </button>
+                <div class="more-actions-dropdown" id="more-actions-dropdown">
+                  <button class="menu-item" id="menu-duplicate-txn">
+                    <i class="ri-file-copy-line"></i> Duplicate Transaction
+                  </button>
+                  <button class="menu-item" id="menu-related-txns">
+                    <i class="ri-links-line"></i> View Related
+                  </button>
+                  <button class="menu-item" id="menu-print-txn">
+                    <i class="ri-printer-line"></i> Print Details
+                  </button>
+                  <button class="menu-item danger" id="menu-delete-txn">
+                    <i class="ri-delete-bin-line"></i> Delete Transaction
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ======================================================================
+               4. TRANSACTION AMOUNT HERO CARD
+               ====================================================================== -->
+          <section class="amount-hero-card" id="amount-hero-card" aria-label="Amount Summary">
+            <div class="amount-left">
+              <span class="amount-label">Transaction Amount</span>
+              <div class="amount-headline expense" id="amount-headline">−₹1,250.00</div>
+              <span class="amount-title-sub" id="amount-sub-title">Dinner at Urban Cafe</span>
+            </div>
+
+            <div class="amount-right-chips">
+              <div class="quick-spec-item">
+                <span class="quick-spec-label">Type</span>
+                <span class="quick-spec-val" id="quick-type-val">Expense</span>
+              </div>
+              <div class="quick-spec-item">
+                <span class="quick-spec-label">Category</span>
+                <span class="quick-spec-val" id="quick-cat-val">Food & Dining</span>
+              </div>
+              <div class="quick-spec-item">
+                <span class="quick-spec-label">Method</span>
+                <span class="quick-spec-val" id="quick-pay-val">UPI</span>
+              </div>
+              <div class="quick-spec-item">
+                <span class="quick-spec-label">Date</span>
+                <span class="quick-spec-val" id="quick-date-val">October 14, 2026</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ======================================================================
+               5. TWO-COLUMN DETAILS GRID
+               ====================================================================== -->
+          <div class="details-two-column-grid">
+
+            <!-- LEFT MAIN COLUMN -->
+            <div class="details-column">
+
+              <!-- Card 1: Transaction Information -->
+              <div class="detail-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-information-line" style="color: #7957FF;"></i> Transaction Information</h3>
+                  <span style="font-size: 0.77rem; color: #75809A;">Complete metadata</span>
+                </div>
+
+                <div class="info-field-grid">
+                  <div class="info-field-item">
+                    <span class="field-label">Transaction Title</span>
+                    <span class="field-value" id="info-title">Dinner at Urban Cafe</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Transaction Type</span>
+                    <span class="field-value" id="info-type">Expense</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Amount</span>
+                    <span class="field-value" id="info-amount" style="color: #F06575; font-weight: 700;">₹1,250.00</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Category</span>
+                    <span class="field-value" id="info-cat">Food & Dining</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Transaction Date</span>
+                    <span class="field-value" id="info-date">October 14, 2026</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Payment Method</span>
+                    <span class="field-value" id="info-pay">UPI</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Account</span>
+                    <span class="field-value" id="info-account">Personal Account</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Merchant / Payee</span>
+                    <span class="field-value" id="info-merchant">Urban Cafe</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Transaction Status</span>
+                    <span class="field-value" id="info-status" style="color: #23B981;">Completed</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Reference ID</span>
+                    <span class="field-value" id="info-ref-id" style="font-family: monospace;">TXN-2026-10482</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Created On</span>
+                    <span class="field-value" id="info-created">October 14, 2026, 7:42 PM</span>
+                  </div>
+                  <div class="info-field-item">
+                    <span class="field-label">Last Updated</span>
+                    <span class="field-value" id="info-updated">October 14, 2026, 7:45 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Description & Notes -->
+              <div class="detail-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-file-text-line" style="color: #7957FF;"></i> Description & Notes</h3>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                  <div>
+                    <span class="field-label">Description</span>
+                    <p id="desc-text" style="font-size: 0.9rem; color: #18213D; margin-top: 4px; line-height: 1.5;">
+                      Dinner with friends after work.
+                    </p>
+                  </div>
+
+                  <div style="border-top: 1px solid var(--border-color); padding-top: 12px;">
+                    <span class="field-label">Personal Notes</span>
+                    <p id="notes-text" style="font-size: 0.84rem; color: #75809A; margin-top: 4px; line-height: 1.5;">
+                      Split ₹600 with Rahul via GPay.
+                    </p>
+                  </div>
+
+                  <div style="border-top: 1px solid var(--border-color); padding-top: 12px;">
+                    <span class="field-label">Tags</span>
+                    <div class="tags-chip-row" id="tags-container">
+                      <!-- Populated dynamically -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Activity History Timeline -->
+              <div class="detail-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-history-line" style="color: #7957FF;"></i> Activity History</h3>
+                  <span style="font-size: 0.77rem; color: #75809A;">Audit Log</span>
+                </div>
+
+                <div class="timeline-vertical" id="activity-timeline">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Card 4: Related Transactions -->
+              <div class="detail-card" id="related-transactions-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-links-line" style="color: #7957FF;"></i> Related Transactions</h3>
+                  <a href="transactions.html" style="font-size: 0.8125rem; font-weight: 600; color: #7957FF;">
+                    View All Transactions →
+                  </a>
+                </div>
+
+                <div class="related-list" id="related-list-container">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT CONTEXTUAL SIDEBAR COLUMN -->
+            <div class="details-column">
+
+              <!-- Side Card 1: Category Information -->
+              <div class="detail-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-price-tag-3-line" style="color: #7957FF;"></i> Category Info</h3>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+                  <div class="category-icon-tile" style="width: 44px; height: 44px; font-size: 1.35rem;">
+                    <i id="side-cat-icon" class="ri-restaurant-line"></i>
+                  </div>
+                  <div>
+                    <h4 id="side-cat-name" style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700;">Food & Dining</h4>
+                    <span id="side-cat-type" style="font-size: 0.75rem; color: #75809A;">Expense category · Default</span>
+                  </div>
+                </div>
+
+                <div class="mini-stat-row">
+                  <span style="color: #75809A;">Monthly Transactions:</span>
+                  <strong id="side-cat-count" style="color: #18213D;">32 transactions</strong>
+                </div>
+                <div class="mini-stat-row">
+                  <span style="color: #75809A;">Monthly Total:</span>
+                  <strong id="side-cat-amount" style="color: #F06575;">₹6,450 spent</strong>
+                </div>
+
+                <div style="margin-top: 14px;">
+                  <a href="transactions.html" class="btn-secondary" id="link-cat-txns" style="width: 100%; justify-content: center; font-size: 0.8125rem;">
+                    <i class="ri-exchange-dollar-line"></i> View Category Transactions
+                  </a>
+                </div>
+              </div>
+
+              <!-- Side Card 2: Payment Information & Receipt -->
+              <div class="detail-card">
+                <div class="card-header-row">
+                  <h3><i class="ri-bank-card-line" style="color: #7957FF;"></i> Payment Details</h3>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div class="mini-stat-row" style="border-top: none; padding-top: 0; margin-top: 0;">
+                    <span style="color: #75809A;">Method:</span>
+                    <strong id="side-pay-method" style="color: #18213D;">UPI</strong>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Account:</span>
+                    <strong id="side-pay-account" style="color: #18213D;">Personal Account</strong>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Merchant:</span>
+                    <strong id="side-pay-merchant" style="color: #18213D;">Urban Cafe</strong>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Reference:</span>
+                    <strong id="side-pay-ref" style="font-family: monospace; font-size: 0.8rem;">TXN-2026-10482</strong>
+                  </div>
+                </div>
+
+                <!-- Receipt Preview Block -->
+                <div style="margin-top: 16px;">
+                  <span class="field-label" style="display: block; margin-bottom: 6px;">Attached Receipt</span>
+                  <div class="receipt-thumbnail-box">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <i class="ri-file-pdf-line" style="color: #F06575; font-size: 1.4rem;"></i>
+                      <div>
+                        <div id="side-receipt-filename" style="font-size: 0.8125rem; font-weight: 600; color: #18213D;">urban_cafe_receipt.pdf</div>
+                        <div style="font-size: 0.72rem; color: #75809A;">248 KB · Verified</div>
+                      </div>
+                    </div>
+                    <button class="btn-secondary" id="btn-view-receipt" style="padding: 6px 10px; font-size: 0.75rem;">
+                      <i class="ri-eye-line"></i> View
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Side Card 3: Budget Impact Panel -->
+              <div class="detail-card" id="budget-card-container">
+                <div class="card-header-row">
+                  <h3><i class="ri-funds-line" style="color: #7957FF;"></i> Budget Impact</h3>
+                </div>
+
+                <div>
+                  <h4 id="budget-name" style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #18213D;">
+                    Food Budget — October 2026
+                  </h4>
+
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="budget-bar-fill" style="width: 64.5%;"></div>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #75809A; display: flex; justify-content: space-between;" id="budget-percentage">
+                    64.5% of budget utilized
+                  </div>
+
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Budget Limit:</span>
+                    <strong id="budget-limit">₹10,000.00</strong>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Previous Spending:</span>
+                    <span id="budget-previous">₹5,200.00</span>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">This Transaction:</span>
+                    <span id="budget-txn" style="color: #F06575; font-weight: 600;">₹1,250.00</span>
+                  </div>
+                  <div class="mini-stat-row">
+                    <span style="color: #75809A;">Updated Spending:</span>
+                    <strong id="budget-updated">₹6,450.00</strong>
+                  </div>
+                  <div class="mini-stat-row" style="background: #F8F9FD; padding: 8px 10px; border-radius: 6px; margin-top: 8px;">
+                    <span style="font-weight: 600;">Remaining Budget:</span>
+                    <strong id="budget-remaining" style="color: #23B981; font-size: 0.95rem;">₹3,550.00</strong>
+                  </div>
+
+                  <div style="margin-top: 12px; text-align: center;">
+                    <a href="budgets.html" style="font-size: 0.8125rem; color: #7957FF; font-weight: 600;">
+                      Go to Budget Management →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ======================================================================
+       MODAL: EDIT TRANSACTION
+       ====================================================================== -->
+  <div class="modal-overlay" id="edit-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Edit Transaction</h3>
+          <p>Update your transaction details and classifications.</p>
+        </div>
+        <button class="modal-close-btn" id="edit-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="edit-form">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="edit-title">Transaction Title <span class="req">*</span></label>
+              <input type="text" id="edit-title" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-amount">Amount (₹) <span class="req">*</span></label>
+              <input type="number" id="edit-amount" class="form-input" min="0.01" step="any" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="edit-category">Category <span class="req">*</span></label>
+              <select id="edit-category" class="form-select">
+                <option value="Food & Dining">Food & Dining</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills & Utilities">Bills & Utilities</option>
+                <option value="Housing">Housing</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Salary">Salary</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Education">Education</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-date">Transaction Date <span class="req">*</span></label>
+              <input type="date" id="edit-date" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="edit-payment">Payment Method</label>
+              <select id="edit-payment" class="form-select">
+                <option value="UPI">UPI</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Cash">Cash</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-account">Account</label>
+              <input type="text" id="edit-account" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-merchant">Merchant / Payee</label>
+            <input type="text" id="edit-merchant" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-desc">Description</label>
+            <input type="text" id="edit-desc" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-notes">Personal Notes</label>
+            <textarea id="edit-notes" class="form-textarea" placeholder="Add optional notes..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="edit-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary" id="edit-submit-btn">
+            <i class="ri-save-line"></i> Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: DUPLICATE TRANSACTION
+       ====================================================================== -->
+  <div class="modal-overlay" id="duplicate-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <h3>Duplicate Transaction</h3>
+          <p>Create a fresh transaction using these details.</p>
+        </div>
+        <button class="modal-close-btn" id="duplicate-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="duplicate-form">
+        <div class="modal-body">
+          <div style="background: #F2EFFF; border: 1px solid #C7B8FF; border-radius: 8px; padding: 12px 14px; font-size: 0.8125rem; color: #18213D;">
+            <strong>Notice:</strong> This creates a new transaction with its own reference ID. It will not alter the original record.
+          </div>
+
+          <div style="font-weight: 700; font-size: 0.95rem; color: #18213D;" id="duplicate-title-preview">
+            <!-- Populated dynamically -->
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="duplicate-new-date">Date for New Transaction <span class="req">*</span></label>
+            <input type="date" id="duplicate-new-date" class="form-input" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="duplicate-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary" id="duplicate-submit-btn">
+            <i class="ri-file-copy-line"></i> Duplicate & Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: DELETE TRANSACTION CONFIRMATION
+       ====================================================================== -->
+  <div class="modal-overlay" id="delete-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3>Delete this transaction?</h3>
+        <button class="modal-close-btn" id="delete-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.875rem; color: #75809A; line-height: 1.5;">
+          This action will remove <strong id="delete-modal-txn-name" style="color: #18213D;"></strong> from your financial records and recalculate relevant category and budget balances.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="delete-cancel-btn">Cancel</button>
+        <button class="btn-primary" id="delete-confirm-btn" style="background-color: #F06575;">
+          <i class="ri-delete-bin-line"></i> Delete Transaction
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: RECEIPT VIEWER
+       ====================================================================== -->
+  <div class="modal-overlay" id="receipt-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h3 id="receipt-modal-title">Receipt Document</h3>
+          <p>Verified purchase record</p>
+        </div>
+        <button class="modal-close-btn" id="receipt-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" style="align-items: center; text-align: center; background: #F8F9FD; padding: 40px 24px;">
+        <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 32px; box-shadow: var(--shadow-sm); max-width: 360px; width: 100%;">
+          <i class="ri-file-pdf-fill" style="font-size: 3rem; color: #F06575;"></i>
+          <h4 style="font-family: var(--font-heading); font-weight: 700; margin-top: 10px;">Urban Cafe Bill Receipt</h4>
+          <p style="font-size: 0.77rem; color: #75809A; margin: 4px 0 16px;">Tax Invoice #UC-2026-9812 · 14 Oct 2026</p>
+          <div style="border-top: 1px dashed var(--border-color); border-bottom: 1px dashed var(--border-color); padding: 10px 0; font-size: 0.8125rem; display: flex; justify-content: space-between;">
+            <span>Total Paid (UPI)</span>
+            <strong style="color: #F06575;">₹1,250.00</strong>
+          </div>
+          <div style="font-size: 0.72rem; color: #23B981; margin-top: 12px; font-weight: 600;">
+            <i class="ri-shield-check-fill"></i> Authenticated Digital Receipt
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content: space-between;">
+        <span style="font-size: 0.77rem; color: #75809A;">PDF · 248 KB</span>
+        <button class="btn-primary" onclick="alert('Receipt downloaded to your device.')">
+          <i class="ri-download-line"></i> Download Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/transaction-details.js"></script>
+</body>
+</html>

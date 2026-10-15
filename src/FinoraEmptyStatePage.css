@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Finora Expense Tracker — React Component Stylesheet: Empty States
+   ========================================================================== */
+
+.finora-empty-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F6F7FC;
+  color: #18213D;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.finora-empty-sidebar {
+  width: 220px;
+  background-color: #171D4C;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 16px 0;
+  flex-shrink: 0;
+}
+
+.finora-empty-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 12px;
+}
+
+.finora-empty-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: #A8B1D4;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.finora-empty-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
+
+.finora-empty-nav-item.active {
+  background-color: #7957FF;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.4);
+}
+
+.finora-empty-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.finora-empty-header {
+  height: 72px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8EBF3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.finora-empty-content {
+  padding: 24px 32px 40px 32px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.finora-empty-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 20px;
+  padding: 48px 32px;
+  box-shadow: 0 4px 16px rgba(17, 24, 63, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 820px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.finora-empty-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #18213D;
+  margin: 16px 0 8px 0;
+  max-width: 520px;
+}
+
+.finora-empty-card-subtitle {
+  font-size: 0.9375rem;
+  color: #75809A;
+  max-width: 540px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.finora-empty-btn-primary {
+  background-color: #7957FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.finora-empty-btn-primary:hover {
+  background-color: #6744EE;
+  transform: translateY(-1px);
+}
+
+.finora-empty-btn-secondary {
+  background-color: transparent;
+  color: #18213D;
+  border: 1px solid #E8EBF3;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.finora-empty-btn-secondary:hover {
+  background-color: #F6F7FC;
+}
+
+.finora-empty-hint {
+  background-color: #F0EDFF;
+  border: 1px solid #C7B8FF;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 0.8125rem;
+  color: #20275D;
+  max-width: 560px;
+  width: 100%;
+  text-align: left;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .finora-empty-sidebar {
+    display: none;
+  }
+  .finora-empty-content {
+    padding: 16px;
+  }
+  .finora-empty-card {
+    padding: 32px 16px;
+  }
+}

@@ -1,0 +1,997 @@
+/* ==========================================================================
+   Finora Expense Tracker — Screen 3: Registration Page Styles
+   Design Canvas: 1440 × 1024 px Desktop First Split Layout
+   ========================================================================== */
+
+:root {
+  /* Finora Brand Color System */
+  --bg-deep-navy: #11183F;
+  --bg-indigo: #20275D;
+  --bg-dark-surface: #171E4B;
+  --accent-violet: #7957FF;
+  --accent-violet-hover: #6743F3;
+  --accent-violet-glow: rgba(121, 87, 255, 0.35);
+  --accent-blue: #48B9F5;
+  --highlight-lavender: #DCD2FF;
+  --text-white: #FFFFFF;
+  --text-lavender-muted: #D8DDF6;
+  --indicator-mint: #43D9A3;
+
+  /* Right Panel & Form Tokens */
+  --bg-form-panel: #FFFFFF;
+  --text-main: #18213D;
+  --text-secondary: #75809A;
+  --border-input: #E0E5EF;
+  --border-input-focus: #7957FF;
+  --border-input-focus-ring: rgba(121, 87, 255, 0.16);
+  --bg-input: #FFFFFF;
+  --error-red: #E5484D;
+  --error-bg: rgba(229, 72, 77, 0.08);
+  --success-green: #43D9A3;
+  --success-bg: rgba(67, 217, 163, 0.1);
+
+  /* Modern Robust Typography Stack (Always sharp & immediately visible) */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-input: 8px;
+  --radius-btn: 9px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --trans-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- 1. Base Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-body);
+  background-color: var(--bg-form-panel);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* --- 2. Full-Screen Split Layout Wrapper (Desktop First) --- */
+.register-layout-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   3. LEFT BRANDING & ILLUSTRATION PANEL (Approximately 46% Width)
+   ========================================================================== */
+.left-panel {
+  flex: 0 0 46%;
+  width: 46%;
+  height: 100vh;
+  max-height: 100vh;
+  background: linear-gradient(155deg, #0E1438 0%, #171E4B 50%, #20275D 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 26px 40px;
+  overflow: hidden;
+  color: var(--text-white);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Ambient Lighting Orbs */
+.panel-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 1;
+}
+
+.panel-glow-violet {
+  top: 18%;
+  right: -8%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(121, 87, 255, 0.28) 0%, transparent 70%);
+}
+
+.panel-glow-blue {
+  bottom: 8%;
+  left: -12%;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(72, 185, 245, 0.16) 0%, transparent 70%);
+}
+
+/* Top Bar: Finora Brand Logo (~48px horizontal, ~36px top) */
+.panel-top-bar {
+  position: relative;
+  z-index: 5;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-white);
+  transition: transform var(--trans-fast);
+}
+
+.brand-link:hover {
+  transform: translateY(-1px);
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--accent-violet) 0%, #9073FF 100%);
+  border-radius: var(--radius-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--accent-violet-glow);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.375rem; /* ~22px */
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+}
+
+/* Center 3D Illustration Area */
+.panel-illustration-area {
+  position: relative;
+  z-index: 4;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 380px;
+  margin: 4px 0;
+}
+
+.illustration-stage {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration-wrapper {
+  position: relative;
+  width: 86%;
+  height: 86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  filter: drop-shadow(0 16px 36px rgba(10, 14, 40, 0.6));
+  mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 72%, transparent 100%);
+  transition: transform 0.2s ease-out;
+}
+
+/* Floating Micro Badges on Illustration */
+.panel-floating-badge {
+  position: absolute;
+  background: rgba(23, 30, 75, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 28px rgba(10, 14, 40, 0.45);
+  z-index: 8;
+  user-select: none;
+  animation: floatSlow 6.5s ease-in-out infinite;
+}
+
+.badge-goal {
+  top: 10%;
+  right: -10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-icon-mint {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: rgba(67, 217, 163, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badge-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.b-sub {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-lavender-muted);
+}
+
+.b-main {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.text-mint {
+  color: var(--indicator-mint);
+  font-size: 0.72rem;
+  margin-left: 4px;
+}
+
+.badge-smart {
+  bottom: 8%;
+  left: -8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-white);
+  animation-delay: 1.2s;
+}
+
+.smart-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue);
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Supporting Copy Area */
+.panel-copy-area {
+  position: relative;
+  z-index: 5;
+  padding-top: 4px;
+}
+
+.panel-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2vw, 1.95rem); /* 28-32px */
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: var(--text-white);
+  margin-bottom: 6px;
+}
+
+.panel-tagline {
+  font-family: var(--font-body);
+  font-size: 1.05rem; /* ~17px */
+  font-weight: 550;
+  color: #FFFFFF;
+  text-shadow: 0 1px 10px rgba(10, 14, 40, 0.6);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. RIGHT REGISTRATION PANEL (Approximately 54% Width, Clean White)
+   ========================================================================== */
+.right-panel {
+  flex: 0 0 54%;
+  width: 54%;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: var(--bg-form-panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(121, 87, 255, 0.2) transparent;
+  position: relative;
+}
+
+.right-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.right-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.right-panel::-webkit-scrollbar-thumb {
+  background: rgba(121, 87, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Mobile Brand Bar (hidden on desktop) */
+.mobile-brand-bar {
+  display: none;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 12px;
+}
+
+.mobile-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.brand-icon.small {
+  width: 26px;
+  height: 26px;
+}
+
+.brand-name.dark {
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+/* Form Container (Compact 360px max-width, cleanly fits initial viewport) */
+.form-container {
+  width: 100%;
+  max-width: 360px;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Heading & Subtext - Compact & High Visibility */
+.form-header {
+  margin-bottom: 11px;
+}
+
+.welcome-heading {
+  font-family: var(--font-display);
+  font-size: 1.45rem; /* ~23px - crisp, clear, compact */
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.text-accent-violet {
+  color: var(--accent-violet);
+  display: inline-block;
+  font-weight: 800;
+}
+
+.welcome-subtext {
+  font-family: var(--font-body);
+  font-size: 0.8125rem; /* ~13px */
+  color: #64748B;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Feedback Alert Banner */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-input);
+  font-size: 0.72rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+.alert-banner.error {
+  background-color: var(--error-bg);
+  border: 1px solid rgba(229, 72, 77, 0.3);
+  color: #B91C1C;
+}
+
+.alert-banner.success {
+  background-color: var(--success-bg);
+  border: 1px solid rgba(67, 217, 163, 0.35);
+  color: #065F46;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Registration Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Groups & Labels - Minimized 7px margin */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7px;
+  position: relative;
+}
+
+.form-label {
+  font-size: 0.72rem; /* ~11.5px */
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 2px;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+/* Input Wrapper & Icons */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-icon.leading-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: stroke var(--trans-fast);
+}
+
+.input-icon.leading-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.form-input {
+  width: 100%;
+  height: 38px; /* Minimized 38px height */
+  padding: 0 12px 0 34px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.835rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.form-input.has-trailing {
+  padding-right: 34px;
+}
+
+.form-input::placeholder {
+  color: #94A3B8;
+  font-size: 0.79rem;
+}
+
+/* Input Focus State */
+.form-input:focus {
+  border-color: var(--border-input-focus);
+  box-shadow: 0 0 0 3px var(--border-input-focus-ring);
+}
+
+.form-input:focus ~ .input-icon.leading-icon svg,
+.input-wrapper:focus-within .input-icon.leading-icon svg {
+  stroke: var(--accent-violet);
+}
+
+/* Input Error State */
+.form-group.has-error .form-input {
+  border-color: var(--error-red);
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.12);
+}
+
+.field-error {
+  display: none;
+  font-size: 0.69rem;
+  color: var(--error-red);
+  margin-top: 2px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.form-group.has-error .field-error {
+  display: block;
+}
+
+/* Trailing Eye Toggle Button */
+.btn-toggle-password {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--trans-fast);
+}
+
+.btn-toggle-password svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-toggle-password:hover {
+  background-color: #F1F4F9;
+}
+
+.btn-toggle-password:hover svg {
+  stroke: var(--text-main);
+}
+
+/* --- 5. Password Strength Meter (4 Segments) --- */
+.password-strength-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 3px;
+}
+
+.strength-bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: 100%;
+}
+
+.strength-bar {
+  height: 3px;
+  background-color: #E2E8F0;
+  border-radius: var(--radius-full);
+  transition: background-color 0.25s ease;
+}
+
+/* Strength Colors */
+.strength-bar.weak {
+  background-color: #E5484D; /* Red */
+}
+
+.strength-bar.fair {
+  background-color: #F59E0B; /* Amber */
+}
+
+.strength-bar.good {
+  background-color: #7957FF; /* Finora Violet */
+}
+
+.strength-bar.strong {
+  background-color: #43D9A3; /* Mint Green */
+}
+
+.strength-caption {
+  font-size: 0.68rem; /* ~11px */
+  color: #64748B;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+.strength-caption.weak { color: #E5484D; }
+.strength-caption.fair { color: #D97706; }
+.strength-caption.good { color: #7957FF; }
+.strength-caption.strong { color: #10B981; }
+
+/* --- 6. Terms & Privacy Agreement Row --- */
+.terms-row {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+  margin-bottom: 9px;
+}
+
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox {
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid var(--border-input);
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--trans-fast);
+  flex-shrink: 0;
+}
+
+.custom-checkbox svg {
+  width: 9px;
+  height: 8px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all var(--trans-fast);
+}
+
+.checkbox-container:hover .custom-checkbox {
+  border-color: var(--accent-violet);
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .custom-checkbox {
+  background-color: var(--accent-violet);
+  border-color: var(--accent-violet);
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .custom-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.terms-text {
+  font-size: 0.735rem; /* ~11.75px */
+  color: #64748B;
+  line-height: 1.35;
+}
+
+.legal-link {
+  color: var(--accent-violet);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--trans-fast);
+}
+
+.legal-link:hover {
+  color: var(--accent-violet-hover);
+  text-decoration: underline;
+}
+
+/* --- 7. Primary Registration Button --- */
+.btn-primary-register {
+  width: 100%;
+  height: 38px; /* Minimized 38px */
+  background-color: var(--accent-violet);
+  color: var(--text-white);
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.865rem; /* ~14px */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 12px var(--accent-violet-glow);
+  transition: all var(--trans-fast);
+  position: relative;
+}
+
+.btn-primary-register:hover:not(:disabled) {
+  background-color: var(--accent-violet-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(121, 87, 255, 0.4);
+}
+
+.btn-primary-register:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary-register:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.4);
+}
+
+.btn-primary-register:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading Spinner */
+.btn-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- 8. Divider with "or" --- */
+.form-divider {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-input);
+}
+
+.divider-text {
+  padding: 0 10px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* --- 9. Google Registration Button --- */
+.btn-google-register {
+  width: 100%;
+  height: 36px; /* Minimized 36px */
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-input);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.btn-google-register:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-google-register:active {
+  transform: translateY(0);
+}
+
+.btn-google-register:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.16);
+}
+
+.google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.google-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* --- 10. Existing Account Link Footer --- */
+.login-footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.link-login {
+  color: var(--accent-violet);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 3px;
+  transition: color var(--trans-fast);
+}
+
+.link-login:hover {
+  color: var(--accent-violet-hover);
+  text-decoration: underline;
+}
+
+/* --- 11. Terms Modal --- */
+.terms-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 38, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans-normal);
+}
+
+.terms-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.terms-dialog {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 480px;
+  padding: 26px;
+  position: relative;
+  transform: translateY(16px);
+  transition: transform var(--trans-normal);
+}
+
+.terms-modal-backdrop.open .terms-dialog {
+  transform: translateY(0);
+}
+
+.terms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.terms-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.terms-close {
+  background: #F1F4F9;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.terms-body {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.terms-body p + p {
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   12. Responsive Layout Rules
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .left-panel {
+    flex: 0 0 42%;
+    width: 42%;
+    padding: 28px 32px 30px;
+  }
+
+  .right-panel {
+    flex: 0 0 58%;
+    width: 58%;
+    padding: 20px 32px;
+  }
+
+  .panel-headline {
+    font-size: 1.6rem;
+  }
+
+  .welcome-heading {
+    font-size: 1.75rem;
+  }
+
+  .illustration-stage {
+    max-width: 320px;
+  }
+}
+
+/* Mobile Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .register-layout-wrapper {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .left-panel {
+    display: none;
+  }
+
+  .right-panel {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 100vh;
+    padding: 28px 20px 36px;
+    justify-content: flex-start;
+  }
+
+  .mobile-brand-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .form-container {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .welcome-heading {
+    font-size: 1.75rem;
+  }
+}

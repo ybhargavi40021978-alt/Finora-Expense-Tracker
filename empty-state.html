@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions — Finora Expense Tracker</title>
+  <meta name="description" content="Your financial activity, organized in one place. Start recording your income and expenses in Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Empty State Stylesheet -->
+  <link rel="stylesheet" href="css/empty-states.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fillOpacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-dashboard-line"></i></span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions (ACTIVE: Screen 15 Main Example) -->
+          <a href="transactions.html" class="nav-item-link active" id="nav-transactions" aria-current="page">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-exchange-dollar-line"></i></span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-wallet-3-line"></i></span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-shopping-bag-3-line"></i></span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-pie-chart-line"></i></span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-funds-line"></i></span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-flag-line"></i></span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-price-tag-3-line"></i></span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-repeat-line"></i></span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-settings-4-line"></i></span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true"><i class="ri-logout-box-r-line"></i></span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <a href="dashboard.html">Dashboard</a>
+              <span aria-hidden="true">/</span>
+              <span class="active">Transactions</span>
+            </div>
+            <h1 class="header-page-title">Transactions</h1>
+            <p class="header-page-subtitle">Your financial activity, organized in one place.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search transactions..." aria-label="Search transactions">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 0 unread">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+          </button>
+
+          <!-- User Profile Dropdown Menu -->
+          <div class="user-profile-menu" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <span class="user-name">User</span>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+
+            <!-- Dropdown Popover -->
+            <div class="profile-dropdown-popover" id="profile-popover" role="menu" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; width: 200px; background: #fff; border: 1px solid var(--color-border); border-radius: 12px; box-shadow: var(--shadow-popover); padding: 8px; z-index: 200;">
+              <div style="padding: 8px; border-bottom: 1px solid var(--color-border-subtle); margin-bottom: 4px;">
+                <div class="dropdown-user-name" style="font-size: 0.875rem; font-weight: 700;">User</div>
+                <div class="dropdown-user-email" style="font-size: 0.75rem; color: var(--color-secondary-text);">user@example.com</div>
+              </div>
+              <a href="settings.html" style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; color: var(--color-main-text); text-decoration: none; font-size: 0.8125rem;">
+                <i class="ri-settings-3-line"></i> Settings
+              </a>
+              <a href="login.html" class="btn-signout" style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; color: var(--color-expense); text-decoration: none; font-size: 0.8125rem;">
+                <i class="ri-logout-box-r-line"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- ==============================================================
+             3. MAIN EXACT FULL-PAGE EMPTY STATE CARD
+             ============================================================== -->
+        <div class="empty-state-full-card" style="margin-top: var(--space-4);">
+          
+          <!-- Friendly Modern Financial Illustration -->
+          <div class="empty-illustration-stage">
+            <svg class="empty-illustration-svg" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="90" r="75" fill="#F2EEFF"/>
+              <!-- Receipt / Transaction List Sheet -->
+              <rect x="52" y="38" width="80" height="104" rx="10" fill="#FFFFFF" stroke="#E8EBF3" stroke-width="2"/>
+              <line x1="68" y1="58" x2="116" y2="58" stroke="#7957FF" stroke-width="3" stroke-linecap="round"/>
+              <line x1="68" y1="72" x2="100" y2="72" stroke="#E8EBF3" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="68" y1="84" x2="112" y2="84" stroke="#E8EBF3" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="68" y1="96" x2="92" y2="96" stroke="#E8EBF3" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="68" y1="108" x2="116" y2="108" stroke="#E8EBF3" stroke-width="2.5" stroke-linecap="round"/>
+              
+              <!-- Coin Stack with Green Accent (Financial Progress) -->
+              <rect x="115" y="95" width="34" height="10" rx="5" fill="#23B981"/>
+              <rect x="115" y="108" width="34" height="10" rx="5" fill="#1EA06F"/>
+              <rect x="115" y="121" width="34" height="10" rx="5" fill="#18835B"/>
+              
+              <!-- Floating Violet Plus Symbol Bubble -->
+              <circle cx="138" cy="48" r="18" fill="#7957FF" filter="drop-shadow(0 4px 10px rgba(121, 87, 255, 0.4))"/>
+              <path d="M138 42V54M132 48H144" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+              
+              <!-- Decorative Floating Shapes -->
+              <circle cx="48" cy="70" r="4" fill="#48B9F5"/>
+              <circle cx="158" cy="85" r="3" fill="#C7B8FF"/>
+            </svg>
+          </div>
+
+          <!-- Main Message -->
+          <h2 class="empty-title">Your financial journey starts here.</h2>
+          <p class="empty-subtitle">
+            You haven't added any transactions yet. Start recording your income and expenses to see where your money goes and build better financial habits.
+          </p>
+
+          <!-- Primary & Secondary Actions -->
+          <div class="empty-actions-row">
+            <a href="transactions.html" class="btn-primary" id="btn-add-first-tx">
+              + Add Your First Transaction
+            </a>
+            <a href="dashboard.html" class="btn-secondary" id="btn-explore-dashboard">
+              Explore Dashboard
+            </a>
+          </div>
+
+          <!-- Helpful Hint Card -->
+          <div class="empty-hint-card">
+            <i class="ri-lightbulb-line"></i>
+            <span>Tip: Start with your latest income and a few everyday expenses to get a clearer picture of your finances.</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    // Header dropdown toggle
+    const userMenu = document.getElementById('user-profile-menu');
+    const popover = document.getElementById('profile-popover');
+    if (userMenu && popover) {
+      userMenu.addEventListener('click', (e) => {
+        const isOpen = popover.style.display === 'block';
+        popover.style.display = isOpen ? 'none' : 'block';
+        e.stopPropagation();
+      });
+      document.addEventListener('click', () => {
+        popover.style.display = 'none';
+      });
+      popover.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // Mobile sidebar toggle
+    const mobileBtn = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (mobileBtn && sidebar && backdrop) {
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-open');
+        backdrop.classList.toggle('mobile-open');
+      });
+      backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        backdrop.classList.remove('mobile-open');
+      });
+    }
+  </script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

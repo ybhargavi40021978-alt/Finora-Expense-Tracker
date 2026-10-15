@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Finora Expense Tracker</title>
+  <meta name="description" content="The page you are looking for doesn't exist or has moved. Return to your Finora dashboard, learn more about our finance tracker, or contact our support team.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Typography: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Finora 404 Stylesheet -->
+  <link rel="stylesheet" href="css/404.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glow & Subtle Pattern -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow-lavender"></div>
+    <div class="ambient-glow-blue"></div>
+    <div class="ambient-pattern"></div>
+  </div>
+
+  <div class="error-page-container">
+
+    <!-- ======================================================================
+         1. TOP BRANDED HEADER (Home, About, Contact & Back to Dashboard)
+         ====================================================================== -->
+    <header class="error-header" role="banner">
+      <div class="header-container">
+        <!-- Left side: Finora logo & tagline -->
+        <a href="index.html" class="header-brand" title="Finora Home" id="header-brand-logo">
+          <div class="brand-icon-box" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+              <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+              <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+              <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="19" cy="2" r="2" fill="#23B981"/>
+            </svg>
+          </div>
+          <div class="brand-meta">
+            <span class="brand-name">Finora</span>
+            <span class="brand-tagline">Track. Plan. Save. Grow.</span>
+          </div>
+        </a>
+
+        <!-- Right side: Navigation Links & Action Button -->
+        <div class="header-nav-group">
+          <nav class="header-nav-links" aria-label="Page Sections">
+            <a href="index.html" class="header-nav-link" id="nav-home">Home</a>
+            <a href="#about" class="header-nav-link" id="nav-about">About</a>
+            <a href="#contact" class="header-nav-link" id="nav-contact">Contact</a>
+          </nav>
+          
+          <a href="dashboard.html" class="header-action-link" id="header-dashboard-link">
+            <i class="ri-home-4-line" aria-hidden="true"></i>
+            <span>Back to Dashboard</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================================
+         2. MAIN 404 CONTENT AREA
+         ====================================================================== -->
+    <main class="error-main-content" role="main">
+
+      <!-- Custom Fintech-Themed 404 Illustration -->
+      <div class="illustration-container" aria-labelledby="error-heading">
+        <svg class="illustration-svg" viewBox="0 0 540 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration depicting missing page 404 with floating financial elements">
+          <defs>
+            <linearGradient id="numeralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#11183F"/>
+              <stop offset="65%" stop-color="#7957FF"/>
+              <stop offset="100%" stop-color="#48B9F5"/>
+            </linearGradient>
+
+            <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7957FF"/>
+              <stop offset="100%" stop-color="#48B9F5"/>
+            </linearGradient>
+
+            <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#11183F" flood-opacity="0.12"/>
+            </filter>
+
+            <filter id="cardShadow" x="-15%" y="-15%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#7957FF" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+
+          <!-- Background Curved Navigation Path Ending in a Location Marker -->
+          <g class="floating-pulse" opacity="0.85">
+            <path d="M 60 190 C 130 110, 200 230, 310 130 C 370 70, 440 100, 470 75" 
+                  stroke="#C7B8FF" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>
+            <g transform="translate(470, 60)">
+              <circle cx="0" cy="0" r="14" fill="#FFFFFF" filter="url(#softShadow)"/>
+              <circle cx="0" cy="0" r="10" fill="#7957FF"/>
+              <circle cx="0" cy="0" r="4" fill="#FFFFFF"/>
+            </g>
+          </g>
+
+          <!-- Large Bold Numerals: 404 -->
+          <text x="135" y="155" class="numeral-404" fill="url(#numeralGrad)">4</text>
+          <text x="270" y="155" class="numeral-404" fill="url(#numeralGrad)">0</text>
+          <text x="405" y="155" class="numeral-404" fill="url(#numeralGrad)">4</text>
+
+          <!-- Floating Mini Browser Window (Missing Page Symbol) -->
+          <g class="floating-element-slow" transform="translate(230, 85)" filter="url(#softShadow)">
+            <rect x="0" y="0" width="80" height="60" rx="8" fill="#FFFFFF" stroke="#E8EBF3" stroke-width="1.5"/>
+            <path d="M 0 8 Q 0 0 8 0 L 72 0 Q 80 0 80 8 L 80 16 L 0 16 Z" fill="#F6F7FC"/>
+            <circle cx="10" cy="8" r="2.2" fill="#EF4444"/>
+            <circle cx="17" cy="8" r="2.2" fill="#F59E0B"/>
+            <circle cx="24" cy="8" r="2.2" fill="#23B981"/>
+            <circle cx="40" cy="38" r="11" fill="rgba(121, 87, 255, 0.1)"/>
+            <path d="M 36 34 L 44 42 M 44 34 L 36 42" stroke="#7957FF" stroke-width="2" stroke-linecap="round"/>
+          </g>
+
+          <!-- Floating Fintech Card beside numerals (Left) -->
+          <g class="floating-element-reverse" transform="translate(55, 60) rotate(-8)" filter="url(#cardShadow)">
+            <rect x="0" y="0" width="68" height="42" rx="6" fill="url(#cardGrad)"/>
+            <rect x="8" y="10" width="12" height="9" rx="2" fill="#FFDF00" opacity="0.9"/>
+            <rect x="8" y="27" width="30" height="3" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+            <rect x="8" y="33" width="18" height="2.5" rx="1.2" fill="#FFFFFF" opacity="0.6"/>
+            <circle cx="56" cy="14" r="5" fill="#FFFFFF" opacity="0.4"/>
+            <circle cx="50" cy="14" r="5" fill="#FFFFFF" opacity="0.4"/>
+          </g>
+
+          <!-- Floating Decorative Shapes -->
+          <g class="floating-element-slow" transform="translate(450, 150) rotate(45)">
+            <rect x="0" y="0" width="16" height="16" rx="3" fill="#C7B8FF" opacity="0.75"/>
+          </g>
+
+          <g class="floating-pulse" transform="translate(180, 45)">
+            <circle cx="0" cy="0" r="5" fill="#48B9F5" opacity="0.85"/>
+          </g>
+
+          <g class="floating-element-reverse" transform="translate(365, 195)">
+            <circle cx="0" cy="0" r="7" fill="#C7B8FF" opacity="0.6"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="error-heading" id="error-heading">Oops! Page not found.</h1>
+
+      <!-- Supporting Explanation -->
+      <p class="error-description">
+        The page you’re looking for may have moved, been removed, or the link may be incorrect.
+      </p>
+
+      <!-- Helper Text -->
+      <div class="error-helper-text">
+        <i class="ri-compass-3-line" aria-hidden="true"></i>
+        <span>Let’s get you back on track with your finances.</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="error-actions-group">
+        <!-- Primary Action -->
+        <a href="dashboard.html" class="btn-primary-dashboard" id="btn-back-dashboard">
+          <i class="ri-home-5-line" aria-hidden="true"></i>
+          <span>Back to Dashboard</span>
+        </a>
+
+        <!-- Secondary Action -->
+        <a href="transactions.html" class="btn-secondary-transactions" id="btn-view-transactions">
+          <i class="ri-file-list-3-line" aria-hidden="true"></i>
+          <span>View Transactions</span>
+        </a>
+      </div>
+
+      <!-- Previous Page Link -->
+      <div class="history-back-container">
+        <button type="button" class="btn-history-back" id="btn-history-back" aria-label="Go back to previous visited page">
+          <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          <span>Go back to the previous page</span>
+        </button>
+      </div>
+
+      <!-- Quick Navigation Links -->
+      <section class="quick-navigation-section" aria-label="Quick Navigation Links">
+        <span class="quick-nav-label">Or explore these pages</span>
+        <div class="quick-nav-pills">
+          <a href="dashboard.html" class="quick-nav-item" id="quick-link-dashboard">
+            <i class="ri-dashboard-line" aria-hidden="true"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="transactions.html" class="quick-nav-item" id="quick-link-transactions">
+            <i class="ri-exchange-dollar-line" aria-hidden="true"></i>
+            <span>Transactions</span>
+          </a>
+          <a href="analytics.html" class="quick-nav-item" id="quick-link-analytics">
+            <i class="ri-pie-chart-line" aria-hidden="true"></i>
+            <span>Analytics</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Route Search Field -->
+      <div class="search-widget-container" role="search" aria-label="Quick Page Search">
+        <div class="search-input-wrapper">
+          <i class="ri-search-line search-icon-left" aria-hidden="true"></i>
+          <input 
+            type="text" 
+            id="page-search-input" 
+            class="search-input-field" 
+            placeholder="Search transactions or pages…"
+            aria-label="Search transactions or pages"
+            autocomplete="off"
+          />
+          <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Clear search input">
+            <i class="ri-close-circle-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="search-dropdown" id="search-dropdown" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+
+    </main>
+
+    <!-- ======================================================================
+         3. ABOUT FINORA SECTION
+         ====================================================================== -->
+    <section class="about-finora-section" id="about" aria-labelledby="about-heading">
+      <div class="section-badge-center">
+        <span class="section-pill">About Finora</span>
+      </div>
+
+      <h2 class="section-title" id="about-heading">About Finora</h2>
+      
+      <p class="about-intro-text">
+        Finora is a personal finance management application designed to help you track income, manage expenses, monitor budgets, and build better saving habits. Our goal is to make managing your money simpler, clearer, and more organized.
+      </p>
+
+      <div class="about-features-grid">
+        <!-- Feature 1 -->
+        <div class="about-feature-card">
+          <div class="feature-icon-wrapper mint" aria-hidden="true">
+            <i class="ri-exchange-dollar-line"></i>
+          </div>
+          <h3 class="feature-card-heading">Track Your Money</h3>
+          <p class="feature-card-desc">
+            Manage income and expenses in one place. Keep an accurate, real-time log of every transaction.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="about-feature-card">
+          <div class="feature-icon-wrapper violet" aria-hidden="true">
+            <i class="ri-pie-chart-2-line"></i>
+          </div>
+          <h3 class="feature-card-heading">Plan Your Budget</h3>
+          <p class="feature-card-desc">
+            Monitor spending and stay within your limits. Receive clear thresholds before overspending.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="about-feature-card">
+          <div class="feature-icon-wrapper blue" aria-hidden="true">
+            <i class="ri-funds-line"></i>
+          </div>
+          <h3 class="feature-card-heading">Grow Your Savings</h3>
+          <p class="feature-card-desc">
+            Set financial goals and follow your progress. Build financial resilience step by step.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. CONTACT SUPPORT SECTION
+         ====================================================================== -->
+    <section class="contact-support-section" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-header-area">
+        <div class="section-badge-center">
+          <span class="section-pill">Support Assistance</span>
+        </div>
+        <h2 class="section-title" id="contact-heading">Need a little help?</h2>
+        <p class="contact-subtitle">
+          Having trouble finding a page or using Finora? Get in touch with our support team.
+        </p>
+        <a href="mailto:support@finora.app" class="contact-direct-link" title="Email Finora Support">
+          <i class="ri-mail-line" aria-hidden="true"></i>
+          <span>support@finora.app</span>
+        </a>
+      </div>
+
+      <div class="contact-form-card">
+        <!-- Success Confirmation Banner -->
+        <div class="form-alert success" id="contact-success-banner" style="display: none;" role="status" aria-live="polite">
+          <i class="ri-checkbox-circle-fill" aria-hidden="true"></i>
+          <span id="contact-success-text">Thank you! Your message has been sent successfully.</span>
+        </div>
+
+        <!-- Error Banner -->
+        <div class="form-alert error" id="contact-error-banner" style="display: none;" role="alert" aria-live="assertive">
+          <i class="ri-error-warning-fill" aria-hidden="true"></i>
+          <span id="contact-error-text">Failed to send message. Please review your details and try again.</span>
+        </div>
+
+        <form id="support-contact-form" novalidate>
+          <div class="contact-form-grid">
+            <!-- Full Name -->
+            <div class="form-group-field">
+              <label for="contact-name" class="form-label">
+                Name <span class="required-dot">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                name="name" 
+                class="form-input-text" 
+                placeholder="Alex Morgan" 
+                required 
+                autocomplete="name"
+              />
+              <span class="field-error-text" id="error-name"></span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group-field">
+              <label for="contact-email" class="form-label">
+                Email Address <span class="required-dot">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                name="email" 
+                class="form-input-text" 
+                placeholder="alex@example.com" 
+                required 
+                autocomplete="email"
+              />
+              <span class="field-error-text" id="error-email"></span>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group-field full-col">
+              <label for="contact-subject" class="form-label">
+                Subject <span class="required-dot">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="contact-subject" 
+                name="subject" 
+                class="form-input-text" 
+                placeholder="Missing page, feature question, or feedback…" 
+                required 
+              />
+              <span class="field-error-text" id="error-subject"></span>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group-field full-col">
+              <label for="contact-message" class="form-label">
+                Message <span class="required-dot">*</span>
+              </label>
+              <textarea 
+                id="contact-message" 
+                name="message" 
+                class="form-textarea" 
+                rows="4" 
+                placeholder="Please describe what happened, what URL you visited, or how we can assist you…" 
+                required
+              ></textarea>
+              <span class="field-error-text" id="error-message"></span>
+            </div>
+          </div>
+
+          <div class="contact-form-footer">
+            <button type="submit" class="btn-contact-submit" id="btn-contact-submit">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <i class="ri-send-plane-fill btn-icon" aria-hidden="true"></i>
+              <span class="btn-label">Send Message</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. MINIMAL BRANDED FOOTER
+         ====================================================================== -->
+    <footer class="error-footer" role="contentinfo">
+      <span class="footer-copy">© 2026 Finora. Track. Plan. Save. Grow.</span>
+      <div class="footer-links">
+        <a href="#help" class="footer-link-item" data-modal-trigger="help">Help Center</a>
+        <a href="#support" class="footer-link-item" data-modal-trigger="support">Contact Support</a>
+        <a href="#privacy" class="footer-link-item" data-modal-trigger="privacy">Privacy Policy</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Information Modals for Footer Links -->
+  <div class="info-modal-backdrop" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="info-modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Help Center</h2>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+          <i class="ri-close-line" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="modal-btn-dismiss" id="modal-dismiss-btn">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Interactivity Script -->
+  <script src="js/404.js"></script>
+</body>
+</html>

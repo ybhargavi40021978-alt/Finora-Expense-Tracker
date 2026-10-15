@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empty State — Finora Expense Tracker</title>
+  <meta name="description" content="Helpful, encouraging empty state guidance for new users, filtered views, and zero-record scenarios in Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Empty States Stylesheet -->
+  <link rel="stylesheet" href="css/empty-states.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fillOpacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-dashboard-line"></i></span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions (Active by default for Screen 15) -->
+          <a href="transactions.html" class="nav-item-link active" id="nav-transactions" aria-current="page">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-exchange-dollar-line"></i></span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-wallet-3-line"></i></span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-shopping-bag-3-line"></i></span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-pie-chart-line"></i></span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-funds-line"></i></span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-flag-line"></i></span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-price-tag-3-line"></i></span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-repeat-line"></i></span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-settings-4-line"></i></span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true"><i class="ri-logout-box-r-line"></i></span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <a href="dashboard.html">Dashboard</a>
+              <span aria-hidden="true">/</span>
+              <span class="active" id="breadcrumb-current">Transactions</span>
+            </div>
+            <h1 class="header-page-title" id="header-title">Transactions</h1>
+            <p class="header-page-subtitle" id="header-subtitle">Your financial activity, organized in one place.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search records..." aria-label="Search records">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 0 unread">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+          </button>
+
+          <!-- User Profile Dropdown Menu -->
+          <div class="user-profile-menu" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <span class="user-name">User</span>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+
+            <!-- Dropdown Popover -->
+            <div class="profile-dropdown-popover" id="profile-popover" role="menu" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; width: 200px; background: #fff; border: 1px solid var(--color-border); border-radius: 12px; box-shadow: var(--shadow-popover); padding: 8px; z-index: 200;">
+              <div style="padding: 8px; border-bottom: 1px solid var(--color-border-subtle); margin-bottom: 4px;">
+                <div class="dropdown-user-name" style="font-size: 0.875rem; font-weight: 700;">User</div>
+                <div class="dropdown-user-email" style="font-size: 0.75rem; color: var(--color-secondary-text);">user@example.com</div>
+              </div>
+              <a href="settings.html" style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; color: var(--color-main-text); text-decoration: none; font-size: 0.8125rem;">
+                <i class="ri-settings-3-line"></i> Settings
+              </a>
+              <a href="login.html" class="btn-signout" style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; color: var(--color-expense); text-decoration: none; font-size: 0.8125rem;">
+                <i class="ri-logout-box-r-line"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive Empty State Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 15 Preview</span>
+            <span>Switch empty state scenarios across Finora:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-scenario="transactions">No Transactions</button>
+            <button class="demo-btn" data-scenario="income">No Income</button>
+            <button class="demo-btn" data-scenario="expenses">No Expenses</button>
+            <button class="demo-btn" data-scenario="budgets">No Budgets</button>
+            <button class="demo-btn" data-scenario="goals">No Goals</button>
+            <button class="demo-btn" data-scenario="categories">No Categories</button>
+            <button class="demo-btn" data-scenario="recurring">No Recurring</button>
+            <button class="demo-btn" data-scenario="analytics">No Analytics</button>
+            <button class="demo-btn" data-scenario="error">API Error</button>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             3. MAIN FULL-PAGE EMPTY STATE CARD
+             ============================================================== -->
+        <div class="empty-state-full-card" id="main-empty-card">
+          <!-- Dynamically Populated by js/empty-states.js -->
+        </div>
+
+        <!-- ==============================================================
+             4. SECTION & COMPACT EMPTY STATE VARIANTS SHOWCASE
+             ============================================================== -->
+        <div style="margin-top: var(--space-8);">
+          <div style="margin-bottom: var(--space-4);">
+            <h2 style="font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; color: var(--color-main-text);">
+              Component Showcase: Compact & Section Empty States
+            </h2>
+            <p style="font-size: 0.8125rem; color: var(--color-secondary-text);">
+              Reusable lightweight empty states embedded inside cards, search panels, and modals across Finora.
+            </p>
+          </div>
+
+          <div class="section-showcase-grid">
+            
+            <!-- Compact 1: No Matching Search Results -->
+            <div class="compact-empty-card">
+              <div class="mock-search-box">
+                <i class="ri-search-line"></i>
+                <span>Search: "Flight to Tokyo" (0 matches)</span>
+              </div>
+              <div class="compact-icon-bubble" style="background-color: var(--color-lavender-subtle); color: var(--color-primary-violet); width: 48px; height: 48px; font-size: 1.375rem;">
+                <i class="ri-search-eye-line"></i>
+              </div>
+              <h3 class="compact-title">No matching results.</h3>
+              <p class="compact-text">
+                We couldn't find anything matching your search or filters. Try a different keyword or clear your filters.
+              </p>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-primary compact-btn" onclick="alert('Filters cleared. Showing all 24 records.');">
+                  Clear Filters
+                </button>
+                <button class="btn-secondary compact-btn" onclick="alert('Search query reset.');">
+                  Reset Search
+                </button>
+              </div>
+            </div>
+
+            <!-- Compact 2: No Upcoming Recurring Payments -->
+            <div class="compact-empty-card">
+              <div class="compact-icon-bubble" style="background-color: var(--color-income-light); color: var(--color-income);">
+                <i class="ri-calendar-check-line"></i>
+              </div>
+              <h3 class="compact-title">You're all caught up.</h3>
+              <p class="compact-text">
+                There are no upcoming recurring payments scheduled for the next 14 days.
+              </p>
+              <div style="display: flex; gap: 8px;">
+                <a href="recurring.html" class="btn-secondary compact-btn">
+                  View Recurring Schedules
+                </a>
+              </div>
+            </div>
+
+            <!-- Compact 3: No Related Transactions -->
+            <div class="compact-empty-card">
+              <div class="compact-icon-bubble" style="background-color: var(--color-workspace); color: var(--color-secondary-text); border: 1px dashed var(--color-border);">
+                <i class="ri-links-line"></i>
+              </div>
+              <h3 class="compact-title">No related transactions yet.</h3>
+              <p class="compact-text">
+                This transaction doesn't have any related financial activity or shared merchant records to display.
+              </p>
+              <a href="transactions.html" class="btn-secondary compact-btn">
+                View All Transactions
+              </a>
+            </div>
+
+            <!-- Compact 4: Empty Notifications Center -->
+            <div class="compact-empty-card">
+              <div class="compact-icon-bubble" style="background-color: var(--color-lavender-subtle); color: var(--color-electric-blue);">
+                <i class="ri-notification-badge-line"></i>
+              </div>
+              <h3 class="compact-title">You're all caught up.</h3>
+              <p class="compact-text">
+                New budget alerts, transaction updates, and savings-goal celebrations will appear here when available.
+              </p>
+              <button class="btn-secondary compact-btn" onclick="alert('Checking for notifications from server...');">
+                Refresh Notifications
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Empty States Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/empty-states.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading States & Skeletons — Finora Expense Tracker</title>
+  <meta name="description" content="Reusable loading state UI and skeleton placeholders for dashboard, transactions, analytics, and form submissions in Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Loading States Stylesheet -->
+  <link rel="stylesheet" href="css/loading-states.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       0. Centered Full-Page Loading Screen (Overlay Triggerable via Switcher)
+       ====================================================================== -->
+  <div class="full-page-loader-screen" id="full-page-loader" role="status" aria-live="polite">
+    <div class="full-loader-card">
+      
+      <!-- Brand Logo -->
+      <div class="full-loader-logo">
+        <div class="full-loader-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+            <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+            <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+            <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="19" cy="2" r="2" fill="#23B981"/>
+          </svg>
+        </div>
+        <span class="full-loader-brand-name">Finora</span>
+      </div>
+
+      <!-- Animated Dual-Ring Spinner -->
+      <div class="spinner-wrapper">
+        <div class="spinner-outer"></div>
+        <div class="spinner-inner"></div>
+      </div>
+
+      <!-- Heading & Supporting Copy -->
+      <h2 class="full-loader-title">Getting everything ready…</h2>
+      <p class="full-loader-subtitle">Please wait while we prepare your financial overview securely.</p>
+
+      <!-- Indeterminate Progress Indicator -->
+      <div class="indeterminate-progress-bar">
+        <div class="indeterminate-bar-fill"></div>
+      </div>
+
+      <!-- Subtle Brand Tagline -->
+      <span class="full-loader-tagline">Track. Plan. Save. Grow.</span>
+    </div>
+  </div>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      <div class="sidebar-top">
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <a href="dashboard.html" class="nav-item-link active" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-dashboard-line"></i></span>
+            <span>Dashboard</span>
+          </a>
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-exchange-dollar-line"></i></span>
+            <span>Transactions</span>
+          </a>
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-wallet-3-line"></i></span>
+            <span>Income</span>
+          </a>
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-shopping-bag-3-line"></i></span>
+            <span>Expenses</span>
+          </a>
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-pie-chart-line"></i></span>
+            <span>Analytics</span>
+          </a>
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-funds-line"></i></span>
+            <span>Budgets</span>
+          </a>
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-flag-line"></i></span>
+            <span>Goals</span>
+          </a>
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-price-tag-3-line"></i></span>
+            <span>Categories</span>
+          </a>
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-repeat-line"></i></span>
+            <span>Recurring</span>
+          </a>
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true"><i class="ri-settings-4-line"></i></span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link">
+          <span class="nav-icon" aria-hidden="true"><i class="ri-logout-box-r-line"></i></span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace" aria-busy="true">
+
+      <!-- Header Skeleton -->
+      <header class="top-header">
+        <div class="header-left">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div class="skeleton-box" style="width: 120px; height: 14px;"></div>
+            <div class="skeleton-box" style="width: 200px; height: 22px;"></div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="skeleton-box" style="width: 220px; height: 38px; border-radius: var(--radius-full);"></div>
+          <div class="skeleton-box" style="width: 40px; height: 40px; border-radius: var(--radius-sm);"></div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="skeleton-box" style="width: 34px; height: 34px; border-radius: var(--radius-full);"></div>
+            <div class="skeleton-box" style="width: 90px; height: 16px;"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive Loading State Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 16 Preview</span>
+            <span>Inspect reusable loading states and skeletons:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-view="dashboard">Dashboard Skeleton</button>
+            <button class="demo-btn" data-view="transactions">Transactions Table Skeleton</button>
+            <button class="demo-btn" data-view="analytics">Analytics & Charts Skeleton</button>
+            <button class="demo-btn" data-view="budgets-goals">Budgets & Goals Skeleton</button>
+            <button class="demo-btn" data-view="forms-inline">Forms & Inline Loaders</button>
+            <button class="demo-btn" data-view="full-screen">Full Screen Loader</button>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             View 1: Dashboard Skeleton (Default)
+             ============================================================== -->
+        <div class="loading-view-section" data-view="dashboard" style="display: flex; flex-direction: column; gap: var(--space-6);">
+          
+          <!-- 4 Summary Cards Skeletons -->
+          <div class="skeleton-cards-grid">
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="skeleton-box" style="width: 80px; height: 14px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-sm);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 140px; height: 28px; margin-top: 4px;"></div>
+              <div class="skeleton-box" style="width: 100px; height: 12px;"></div>
+            </div>
+
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="skeleton-box" style="width: 75px; height: 14px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-sm);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 130px; height: 28px; margin-top: 4px;"></div>
+              <div class="skeleton-box" style="width: 95px; height: 12px;"></div>
+            </div>
+
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="skeleton-box" style="width: 85px; height: 14px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-sm);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 125px; height: 28px; margin-top: 4px;"></div>
+              <div class="skeleton-box" style="width: 90px; height: 12px;"></div>
+            </div>
+
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="skeleton-box" style="width: 90px; height: 14px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-sm);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 110px; height: 28px; margin-top: 4px;"></div>
+              <div class="skeleton-box" style="width: 105px; height: 12px;"></div>
+            </div>
+          </div>
+
+          <!-- Charts Split (Cash Flow Grouped Bars & Expense Donut) -->
+          <div class="skeleton-charts-split">
+            
+            <!-- Cash Flow Bar Chart Skeleton -->
+            <div class="skeleton-chart-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div class="skeleton-box" style="width: 160px; height: 18px; margin-bottom: 6px;"></div>
+                  <div class="skeleton-box" style="width: 110px; height: 12px;"></div>
+                </div>
+                <div class="skeleton-box" style="width: 90px; height: 32px; border-radius: var(--radius-sm);"></div>
+              </div>
+
+              <!-- Animated Vertical Bars with Varied Heights -->
+              <div class="skeleton-bars-row">
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 110px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 70px;"></div>
+                </div>
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 140px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 85px;"></div>
+                </div>
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 95px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 60px;"></div>
+                </div>
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 160px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 115px;"></div>
+                </div>
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 130px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 90px;"></div>
+                </div>
+                <div class="skeleton-bar-pair">
+                  <div class="skeleton-box" style="width: 14px; height: 170px;"></div>
+                  <div class="skeleton-box" style="width: 14px; height: 105px;"></div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; padding: 0 12px;">
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+                <div class="skeleton-box" style="width: 28px; height: 10px;"></div>
+              </div>
+            </div>
+
+            <!-- Expense Breakdown Donut Skeleton -->
+            <div class="skeleton-chart-card">
+              <div>
+                <div class="skeleton-box" style="width: 140px; height: 18px; margin-bottom: 6px;"></div>
+                <div class="skeleton-box" style="width: 90px; height: 12px;"></div>
+              </div>
+
+              <div class="skeleton-donut-wrapper">
+                <div class="skeleton-donut-ring"></div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <div class="skeleton-box" style="width: 80px; height: 12px;"></div>
+                  <div class="skeleton-box" style="width: 45px; height: 12px;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <div class="skeleton-box" style="width: 95px; height: 12px;"></div>
+                  <div class="skeleton-box" style="width: 40px; height: 12px;"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Recent Transactions Skeleton Card -->
+          <div class="skeleton-table-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="skeleton-box" style="width: 160px; height: 20px;"></div>
+              <div class="skeleton-box" style="width: 80px; height: 14px;"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 140px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 90px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 60px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 85px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 24px; height: 24px; border-radius: var(--radius-sm);"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 160px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 100px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 50px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 95px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 24px; height: 24px; border-radius: var(--radius-sm);"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 120px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 80px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 65px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 75px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 24px; height: 24px; border-radius: var(--radius-sm);"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==============================================================
+             View 2: Transactions Table Skeleton
+             ============================================================== -->
+        <div class="loading-view-section" data-view="transactions" style="display: none; flex-direction: column; gap: var(--space-6);">
+          
+          <!-- Filters & Search Toolbar Skeleton -->
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <div class="skeleton-box" style="width: 280px; height: 42px; border-radius: var(--radius-full);"></div>
+            <div style="display: flex; gap: 10px;">
+              <div class="skeleton-box" style="width: 120px; height: 42px; border-radius: var(--radius-sm);"></div>
+              <div class="skeleton-box" style="width: 130px; height: 42px; border-radius: var(--radius-sm);"></div>
+              <div class="skeleton-box" style="width: 100px; height: 42px; border-radius: var(--radius-sm);"></div>
+            </div>
+          </div>
+
+          <!-- 6-Row Transaction Table Skeleton -->
+          <div class="skeleton-table-card">
+            <div style="display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 40px; padding-bottom: 12px; border-bottom: 2px solid var(--color-border);">
+              <div class="skeleton-box" style="width: 90px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 70px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 50px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 60px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 60px; height: 14px;"></div>
+              <div style="width: 20px;"></div>
+            </div>
+
+            <!-- Staggered Rows -->
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 180px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 110px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 75px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 50px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 90px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 20px; height: 20px; border-radius: 4px;"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 130px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 85px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 75px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 65px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 105px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 20px; height: 20px; border-radius: 4px;"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 160px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 95px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 75px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 55px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 80px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 20px; height: 20px; border-radius: 4px;"></div>
+            </div>
+
+            <div class="skeleton-table-row">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="skeleton-box" style="width: 36px; height: 36px; border-radius: var(--radius-sm);"></div>
+                <div class="skeleton-box" style="width: 140px; height: 16px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 105px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 75px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 60px; height: 14px;"></div>
+              <div class="skeleton-box" style="width: 115px; height: 16px;"></div>
+              <div class="skeleton-box" style="width: 20px; height: 20px; border-radius: 4px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             View 3: Analytics & Charts Skeleton
+             ============================================================== -->
+        <div class="loading-view-section" data-view="analytics" style="display: none; flex-direction: column; gap: var(--space-6);">
+          <div class="skeleton-chart-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div class="skeleton-box" style="width: 200px; height: 20px; margin-bottom: 6px;"></div>
+                <div class="skeleton-box" style="width: 140px; height: 12px;"></div>
+              </div>
+              <div class="skeleton-box" style="width: 180px; height: 36px; border-radius: var(--radius-sm);"></div>
+            </div>
+
+            <!-- Wave Trend Line Placeholder -->
+            <div style="height: 220px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="100%" height="160" viewBox="0 0 600 160" fill="none">
+                <path d="M0 120C100 80 180 140 280 60C380 -20 480 100 600 40" stroke="#ECEFF5" stroke-width="4" stroke-dasharray="6 6"/>
+                <path d="M0 140C120 110 200 130 300 90C400 50 500 110 600 80" stroke="#DCE1ED" stroke-width="3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Insight Cards Skeletons -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div class="skeleton-card">
+              <div class="skeleton-box" style="width: 40px; height: 40px; border-radius: var(--radius-sm); margin-bottom: 12px;"></div>
+              <div class="skeleton-box" style="width: 120px; height: 16px; margin-bottom: 8px;"></div>
+              <div class="skeleton-box" style="width: 100%; height: 12px; margin-bottom: 4px;"></div>
+              <div class="skeleton-box" style="width: 70%; height: 12px;"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box" style="width: 40px; height: 40px; border-radius: var(--radius-sm); margin-bottom: 12px;"></div>
+              <div class="skeleton-box" style="width: 130px; height: 16px; margin-bottom: 8px;"></div>
+              <div class="skeleton-box" style="width: 100%; height: 12px; margin-bottom: 4px;"></div>
+              <div class="skeleton-box" style="width: 80%; height: 12px;"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box" style="width: 40px; height: 40px; border-radius: var(--radius-sm); margin-bottom: 12px;"></div>
+              <div class="skeleton-box" style="width: 110px; height: 16px; margin-bottom: 8px;"></div>
+              <div class="skeleton-box" style="width: 100%; height: 12px; margin-bottom: 4px;"></div>
+              <div class="skeleton-box" style="width: 60%; height: 12px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             View 4: Budgets & Goals Skeleton
+             ============================================================== -->
+        <div class="loading-view-section" data-view="budgets-goals" style="display: none; flex-direction: column; gap: var(--space-6);">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 110px; height: 18px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-full);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 100%; height: 10px; border-radius: var(--radius-full); margin: 16px 0;"></div>
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+              </div>
+            </div>
+
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 120px; height: 18px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-full);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 100%; height: 10px; border-radius: var(--radius-full); margin: 16px 0;"></div>
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+              </div>
+            </div>
+
+            <div class="skeleton-card">
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 100px; height: 18px;"></div>
+                <div class="skeleton-box" style="width: 32px; height: 32px; border-radius: var(--radius-full);"></div>
+              </div>
+              <div class="skeleton-box" style="width: 100%; height: 10px; border-radius: var(--radius-full); margin: 16px 0;"></div>
+              <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+                <div class="skeleton-box" style="width: 60px; height: 12px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             View 5: Form Submissions & Inline Indicators
+             ============================================================== -->
+        <div class="loading-view-section" data-view="forms-inline" style="display: none; flex-direction: column; gap: var(--space-6);">
+          
+          <div class="form-submit-demo-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; color: var(--color-main-text); margin-bottom: 4px;">
+              Form Submission Loading Buttons
+            </h3>
+            <p style="font-size: 0.8125rem; color: var(--color-secondary-text); margin-bottom: 16px;">
+              Click any button below to simulate asynchronous server verification with disabled states and zero layout shifts.
+            </p>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <button class="btn-primary btn-sim-submit" data-original-text="+ Save Income" data-loading-text="Saving Income…">
+                + Save Income
+              </button>
+              <button class="btn-primary btn-sim-submit" data-original-text="+ Save Expense" data-loading-text="Saving Expense…">
+                + Save Expense
+              </button>
+              <button class="btn-primary btn-sim-submit" data-original-text="Create Budget" data-loading-text="Creating Budget…">
+                Create Budget
+              </button>
+              <button class="btn-primary btn-sim-submit" data-original-text="Create Goal" data-loading-text="Creating Goal…">
+                Create Goal
+              </button>
+            </div>
+          </div>
+
+          <!-- Inline Card Component Refreshers -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div class="skeleton-card" id="card-refresh-sample">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 700; font-size: 0.9375rem;">Total Balance Card</span>
+                <span class="inline-loading-badge" style="display: none;">
+                  <span class="inline-dot-pulse">
+                    <span class="dot-pulse"></span>
+                    <span class="dot-pulse"></span>
+                    <span class="dot-pulse"></span>
+                  </span>
+                  Updating…
+                </span>
+              </div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--color-primary-violet); margin: 8px 0;">
+                ₹1,24,500.00
+              </div>
+              <button class="btn-secondary btn-sim-refresh" data-target="card-refresh-sample" style="align-self: flex-start; padding: 6px 14px; font-size: 0.75rem;">
+                <i class="ri-refresh-line"></i> Refresh Balance
+              </button>
+            </div>
+
+            <div class="skeleton-card" id="card-refresh-sample-2">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 700; font-size: 0.9375rem;">Upcoming Payments Widget</span>
+                <span class="inline-loading-badge" style="display: none;">
+                  <span class="inline-dot-pulse">
+                    <span class="dot-pulse"></span>
+                    <span class="dot-pulse"></span>
+                    <span class="dot-pulse"></span>
+                  </span>
+                  Checking schedules…
+                </span>
+              </div>
+              <div style="font-size: 0.875rem; color: var(--color-secondary-text); margin: 8px 0;">
+                3 bills scheduled for this week (Rent, Wi-Fi, Phone)
+              </div>
+              <button class="btn-secondary btn-sim-refresh" data-target="card-refresh-sample-2" style="align-self: flex-start; padding: 6px 14px; font-size: 0.75rem;">
+                <i class="ri-refresh-line"></i> Refresh Schedules
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Loading States Script -->
+  <script src="js/loading-states.js"></script>
+</body>
+</html>

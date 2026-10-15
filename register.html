@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Finora Expense Tracker</title>
+  <meta name="description" content="Create your Finora account and start taking control of your financial journey today. Track income, manage expenses, and build wealth.">
+  
+  <!-- Modern Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+  
+  <!-- Canvas: 1440 x 1024 Full Viewport Split Layout -->
+  <div class="register-layout-wrapper">
+    
+    <!-- ======================================================================
+         1. LEFT BRANDING & ILLUSTRATION PANEL (Approximately 46% width)
+         ====================================================================== -->
+    <aside class="left-panel" aria-label="Finora Account Setup">
+      
+      <!-- Ambient Lighting & Decorative Glows -->
+      <div class="panel-glow panel-glow-violet" aria-hidden="true"></div>
+      <div class="panel-glow panel-glow-blue" aria-hidden="true"></div>
+      
+      <!-- Top Brand Logo (~48px horizontal padding, ~36px top padding) -->
+      <div class="panel-top-bar">
+        <a href="index.html" class="brand-link" id="brand-logo" title="Back to Finora Home">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+              <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+              <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+              <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+            </svg>
+          </div>
+          <span class="brand-name">Finora</span>
+        </a>
+      </div>
+
+      <!-- Center 3D Financial Illustration & Floating Elements -->
+      <div class="panel-illustration-area">
+        <div class="illustration-stage" id="illustration-stage">
+          
+          <!-- 3D Character Illustration Asset -->
+          <div class="illustration-wrapper">
+            <img 
+              src="assets/finora-register-character.jpg" 
+              alt="Person creating their wealth goals with Finora" 
+              class="illustration-img"
+              id="register-character-img"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Floating Micro Card 1: Savings Goal Progress -->
+          <div class="panel-floating-badge badge-goal" data-parallax="0.04">
+            <div class="badge-icon-mint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#43D9A3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <div class="badge-text-group">
+              <span class="b-sub">First Goal</span>
+              <span class="b-main">Emergency Fund <strong class="text-mint">84%</strong></span>
+            </div>
+          </div>
+
+          <!-- Floating Micro Card 2: Smart Budgeting Pill -->
+          <div class="panel-floating-badge badge-smart" data-parallax="0.06">
+            <span class="smart-dot"></span>
+            <span>AI Automated Budgeting</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Supporting Copy: Headline & Tagline -->
+      <div class="panel-copy-area">
+        <h2 class="panel-headline">
+          Start Your<br>
+          Financial Journey
+        </h2>
+        <p class="panel-tagline">Create your account and take control of your money.</p>
+      </div>
+
+    </aside>
+
+    <!-- ======================================================================
+         2. RIGHT REGISTRATION PANEL (Approximately 54% width, Clean White)
+         ====================================================================== -->
+    <main class="right-panel">
+      
+      <!-- Mobile Top Brand Bar (Visible only on small screens) -->
+      <div class="mobile-brand-bar">
+        <a href="index.html" class="mobile-brand-link">
+          <div class="brand-icon small">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+              <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+              <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+              <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+            </svg>
+          </div>
+          <span class="brand-name dark">Finora</span>
+        </a>
+      </div>
+
+      <!-- Centered Registration Form Container (Max width ~400px) -->
+      <div class="form-container">
+        
+        <!-- Form Heading -->
+        <div class="form-header">
+          <h1 class="welcome-heading">Create Your <span class="text-accent-violet">Account</span></h1>
+          <p class="welcome-subtext">Join Finora and start managing your finances.</p>
+        </div>
+
+        <!-- Feedback Alert Banner -->
+        <div class="alert-banner" id="register-alert" role="alert" aria-live="polite" style="display: none;">
+          <div class="alert-icon" id="alert-icon"></div>
+          <span class="alert-message" id="alert-message"></span>
+        </div>
+
+        <!-- Registration Form -->
+        <form class="register-form" id="register-form" autocomplete="off" novalidate>
+          
+          <!-- Decoy inputs to trap aggressive browser autofill engines -->
+          <div style="opacity:0; position:absolute; top:0; left:-9999px; height:0; width:0; z-index:-1; overflow:hidden;" aria-hidden="true">
+            <input type="text" name="trap_username" tabindex="-1" autocomplete="username" />
+            <input type="password" name="trap_password" tabindex="-1" autocomplete="current-password" />
+          </div>
+
+          <!-- 1. Full Name Field -->
+          <div class="form-group" id="group-fullname">
+            <label for="fullname-input" class="form-label">Full Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- User Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="fullname-input" 
+                name="reg_fullname_noautofill" 
+                class="form-input" 
+                placeholder="Enter your full name" 
+                autocomplete="one-time-code"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+            </div>
+            <span class="field-error" id="fullname-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 2. Email Address Field -->
+          <div class="form-group" id="group-email">
+            <label for="email-input" class="form-label">Email Address</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- Mail Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                inputmode="email"
+                id="email-input" 
+                name="reg_email_noautofill" 
+                class="form-input" 
+                placeholder="you@example.com" 
+                autocomplete="one-time-code"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+            </div>
+            <span class="field-error" id="email-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 3. Password Field with 4-Segment Strength Indicator -->
+          <div class="form-group" id="group-password">
+            <label for="password-input" class="form-label">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- Lock Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="password-input" 
+                name="reg_pwd_noautofill" 
+                class="form-input has-trailing" 
+                placeholder="Create a password" 
+                autocomplete="new-password"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+              <button 
+                type="button" 
+                class="btn-toggle-password" 
+                id="btn-toggle-password" 
+                aria-label="Toggle password visibility"
+                title="Toggle password visibility"
+              >
+                <!-- Eye Open -->
+                <svg id="eye-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Closed -->
+                <svg id="eye-icon-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Password Strength Bar (4 Segments) -->
+            <div class="password-strength-container" id="strength-container" aria-label="Password strength meter">
+              <div class="strength-bars">
+                <span class="strength-bar" id="bar-1"></span>
+                <span class="strength-bar" id="bar-2"></span>
+                <span class="strength-bar" id="bar-3"></span>
+                <span class="strength-bar" id="bar-4"></span>
+              </div>
+              <span class="strength-caption" id="strength-caption">Use at least 8 characters.</span>
+            </div>
+
+            <span class="field-error" id="password-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 4. Confirm Password Field -->
+          <div class="form-group" id="group-confirm-password">
+            <label for="confirm-password-input" class="form-label">Confirm Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon leading-icon" aria-hidden="true">
+                <!-- Lock Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="confirm-password-input" 
+                name="reg_cpwd_noautofill" 
+                class="form-input has-trailing" 
+                placeholder="Re-enter your password" 
+                autocomplete="new-password"
+                data-lpignore="true"
+                data-form-type="other"
+                readonly
+                onfocus="this.removeAttribute('readonly');"
+                onmousedown="this.removeAttribute('readonly');"
+                ontouchstart="this.removeAttribute('readonly');"
+                required
+              />
+              <button 
+                type="button" 
+                class="btn-toggle-password" 
+                id="btn-toggle-confirm" 
+                aria-label="Toggle confirm password visibility"
+                title="Toggle confirm password visibility"
+              >
+                <!-- Eye Open -->
+                <svg id="eye-confirm-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Closed -->
+                <svg id="eye-confirm-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75809A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" id="confirm-password-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 5. Terms and Privacy Agreement Checkbox Row -->
+          <div class="terms-row" id="group-terms">
+            <label class="checkbox-container">
+              <input type="checkbox" id="terms-checkbox" name="terms" required />
+              <span class="custom-checkbox" aria-hidden="true">
+                <svg width="11" height="9" viewBox="0 0 12 10" fill="none">
+                  <polyline points="1.5 5 4.5 8 10.5 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="terms-text">
+                I agree to the <a href="#terms" class="legal-link" id="link-terms">Terms of Service</a> and <a href="#privacy" class="legal-link" id="link-privacy">Privacy Policy</a>.
+              </span>
+            </label>
+            <span class="field-error" id="terms-error" aria-live="polite"></span>
+          </div>
+
+          <!-- 6. Primary Registration Button -->
+          <button type="submit" class="btn-primary-register" id="btn-register">
+            <span class="btn-text">Create Your Account</span>
+            <span class="btn-spinner" aria-hidden="true" style="display: none;"></span>
+          </button>
+
+          <!-- 7. Alternative Registration Divider -->
+          <div class="form-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-text">or</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <!-- 8. Google Registration Button -->
+          <button type="button" class="btn-google-register" id="btn-google">
+            <span class="google-icon" aria-hidden="true">
+              <!-- Official multicolor Google G SVG -->
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.04 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+            </span>
+            <span class="google-text">Continue with Google</span>
+          </button>
+
+          <!-- 9. Existing Account Login Link -->
+          <p class="login-footer">
+            Already have an account? 
+            <a href="login.html" class="link-login" id="link-login">Login</a>
+          </p>
+
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Terms & Policy Quick Modal -->
+  <div class="terms-modal-backdrop" id="terms-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="terms-dialog">
+      <div class="terms-header">
+        <h3 id="terms-modal-title">Terms of Service & Privacy</h3>
+        <button type="button" class="terms-close" id="terms-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="terms-body">
+        <p>Finora respects your privacy and utilizes bank-grade 256-bit AES encryption to keep all your financial data secure. We never sell your personal information or transaction history to third parties.</p>
+        <p>By creating an account, you consent to our automated expense categorization and analytics services designed to help you build better money habits.</p>
+      </div>
+      <button type="button" class="btn-primary-register" id="btn-terms-accept">I Understand</button>
+    </div>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

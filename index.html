@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finora — Track. Plan. Save. Grow. | Personal Finance & Expense Tracker</title>
+  <meta name="description" content="Take control of your finances with Finora. Track income and expenses, set budgets and goals, unlock smart analytics, and build a better financial future.">
+  
+  <!-- Modern Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow ambient-glow-violet" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-blue" aria-hidden="true"></div>
+  <div class="ambient-geometry" aria-hidden="true">
+    <svg width="480" height="480" viewBox="0 0 480 480" fill="none">
+      <circle cx="240" cy="240" r="220" stroke="rgba(199, 184, 255, 0.05)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <circle cx="240" cy="240" r="150" stroke="rgba(72, 185, 245, 0.04)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <!-- Main Viewport Container (1440 x 1024 desktop-first composition) -->
+  <div class="page-wrapper">
+    
+    <!-- Top Hero Section (Navy & Indigo Gradient) -->
+    <div class="hero-region">
+      
+      <!-- Slim Navigation Header (~72px) -->
+      <header class="navbar" id="navbar">
+        <div class="nav-container">
+          
+          <!-- Left: Brand Logo & Wordmark (~40px aligned) -->
+          <a href="index.html" class="brand-link" id="brand-logo" aria-label="Finora Home">
+            <div class="brand-icon">
+              <!-- Stylized geometric finance symbol -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+              </svg>
+            </div>
+            <span class="brand-name">Finora</span>
+          </a>
+
+          <!-- Center: Navigation Links -->
+          <nav class="nav-links" id="nav-menu" aria-label="Main Navigation">
+            <a href="#home" class="nav-link active" id="nav-home">Home</a>
+            <a href="#features" class="nav-link" id="nav-features">Features</a>
+            <a href="#about" class="nav-link" id="nav-about">About</a>
+            <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+          </nav>
+
+          <!-- Right: Actions -->
+          <div class="nav-actions">
+            <a href="login.html" class="btn-link-login" id="nav-login-btn">Login</a>
+            <a href="register.html" class="btn-nav-primary" id="nav-get-started-btn">Get Started</a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button type="button" class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- Hero Content (Two-column layout occupying 75-80% viewport) -->
+      <main class="hero-main" id="home">
+        <div class="hero-container">
+          
+          <!-- Left Column: Typography and CTAs (~520px width) -->
+          <div class="hero-content">
+            
+            <!-- Subtle category chip for extra polish -->
+            <div class="hero-tag" id="hero-tag">
+              <span class="tag-pulse"></span>
+              <span class="tag-text">Next-Gen Personal Finance</span>
+            </div>
+
+            <!-- Main Heading (52-60px bold) -->
+            <h1 class="hero-heading" id="hero-title">
+              Take Control<br>
+              of Your <span class="gradient-accent">Finances</span>
+            </h1>
+
+            <!-- Supporting Paragraph (16-18px muted lavender, max-width 440px) -->
+            <p class="hero-paragraph">
+              Track your income, manage expenses, set goals and build a better financial future — all in one place.
+            </p>
+
+            <!-- Primary Action Buttons (Side by Side) -->
+            <div class="hero-cta-group">
+              <a href="register.html" class="btn-cta-primary" id="cta-get-started">
+                <span>Create Your Account</span>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" class="cta-arrow-icon">
+                  <path d="M4.167 10h11.666m-5-5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+
+              <button type="button" class="btn-cta-secondary" id="cta-watch-demo">
+                <span class="play-icon-bubble">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </span>
+                <span>Watch Demo</span>
+              </button>
+            </div>
+
+            <!-- Trust micro-indicators -->
+            <div class="hero-social-proof">
+              <div class="rating-stars">
+                ★★★★★
+              </div>
+              <span class="rating-text">Loved by <strong>40,000+</strong> smart savers worldwide</span>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Premium 3D Financial Illustration with Live Floating Cards -->
+          <div class="hero-visual" id="hero-visual-area">
+            
+            <!-- Background Radial Glow Behind Illustration -->
+            <div class="visual-radial-glow" aria-hidden="true"></div>
+
+            <!-- Visual Stage -->
+            <div class="visual-stage" id="visual-stage">
+              
+              <!-- 3D Character Illustration Asset -->
+              <div class="character-wrapper">
+                <img 
+                  src="assets/finora-hero-character.jpg" 
+                  alt="Finora financial management 3D illustration"
+                  class="character-image"
+                  id="character-img"
+                  loading="eager"
+                />
+                <!-- Subtle soft blend mask at base -->
+                <div class="character-base-blend"></div>
+              </div>
+
+              <!-- Floating Card 1: Compact Income Card with Mint Green Indicator -->
+              <div class="floating-card card-income" id="card-income" data-parallax="0.04">
+                <div class="card-income-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#43D9A3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                </div>
+                <div class="card-income-details">
+                  <span class="card-label">Monthly Income</span>
+                  <div class="card-value-row">
+                    <span class="card-amount">+$3,850.00</span>
+                    <span class="card-badge mint">+14.2%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Card 2: Small Line Chart Trending Upward -->
+              <div class="floating-card card-chart" id="card-chart" data-parallax="0.06">
+                <div class="card-chart-header">
+                  <span class="chart-title">Net Savings</span>
+                  <span class="chart-badge">+28.4%</span>
+                </div>
+                <div class="card-chart-body">
+                  <svg width="140" height="42" viewBox="0 0 140 42" fill="none" class="sparkline-svg">
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="42" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#48B9F5" stop-opacity="0.45"/>
+                        <stop offset="100%" stop-color="#48B9F5" stop-opacity="0.0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,35 Q20,28 35,30 T70,18 T105,12 T140,4 L140,42 L0,42 Z" fill="url(#chartGradient)" />
+                    <path d="M0,35 Q20,28 35,30 T70,18 T105,12 T140,4" stroke="#48B9F5" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="140" cy="4" r="3.5" fill="#43D9A3" stroke="#11183F" stroke-width="1.5"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Floating Card 3: Floating Analytics Card -->
+              <div class="floating-card card-analytics" id="card-analytics" data-parallax="0.03">
+                <div class="analytics-indicator">
+                  <div class="donut-mini">
+                    <svg width="34" height="34" viewBox="0 0 36 36">
+                      <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(199, 184, 255, 0.15)" stroke-width="4.5"/>
+                      <circle cx="18" cy="18" r="14" fill="none" stroke="#7957FF" stroke-width="4.5" stroke-dasharray="52 100" stroke-linecap="round"/>
+                      <circle cx="18" cy="18" r="14" fill="none" stroke="#43D9A3" stroke-width="4.5" stroke-dasharray="24 100" stroke-dashoffset="-52" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="analytics-info">
+                  <span class="analytics-name">Budget Status</span>
+                  <span class="analytics-status">On Track · <strong>76%</strong></span>
+                </div>
+              </div>
+
+              <!-- Decorative Floating Mint Element -->
+              <div class="floating-decor decor-coin" id="decor-coin" data-parallax="0.08" aria-hidden="true">
+                <div class="coin-inner">
+                  <span>$</span>
+                </div>
+              </div>
+
+              <!-- Decorative Floating Shape -->
+              <div class="floating-decor decor-badge" id="decor-badge" data-parallax="0.05" aria-hidden="true">
+                <span class="badge-dot"></span>
+                <span>Active Vault</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- Bottom Feature Strip: Full-Width Clean White Strip Attached Directly to Hero -->
+    <section class="feature-strip" id="features" aria-label="Finora Core Features">
+      <div class="feature-strip-container">
+        
+        <!-- Feature 1: Track Income & Expenses -->
+        <div class="feature-item" id="feature-1">
+          <div class="feature-icon-box icon-mint">
+            <!-- Simple wallet / transaction icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#43D9A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="14" rx="3"></rect>
+              <path d="M16 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+              <path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h2 class="feature-title">Track Income &amp; Expenses</h2>
+            <p class="feature-description">Organize every transaction.</p>
+          </div>
+        </div>
+
+        <div class="feature-divider" aria-hidden="true"></div>
+
+        <!-- Feature 2: Smart Analytics & Insights -->
+        <div class="feature-item" id="feature-2">
+          <div class="feature-icon-box icon-violet">
+            <!-- Analytics chart icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7957FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+              <path d="M3 20h18"></path>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h2 class="feature-title">Smart Analytics &amp; Insights</h2>
+            <p class="feature-description">Understand your spending.</p>
+          </div>
+        </div>
+
+        <div class="feature-divider" aria-hidden="true"></div>
+
+        <!-- Feature 3: Set Budgets & Goals -->
+        <div class="feature-item" id="feature-3">
+          <div class="feature-icon-box icon-blue">
+            <!-- Target or flag icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#48B9F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="12" r="5"></circle>
+              <circle cx="12" cy="12" r="1.5" fill="#48B9F5"></circle>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h2 class="feature-title">Set Budgets &amp; Goals</h2>
+            <p class="feature-description">Stay on track financially.</p>
+          </div>
+        </div>
+
+        <div class="feature-divider" aria-hidden="true"></div>
+
+        <!-- Feature 4: Secure & Private Data -->
+        <div class="feature-item" id="feature-4">
+          <div class="feature-icon-box icon-cyan">
+            <!-- Shield or lock icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h2 class="feature-title">Secure &amp; Private Data</h2>
+            <p class="feature-description">Keep your data protected.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. SECTION: ABOUT FINORA
+         ====================================================================== -->
+    <section class="landing-section section-about" id="about" aria-labelledby="about-title">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="section-eyebrow">ABOUT FINORA</span>
+          <h2 class="section-title" id="about-title">Your Money. Your Goals. Your Future.</h2>
+          <p class="section-lead">
+            Finora is a personal finance management platform designed to make managing money simpler and more organized. Track your income and expenses, understand your spending habits, plan budgets, and work toward your financial goals—all in one place.
+          </p>
+        </div>
+
+        <div class="about-two-col">
+          <!-- Left Column: Copy & Benefit Points -->
+          <div class="about-left-col">
+            <h3 class="about-subheading">Designed to make every financial decision clearer.</h3>
+            <p class="about-lead-para">
+              We believe that managing personal finances should feel simple, not stressful. Finora brings your everyday financial activity into one organized workspace, helping you understand where your money goes and make more informed decisions about your future.
+            </p>
+
+            <div class="about-benefits-list">
+              <div class="about-benefit-item">
+                <div class="benefit-icon-box" aria-hidden="true">
+                  <i class="ri-dashboard-3-line"></i>
+                </div>
+                <div>
+                  <h4>Complete Financial Overview</h4>
+                  <p>Keep track of income, expenses, and balances in one place.</p>
+                </div>
+              </div>
+
+              <div class="about-benefit-item">
+                <div class="benefit-icon-box" aria-hidden="true">
+                  <i class="ri-pie-chart-2-line"></i>
+                </div>
+                <div>
+                  <h4>Smarter Spending Decisions</h4>
+                  <p>Review spending patterns and monitor your budgets.</p>
+                </div>
+              </div>
+
+              <div class="about-benefit-item">
+                <div class="benefit-icon-box" aria-hidden="true">
+                  <i class="ri-funds-line"></i>
+                </div>
+                <div>
+                  <h4>Goal-Oriented Saving</h4>
+                  <p>Set savings targets, track your progress, and stay motivated.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="register.html" class="btn-start-journey" id="btn-start-journey">
+              <span>Start Your Journey</span>
+              <i class="ri-arrow-right-line" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Right Column: Clean Fintech Illustration -->
+          <div class="about-right-col" aria-label="Finora dashboard preview illustration">
+            <div class="about-visual-card">
+              <div class="visual-card-header">
+                <span class="card-sample-title">Financial Health Summary</span>
+                <span class="card-sample-tag">Sample Data</span>
+              </div>
+
+              <!-- Monthly Income vs Expense Comparison -->
+              <div class="visual-comparison-box">
+                <div class="comparison-header">
+                  <span class="comparison-income"><i class="ri-arrow-down-circle-line"></i> Income: $4,250</span>
+                  <span class="comparison-expense"><i class="ri-arrow-up-circle-line"></i> Expenses: $2,680</span>
+                </div>
+                <div class="comparison-progress-track" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="Income versus expense ratio">
+                  <div class="comparison-progress-fill"></div>
+                </div>
+              </div>
+
+              <!-- Savings Goal Mini Card -->
+              <div class="visual-goal-box">
+                <div class="goal-ring-icon" aria-hidden="true">
+                  <div class="goal-ring-inner">82%</div>
+                </div>
+                <div class="goal-info">
+                  <span class="goal-label">Active Savings Goal</span>
+                  <h4 class="goal-title">Emergency Fund ($8,200 / $10,000)</h4>
+                  <span class="goal-badge-ontrack"><i class="ri-check-line"></i> On track to reach target</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centered Mission Statement Panel -->
+        <div class="mission-statement-panel">
+          <div class="mission-icon-box" aria-hidden="true">
+            <i class="ri-compass-3-line"></i>
+          </div>
+          <h3 class="mission-heading">Our Mission</h3>
+          <p class="mission-text">
+            “Our mission is to help people build healthier financial habits by making their money easier to understand, organize, and manage.”
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SECTION: WHY CHOOSE FINORA (4 Features Grid)
+         ====================================================================== -->
+    <section class="landing-section section-why-choose" id="why-choose" aria-labelledby="why-choose-title">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="section-eyebrow">WHY CHOOSE FINORA</span>
+          <h2 class="section-title" id="why-choose-title">Everything You Need to Manage Your Money</h2>
+          <p class="section-lead">
+            Bring your everyday financial activities together with tools designed for clarity, planning, and progress.
+          </p>
+        </div>
+
+        <div class="why-features-grid">
+          <!-- Card 1: Income & Expense Tracking -->
+          <div class="why-feature-card">
+            <div class="why-icon-box mint" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </div>
+            <h3 class="why-card-title">Income &amp; Expense Tracking</h3>
+            <p class="why-card-desc">
+              Record your income and expenses and review your financial activity in one place.
+            </p>
+          </div>
+
+          <!-- Card 2: Budget Planning -->
+          <div class="why-feature-card">
+            <div class="why-icon-box violet" aria-hidden="true">
+              <i class="ri-pie-chart-2-line"></i>
+            </div>
+            <h3 class="why-card-title">Budget Planning</h3>
+            <p class="why-card-desc">
+              Set category budgets, monitor spending, and see how much of your budget remains.
+            </p>
+          </div>
+
+          <!-- Card 3: Savings Goals -->
+          <div class="why-feature-card">
+            <div class="why-icon-box blue" aria-hidden="true">
+              <i class="ri-funds-line"></i>
+            </div>
+            <h3 class="why-card-title">Savings Goals</h3>
+            <p class="why-card-desc">
+              Create financial goals, record contributions, and track progress toward your targets.
+            </p>
+          </div>
+
+          <!-- Card 4: Financial Insights -->
+          <div class="why-feature-card">
+            <div class="why-icon-box cyan" aria-hidden="true">
+              <i class="ri-bar-chart-box-line"></i>
+            </div>
+            <h3 class="why-card-title">Financial Insights</h3>
+            <p class="why-card-desc">
+              Explore your spending trends and understand your financial patterns through reports.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECTION: FREQUENTLY ASKED QUESTIONS (Accordion)
+         ====================================================================== -->
+    <section class="landing-section section-faq" id="faq" aria-labelledby="faq-title">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="section-eyebrow">FAQS</span>
+          <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+          <p class="section-lead">
+            Quick answers to common questions about Finora and how it helps you manage your finances.
+          </p>
+        </div>
+
+        <div class="faq-accordion-container" id="faq-accordion">
+          <!-- FAQ 1 -->
+          <div class="faq-accordion-item open">
+            <button type="button" class="faq-question-btn" aria-expanded="true">
+              <span class="faq-question-text">What is Finora?</span>
+              <i class="ri-arrow-down-s-line faq-icon-toggle" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p class="faq-answer-text">
+                Finora is a comprehensive personal finance and expense-tracking web application. It brings your daily financial activity together, helping you monitor income and spending, maintain category budgets, and build long-term savings in a secure, intuitive workspace.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">Can I track both income and expenses?</span>
+              <i class="ri-arrow-down-s-line faq-icon-toggle" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p class="faq-answer-text">
+                Yes! You can record multiple income streams (salary, freelance, investments) alongside day-to-day expenses, with customizable categories, payment methods, tags, and receipt notes.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">Can I create and manage budgets?</span>
+              <i class="ri-arrow-down-s-line faq-icon-toggle" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p class="faq-answer-text">
+                Absolutely. You can set monthly spending limits for categories such as Housing, Groceries, Dining, and Entertainment, and receive clear alerts before exceeding your planned thresholds.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">How do savings goals work?</span>
+              <i class="ri-arrow-down-s-line faq-icon-toggle" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p class="faq-answer-text">
+                You can create dedicated savings goals with target amounts and deadlines—such as an Emergency Fund or Vacation. As you log contributions, Finora automatically calculates your progress percentage and remaining targets.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" aria-expanded="false">
+              <span class="faq-question-text">How can I contact support?</span>
+              <i class="ri-arrow-down-s-line faq-icon-toggle" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p class="faq-answer-text">
+                You can send our team a message directly using the contact form below or email us at support@finora.app. We respond to technical inquiries and account assistance promptly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECTION: CONTACT US
+         ====================================================================== -->
+    <section class="landing-section section-contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="section-eyebrow">CONTACT US</span>
+          <h2 class="section-title" id="contact-title">We’re Here to Help</h2>
+          <p class="section-lead">
+            Have a question, need assistance, or want to share feedback? Send us a message and let us know how we can help.
+          </p>
+        </div>
+
+        <div class="contact-two-col">
+          <!-- Left Column: Contact Information -->
+          <div class="contact-info-col">
+            <h3 class="contact-col-title">Let’s Talk</h3>
+            <p class="contact-col-desc">
+              Whether you have a question about Finora, need help using a feature, or want to share a suggestion, we welcome your message.
+            </p>
+
+            <div class="contact-cards-stack">
+              <!-- Info Card 1 -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon" aria-hidden="true">
+                  <i class="ri-mail-line"></i>
+                </div>
+                <div class="contact-card-text">
+                  <h4>General Inquiries</h4>
+                  <p>Questions about Finora and its features.</p>
+                </div>
+              </div>
+
+              <!-- Info Card 2 -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon" aria-hidden="true">
+                  <i class="ri-customer-service-2-line"></i>
+                </div>
+                <div class="contact-card-text">
+                  <h4>Technical Support</h4>
+                  <p>Need help with an issue or a page that isn't working?</p>
+                </div>
+              </div>
+
+              <!-- Info Card 3 -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon" aria-hidden="true">
+                  <i class="ri-message-3-line"></i>
+                </div>
+                <div class="contact-card-text">
+                  <h4>Feedback &amp; Suggestions</h4>
+                  <p>Share ideas that could improve your Finora experience.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Contact Form -->
+          <div class="contact-form-container">
+            <h3 class="form-card-title">Send Us a Message</h3>
+
+            <!-- Alert Messages -->
+            <div class="landing-form-alert success" id="landing-contact-success" style="display: none;" role="status">
+              <i class="ri-checkbox-circle-fill" aria-hidden="true"></i>
+              <span id="landing-success-text">Thank you! Your message has been sent successfully.</span>
+            </div>
+
+            <div class="landing-form-alert error" id="landing-contact-error" style="display: none;" role="alert">
+              <i class="ri-error-warning-fill" aria-hidden="true"></i>
+              <span id="landing-error-text">Please review your information and try again.</span>
+            </div>
+
+            <form class="landing-contact-form" id="landing-contact-form" novalidate>
+              <!-- Name & Email in 2 columns -->
+              <div class="form-row-2col">
+                <div class="landing-field-group">
+                  <label for="landing-name">Full Name <span class="req">*</span></label>
+                  <input 
+                    type="text" 
+                    id="landing-name" 
+                    name="name" 
+                    class="landing-input" 
+                    placeholder="Enter your full name" 
+                    required 
+                    autocomplete="name"
+                  />
+                  <span class="landing-err-msg" id="err-landing-name"></span>
+                </div>
+
+                <div class="landing-field-group">
+                  <label for="landing-email">Email Address <span class="req">*</span></label>
+                  <input 
+                    type="email" 
+                    id="landing-email" 
+                    name="email" 
+                    class="landing-input" 
+                    placeholder="you@example.com" 
+                    required 
+                    autocomplete="email"
+                  />
+                  <span class="landing-err-msg" id="err-landing-email"></span>
+                </div>
+              </div>
+
+              <!-- Subject Dropdown -->
+              <div class="landing-field-group">
+                <label for="landing-subject">Subject <span class="req">*</span></label>
+                <select id="landing-subject" name="subject" class="landing-select" required>
+                  <option value="" disabled selected>Select a subject…</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Feedback & Suggestions">Feedback &amp; Suggestions</option>
+                  <option value="Account Assistance">Account Assistance</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span class="landing-err-msg" id="err-landing-subject"></span>
+              </div>
+
+              <!-- Message -->
+              <div class="landing-field-group">
+                <label for="landing-message">Message <span class="req">*</span></label>
+                <textarea 
+                  id="landing-message" 
+                  name="message" 
+                  class="landing-textarea" 
+                  placeholder="Tell us how we can help…" 
+                  rows="4" 
+                  maxlength="1000" 
+                  required
+                ></textarea>
+                <div class="textarea-footer-info">
+                  <span class="landing-err-msg" id="err-landing-message"></span>
+                  <span class="char-counter" id="message-char-counter">0 / 1000</span>
+                </div>
+              </div>
+
+              <!-- Privacy Confirmation Checkbox -->
+              <label class="privacy-checkbox-wrap">
+                <input type="checkbox" id="landing-privacy-check" required />
+                <span>I agree that my information may be used to respond to my inquiry. <button type="button" class="footer-policy-link" id="trigger-privacy-modal" style="text-decoration: underline; color: var(--accent-violet);">Privacy Policy</button></span>
+              </label>
+              <span class="landing-err-msg" id="err-landing-privacy" style="margin-top: -10px;"></span>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-landing-submit" id="btn-landing-submit">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <i class="ri-mail-send-line" aria-hidden="true"></i>
+                <span class="btn-label">Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. SECTION: POLISHED FOOTER (Deep Navy #11183F)
+         ====================================================================== -->
+    <footer class="landing-footer" role="contentinfo">
+      <div class="footer-top-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand-col">
+          <a href="#home" class="footer-brand-link" title="Finora Home">
+            <div class="footer-brand-badge" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#43D9A3"/>
+              </svg>
+            </div>
+            <span class="footer-brand-name">Finora</span>
+          </a>
+          <span class="footer-tagline">Track. Plan. Save. Grow.</span>
+          <p class="footer-desc">
+            Take control of your finances with a clearer view of your money.
+          </p>
+        </div>
+
+        <!-- Middle Column: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Account Links -->
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul class="footer-links-list">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Get Started</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 Finora. All rights reserved.</span>
+        <button type="button" class="footer-policy-link" id="footer-privacy-btn">Privacy Policy</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="modal-backdrop" id="privacy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Finora Privacy Policy</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="privacy-modal-close" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 14.5px; line-height: 1.6; color: #5A6684; margin-bottom: 16px;">
+          Your privacy and financial security are paramount at Finora.
+        </p>
+        <p style="font-size: 14px; line-height: 1.6; color: #5A6684; margin-bottom: 12px;">
+          • <strong>Information Usage:</strong> Contact form submissions and inquiries are used solely to assist you and provide customer support.
+        </p>
+        <p style="font-size: 14px; line-height: 1.6; color: #5A6684; margin-bottom: 12px;">
+          • <strong>Zero Third-Party Sharing:</strong> We do not sell, rent, or share personal information or financial logs with third-party advertisers.
+        </p>
+        <p style="font-size: 14px; line-height: 1.6; color: #5A6684;">
+          • <strong>Security:</strong> All submitted details and account sessions are transmitted securely using encryption.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Demo Modal -->
+  <div class="modal-backdrop" id="demo-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">Interactive Preview</span>
+          <h3>Experience Finora in Action</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="demo-modal-close" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="demo-screen-preview">
+          <div class="demo-header-bar">
+            <span class="mac-dot red"></span>
+            <span class="mac-dot yellow"></span>
+            <span class="mac-dot green"></span>
+            <span class="demo-url">finora.app/dashboard/preview</span>
+          </div>
+          <div class="demo-content-grid">
+            <div class="demo-card">
+              <span class="d-label">Total Balance</span>
+              <span class="d-val">$24,892.40</span>
+              <span class="d-growth text-mint">↑ 8.3% this week</span>
+            </div>
+            <div class="demo-card">
+              <span class="d-label">Monthly Savings</span>
+              <span class="d-val">$3,450.00</span>
+              <span class="d-growth text-violet">Goal: $4,000 (86%)</span>
+            </div>
+            <div class="demo-card">
+              <span class="d-label">Recent Category</span>
+              <span class="d-val">Investments</span>
+              <span class="d-growth text-blue">Auto-allocated</span>
+            </div>
+          </div>
+          <div class="demo-action-footer">
+            <p>Ready to automate your wealth and stay in complete control?</p>
+            <a href="register.html" class="btn-cta-primary" id="demo-modal-cta">Create Free Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Auth Modal (Login / Sign Up) -->
+  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog auth-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="auth-modal-title">Get Started with Finora</h3>
+          <p class="modal-subtitle" id="auth-modal-desc">Start taking control of your financial future today.</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="auth-modal-close" aria-label="Close dialog">✕</button>
+      </div>
+      <form class="auth-form" id="auth-form" onsubmit="event.preventDefault();">
+        <div class="form-group" id="name-group">
+          <label for="user-name">Full Name</label>
+          <input type="text" id="user-name" placeholder="Alex Morgan" required>
+        </div>
+        <div class="form-group">
+          <label for="user-email">Email Address</label>
+          <input type="email" id="user-email" placeholder="alex@finora.io" required>
+        </div>
+        <div class="form-group">
+          <label for="user-password">Password</label>
+          <input type="password" id="user-password" placeholder="••••••••••••" required>
+        </div>
+        <button type="submit" class="btn-cta-primary full-width" id="auth-submit-btn">Continue to Finora</button>
+        <p class="auth-toggle-note">
+          <span id="auth-toggle-text">Already have an account?</span>
+          <button type="button" class="btn-text-link" id="auth-toggle-mode">Log in</button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>

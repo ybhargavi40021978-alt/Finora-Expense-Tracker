@@ -1,0 +1,174 @@
+/* ==========================================================================
+   FINORA EXPENSE TRACKER — SCREEN 13: REACT COMPONENT STYLES
+   ========================================================================== */
+
+.finora-txn-details-app {
+  --deep-navy: #11183F;
+  --sidebar-indigo: #171D4C;
+  --secondary-indigo: #20275D;
+  --primary-violet: #7957FF;
+  --primary-violet-hover: #6742ED;
+  --primary-violet-light: #F2EFFF;
+  --electric-blue: #48B9F5;
+  --electric-blue-light: #EBF7FE;
+  --soft-lavender: #C7B8FF;
+  --workspace-bg: #F6F7FC;
+  --card-bg: #FFFFFF;
+  --main-text: #18213D;
+  --secondary-text: #75809A;
+  --border-color: #E8EBF3;
+  --income-green: #23B981;
+  --income-green-light: #E8F8F2;
+  --expense-coral: #F06575;
+  --expense-coral-light: #FEEFF1;
+  --warning-amber: #F5B544;
+  --warning-amber-light: #FEF8ED;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--workspace-bg);
+  color: var(--main-text);
+  min-height: 100vh;
+  display: flex;
+}
+
+.finora-txn-details-app * {
+  box-sizing: border-box;
+}
+
+/* Sidebar */
+.finora-txn-details-app .ftd-sidebar {
+  width: 220px;
+  background-color: var(--sidebar-indigo);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 16px 20px 16px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.finora-txn-details-app .ftd-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px;
+}
+
+.finora-txn-details-app .ftd-brand-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary-violet) 0%, #9A7BFF 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finora-txn-details-app .ftd-brand-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+}
+
+.finora-txn-details-app .ftd-brand-tagline {
+  font-size: 0.6875rem;
+  color: var(--soft-lavender);
+}
+
+.finora-txn-details-app .ftd-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.finora-txn-details-app .ftd-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #A9B3CE;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.finora-txn-details-app .ftd-nav-item.active {
+  background-color: var(--primary-violet);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.32);
+}
+
+.finora-txn-details-app .ftd-logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #F06575;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+/* Workspace */
+.finora-txn-details-app .ftd-workspace {
+  margin-left: 220px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.finora-txn-details-app .ftd-header {
+  height: 80px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.finora-txn-details-app .ftd-content {
+  padding: 28px 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Card Styles */
+.finora-txn-details-app .ftd-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(17, 24, 63, 0.05);
+}
+
+.finora-txn-details-app .ftd-amount-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.finora-txn-details-app .ftd-grid-2col {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 24px;
+}

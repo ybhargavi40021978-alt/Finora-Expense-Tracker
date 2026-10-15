@@ -1,0 +1,434 @@
+/* ==========================================================================
+   Finora Expense Tracker — Screen 7: Add Expense Component Styles (React)
+   ========================================================================== */
+
+.finora-expense-app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F6F7FC;
+  font-family: 'Inter', sans-serif;
+  color: #18213D;
+}
+
+/* Sidebar */
+.expense-react-sidebar {
+  width: 220px;
+  min-width: 220px;
+  background-color: #171D4C;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 24px 0 20px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+  transition: width 0.25s ease, transform 0.25s ease;
+}
+
+.expense-react-logo-area {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.expense-react-brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #7957FF 0%, #6037F7 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(121, 87, 255, 0.4);
+}
+
+.expense-react-brand-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.expense-react-brand-tagline {
+  font-size: 0.65rem;
+  color: #C7B8FF;
+  font-weight: 500;
+}
+
+.expense-react-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 12px 0 12px;
+}
+
+.expense-react-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9DA8C7;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.expense-react-nav-item:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.expense-react-nav-item.active {
+  background-color: #7957FF;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.35);
+}
+
+.expense-react-footer {
+  padding: 16px 12px 0 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.expense-react-logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9DA8C7;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.expense-react-logout:hover {
+  color: #FF8A96;
+  background-color: rgba(240, 101, 117, 0.1);
+}
+
+/* Main Workspace */
+.expense-react-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #F6F7FC;
+}
+
+/* Top Header */
+.expense-react-header {
+  height: 72px;
+  padding: 0 32px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E8EBF3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.expense-react-title-group h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #11183F;
+  letter-spacing: -0.02em;
+}
+
+.expense-react-title-group p {
+  font-size: 0.8125rem;
+  color: #75809A;
+  margin-top: 2px;
+}
+
+.expense-react-breadcrumb {
+  font-size: 0.775rem;
+  color: #75809A;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.expense-react-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.expense-react-search {
+  position: relative;
+  width: 240px;
+}
+
+.expense-react-search input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px 0 36px;
+  background-color: #F6F7FC;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  color: #18213D;
+  outline: none;
+}
+
+.expense-react-search input:focus {
+  background-color: #FFFFFF;
+  border-color: #7957FF;
+}
+
+/* Content Container */
+.expense-react-content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1360px;
+  width: 100%;
+}
+
+/* Page Intro Row */
+.expense-react-intro-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.expense-react-intro-row h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #11183F;
+}
+
+.expense-react-intro-row p {
+  font-size: 0.84rem;
+  color: #75809A;
+  margin-top: 2px;
+}
+
+.expense-react-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 22px;
+  background: linear-gradient(135deg, #7957FF 0%, #6842FA 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(121, 87, 255, 0.35);
+  transition: all 0.15s ease;
+}
+
+.expense-react-btn-save:hover {
+  background: linear-gradient(135deg, #6F49FF 0%, #5C32F0 100%);
+}
+
+.expense-react-btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  background-color: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #18213D;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Two-Column Grid */
+.expense-react-grid {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Form Card */
+.expense-react-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E8EBF3;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(24, 33, 61, 0.04);
+}
+
+.expense-react-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #11183F;
+}
+
+.expense-react-card p.subtitle {
+  font-size: 0.8125rem;
+  color: #75809A;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+.expense-react-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.expense-react-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.expense-react-field label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18213D;
+}
+
+.expense-react-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #E8EBF3;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  color: #18213D;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.expense-react-input:focus {
+  border-color: #7957FF;
+  box-shadow: 0 0 0 3px rgba(121, 87, 255, 0.25);
+}
+
+.expense-react-amount-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.expense-react-amount-box span {
+  position: absolute;
+  left: 14px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #D63D4F;
+}
+
+.expense-react-amount-box input {
+  padding-left: 36px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #11183F;
+}
+
+.expense-react-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Preview Card */
+.expense-react-preview-amount {
+  background: linear-gradient(135deg, rgba(240, 101, 117, 0.08) 0%, rgba(240, 101, 117, 0.03) 100%);
+  border: 1px dashed rgba(240, 101, 117, 0.35);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.expense-react-preview-amount h4 {
+  font-size: 0.775rem;
+  color: #75809A;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.expense-react-preview-amount .val {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #D63D4F;
+  letter-spacing: -0.02em;
+}
+
+.expense-react-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expense-react-preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E8EBF3;
+}
+
+.expense-react-preview-row:last-child {
+  border-bottom: none;
+}
+
+/* Tip Card */
+.expense-react-tip {
+  background: linear-gradient(135deg, #F3EEFF 0%, #EDE7FD 100%);
+  border: 1px solid rgba(121, 87, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+}
+
+@media (max-width: 1024px) {
+  .expense-react-sidebar {
+    width: 76px;
+    min-width: 76px;
+  }
+  .expense-react-brand-name,
+  .expense-react-brand-tagline,
+  .expense-react-nav-item span {
+    display: none;
+  }
+  .expense-react-grid {
+    grid-template-columns: 1fr;
+  }
+}

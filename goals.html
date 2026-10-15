@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals & Savings — Finora Expense Tracker</title>
+  <meta name="description" content="Set financial goals, track savings progress, record contributions, monitor deadlines, and build a better financial future with Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Goals Stylesheet -->
+  <link rel="stylesheet" href="css/goals.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-dashboard-line"></i>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions -->
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-wallet-3-line"></i>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-shopping-bag-3-line"></i>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-pie-chart-line"></i>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-funds-line"></i>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals (ACTIVE: Violet rounded highlight, white icon and label) -->
+          <a href="goals.html" class="nav-item-link active" id="nav-goals" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-flag-fill"></i>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-price-tag-3-line"></i>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-repeat-line"></i>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-settings-4-line"></i>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">
+            <i class="ri-logout-box-r-line"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <span>Dashboard</span>
+              <span aria-hidden="true">/</span>
+              <span class="active">Goals</span>
+            </div>
+            <h1>Goals & Savings</h1>
+            <p>Turn your financial plans into achievable milestones.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search milestones..." aria-label="Search goals">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile -->
+          <div class="user-profile" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">User</span>
+            </div>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 10 Preview</span>
+            <span>Switch goal context to test all required UI behaviors:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-state="standard">Standard (All Goals)</button>
+            <button class="demo-btn" data-state="active-only">Active Only</button>
+            <button class="demo-btn" data-state="completed-only">Completed Only</button>
+            <button class="demo-btn" data-state="empty">Empty State</button>
+            <button class="demo-btn" data-state="api-error">API Error State</button>
+          </div>
+        </section>
+
+        <!-- API Error Alert Banner (Hidden by default) -->
+        <div id="api-error-banner" style="display: none; background: #FFF5F6; border: 1px solid #F06575; border-radius: 12px; padding: 16px 20px; color: #D63D4F;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="ri-error-warning-fill" style="font-size: 20px;"></i>
+              <div>
+                <strong>Failed to load goals data from server.</strong>
+                <div style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">Unable to reach <code>/api/goals/summary</code>. Please retry.</div>
+              </div>
+            </div>
+            <button id="retry-btn" class="btn-secondary" style="border-color: #F06575; color: #D63D4F;">
+              <i class="ri-refresh-line"></i> Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty State Banner (Hidden by default) -->
+        <div id="empty-state-banner" style="display: none; text-align: center; padding: 48px 24px; background: #FFFFFF; border: 1px dashed #E8EBF3; border-radius: 16px;">
+          <div style="width: 56px; height: 56px; background-color: #F6F7FC; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; color: #7957FF; font-size: 1.6rem;">
+            <i class="ri-flag-line"></i>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #11183F; margin-bottom: 6px;">Start saving for something important</h3>
+          <p style="font-size: 0.84rem; color: #75809A; max-width: 420px; margin: 0 auto 20px auto;">
+            Create your first savings goal and track your progress one contribution at a time.
+          </p>
+          <button class="btn-primary" onclick="document.getElementById('btn-create-goal').click()">
+            <i class="ri-add-line"></i> Create Your First Goal
+          </button>
+        </div>
+
+        <!-- 4. Page Introduction and Actions Row -->
+        <section class="goals-intro-row" aria-label="Page Actions">
+          <div class="intro-text-box">
+            <h2>Your Financial Goals</h2>
+            <p>Set a target, build your savings, and track every step toward your future.</p>
+          </div>
+
+          <div class="intro-actions-box">
+            <a href="analytics.html" class="btn-secondary" id="btn-savings-insights">
+              <i class="ri-pie-chart-line"></i>
+              <span>Savings Insights</span>
+            </a>
+            <button class="btn-primary" id="btn-create-goal">
+              <i class="ri-add-line"></i>
+              <span>Create Goal</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Main Goals Workspace Area -->
+        <div id="main-goals-area" style="display: flex; flex-direction: column; gap: 24px;">
+
+          <!-- 5. Savings Overview Cards (Row of 4 Cards) -->
+          <section class="overview-cards-grid" aria-label="Savings Goals Summary Cards">
+            <!-- Card 1: Total Goal Target -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Goal Target</span>
+                <div class="overview-icon-bubble bubble-violet">
+                  <i class="ri-focus-3-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-total-target">₹2,00,000</div>
+              <div class="overview-subtext">Combined target across active goals.</div>
+            </div>
+
+            <!-- Card 2: Total Saved -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Saved</span>
+                <div class="overview-icon-bubble bubble-green">
+                  <i class="ri-wallet-3-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-total-saved" style="color: #23B981;">₹85,000</div>
+              <div class="overview-subtext">Amount allocated toward your goals.</div>
+            </div>
+
+            <!-- Card 3: Remaining to Save -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Remaining to Save</span>
+                <div class="overview-icon-bubble bubble-blue">
+                  <i class="ri-funds-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-remaining-to-save" style="color: #48B9F5;">₹1,15,000</div>
+              <div class="overview-subtext">Amount still needed to reach targets.</div>
+            </div>
+
+            <!-- Card 4: Goals Completed -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Goals Completed</span>
+                <div class="overview-icon-bubble bubble-amber">
+                  <i class="ri-checkbox-circle-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-goals-completed" style="color: #D97706;">2 of 6</div>
+              <div class="overview-subtext">Goals successfully achieved.</div>
+            </div>
+          </section>
+
+          <!-- 6. Featured Goal — Wide Prominent Card -->
+          <section class="featured-goal-card" aria-label="Featured Goal">
+            <div class="featured-badge-top">
+              <i class="ri-star-fill"></i>
+              <span>Featured Goal</span>
+            </div>
+
+            <div class="featured-layout-grid">
+              <!-- Left Column -->
+              <div class="featured-left">
+                <div class="featured-icon-large">
+                  <i class="ri-plane-line"></i>
+                </div>
+                <div class="featured-info">
+                  <h3 id="featured-goal-name">Dream Vacation</h3>
+                  <p id="featured-goal-desc">Trip to Switzerland and Italy with family.</p>
+                  <div class="featured-meta-row">
+                    <span class="priority-pill priority-high">High Priority</span>
+                    <span style="font-size: 0.775rem; color: #75809A;" id="featured-goal-date">
+                      Target: 31 Mar 2027
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Column: Progress -->
+              <div class="featured-center">
+                <div class="featured-progress-stats">
+                  <div>
+                    <span style="font-size: 0.775rem; color: #75809A;">Saved: </span>
+                    <span style="font-weight: 700; color: #11183F;" id="featured-goal-saved">₹65,000</span>
+                    <span style="font-size: 0.775rem; color: #75809A;"> of </span>
+                    <span style="font-weight: 700; color: #11183F;" id="featured-goal-target">₹1,00,000</span>
+                  </div>
+                  <div class="featured-percent-big" id="featured-goal-percent">65%</div>
+                </div>
+
+                <div class="featured-progress-bar-wrap">
+                  <div class="featured-progress-bar-fill" id="featured-goal-fill" style="width: 65%;"></div>
+                </div>
+              </div>
+
+              <!-- Right Column: Remaining & Buttons -->
+              <div class="featured-right">
+                <div class="featured-remaining-box">
+                  <div class="featured-remaining-label">Remaining to save:</div>
+                  <div class="featured-remaining-val" id="featured-goal-remaining">₹35,000</div>
+                </div>
+
+                <div class="featured-actions-btn-group">
+                  <button class="btn-primary" id="btn-featured-add" style="height: 38px; padding: 0 14px; font-size: 0.8rem;">
+                    <i class="ri-add-line"></i> Add Contribution
+                  </button>
+                  <button class="btn-secondary" id="btn-featured-view" style="height: 38px; padding: 0 12px; font-size: 0.8rem;">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. My Savings Goals Section -->
+          <section class="savings-goals-section" aria-label="Savings Goals Collection">
+            <div class="goals-section-header">
+              <div class="goals-title-group">
+                <h2>My Savings Goals</h2>
+                <p>Keep track of every financial milestone.</p>
+              </div>
+
+              <div class="goals-toolbar">
+                <div class="search-input-wrap">
+                  <i class="ri-search-line"></i>
+                  <input type="text" id="goal-search-input" placeholder="Search goals..." aria-label="Search goals">
+                </div>
+
+                <select id="filter-select" class="filter-select" aria-label="Filter by goal status">
+                  <option value="All" selected>Filter: All</option>
+                  <option value="Active">Active</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Paused">Paused</option>
+                </select>
+
+                <select id="sort-select" class="sort-select" aria-label="Sort savings goals">
+                  <option value="Recently Updated" selected>Sort: Recently Updated</option>
+                  <option value="Nearest Deadline">Nearest Deadline</option>
+                  <option value="Highest Progress">Highest Progress</option>
+                  <option value="Lowest Progress">Lowest Progress</option>
+                  <option value="Target Amount">Target Amount</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic 3-Column Goal Cards Grid -->
+            <div class="goals-cards-grid" id="goals-cards-grid">
+              <!-- Rendered via js/goals.js -->
+            </div>
+          </section>
+
+          <!-- 8. Secondary Sections: Insights (55%) & Timeline (45%) -->
+          <section class="goals-subsections-grid" aria-label="Goal Insights and Timeline">
+            
+            <!-- 55% Progress Insights -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Goal Progress Insights</h3>
+                  <p>Understand how your savings are progressing across categories.</p>
+                </div>
+                <span class="status-pill status-active">On Track</span>
+              </div>
+
+              <div class="insights-bars-stack" id="insights-bars-stack">
+                <!-- Dynamic progress comparison bars -->
+              </div>
+            </div>
+
+            <!-- 45% Savings Timeline -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Savings Timeline</h3>
+                  <p>Milestone targets sorted by deadline date.</p>
+                </div>
+              </div>
+
+              <div class="timeline-stack" id="timeline-stack">
+                <!-- Dynamic Timeline entries -->
+              </div>
+            </div>
+
+          </section>
+
+        </div> <!-- /main-goals-area -->
+
+      </div> <!-- /content-container -->
+
+    </main>
+
+  </div> <!-- /app-layout -->
+
+  <!-- ======================================================================
+       3. MODALS
+       ====================================================================== -->
+
+  <!-- Modal A: Create Goal Modal -->
+  <div class="modal-backdrop" id="create-goal-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-title">Create a New Goal</h3>
+          <p>Define your target and create a plan to achieve it.</p>
+        </div>
+        <button class="modal-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="create-goal-form">
+        <div class="modal-body">
+          <!-- Goal Name -->
+          <div class="modal-field">
+            <label for="goal-name-input">Goal Name *</label>
+            <input type="text" id="goal-name-input" class="modal-input" placeholder="e.g. Emergency Fund" required>
+          </div>
+
+          <!-- Goal Category -->
+          <div class="modal-field">
+            <label for="goal-category-select">Goal Category</label>
+            <select id="goal-category-select" class="modal-input">
+              <option value="Emergency Fund">Emergency Fund</option>
+              <option value="Travel">Travel</option>
+              <option value="Education">Education</option>
+              <option value="Technology">Technology</option>
+              <option value="Home">Home</option>
+              <option value="Vehicle">Vehicle</option>
+              <option value="Health">Health</option>
+              <option value="Personal">Personal</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Target & Initial Saved -->
+          <div class="modal-row-2col">
+            <div class="modal-field">
+              <label for="goal-target-input">Target Amount (₹) *</label>
+              <input type="number" id="goal-target-input" class="modal-input" placeholder="50000" min="1" step="1" required>
+            </div>
+            <div class="modal-field">
+              <label for="goal-initial-saved-input">Already Saved (Optional)</label>
+              <input type="number" id="goal-initial-saved-input" class="modal-input" placeholder="0" min="0" step="1">
+            </div>
+          </div>
+
+          <!-- Target Date & Priority -->
+          <div class="modal-row-2col">
+            <div class="modal-field">
+              <label for="goal-date-input">Target Date</label>
+              <input type="date" id="goal-date-input" class="modal-input" value="2027-03-31">
+            </div>
+            <div class="modal-field">
+              <label for="goal-priority-select">Priority</label>
+              <select id="goal-priority-select" class="modal-input">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Icon Selector Grid -->
+          <div class="modal-field">
+            <label>Choose an Icon</label>
+            <div class="icon-selector-grid">
+              <button type="button" class="icon-select-btn active" data-icon="ri-target-line"><i class="ri-target-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-safe-2-line"><i class="ri-safe-2-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-plane-line"><i class="ri-plane-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-macbook-line"><i class="ri-macbook-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-home-4-line"><i class="ri-home-4-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-graduation-cap-line"><i class="ri-graduation-cap-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-shield-check-line"><i class="ri-shield-check-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-smartphone-line"><i class="ri-smartphone-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-car-line"><i class="ri-car-line"></i></button>
+              <button type="button" class="icon-select-btn" data-icon="ri-riding-line"><i class="ri-riding-line"></i></button>
+            </div>
+          </div>
+
+          <!-- Color Palette Selection -->
+          <div class="modal-field">
+            <label>Accent Color</label>
+            <div class="color-selector-palette">
+              <button type="button" class="color-dot-btn active" data-color="#7957FF" style="background-color: #7957FF;"></button>
+              <button type="button" class="color-dot-btn" data-color="#48B9F5" style="background-color: #48B9F5;"></button>
+              <button type="button" class="color-dot-btn" data-color="#23B981" style="background-color: #23B981;"></button>
+              <button type="button" class="color-dot-btn" data-color="#F5B544" style="background-color: #F5B544;"></button>
+              <button type="button" class="color-dot-btn" data-color="#F06575" style="background-color: #F06575;"></button>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="modal-field">
+            <label for="goal-desc-input">Description (Optional)</label>
+            <textarea id="goal-desc-input" rows="2" class="modal-input" style="height: auto; padding: 10px 14px;" placeholder="What are you saving for?"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary">
+            <i class="ri-checkbox-circle-line"></i> Create Goal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal B: Add Contribution Modal -->
+  <div class="modal-backdrop" id="contrib-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="contrib-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="contrib-title">Add to Savings Goal</h3>
+          <p id="contrib-goal-name" style="font-weight: 700; color: #7957FF; margin-top: 2px;">Dream Vacation</p>
+        </div>
+        <button class="modal-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="contrib-form">
+        <div class="modal-body">
+          <div id="contrib-goal-stats" style="font-size: 0.8125rem; color: #75809A; background: #F6F7FC; padding: 10px 14px; border-radius: 8px;">
+            Saved ₹65,000 of ₹1,00,000 (65%) · Remaining: ₹35,000
+          </div>
+
+          <div class="modal-field">
+            <label for="contrib-amount-input">Contribution Amount (₹) *</label>
+            <input type="number" id="contrib-amount-input" class="modal-input" placeholder="e.g. 5000" min="1" step="1" required>
+          </div>
+
+          <div class="modal-row-2col">
+            <div class="modal-field">
+              <label for="contrib-date-input">Contribution Date</label>
+              <input type="date" id="contrib-date-input" class="modal-input" value="2026-10-15">
+            </div>
+            <div class="modal-field">
+              <label for="contrib-source-select">Funding Account</label>
+              <select id="contrib-source-select" class="modal-input">
+                <option value="Primary Bank Account">Primary Bank Account (HDFC ····4829)</option>
+                <option value="Savings Account">Savings Account (ICICI ····9123)</option>
+                <option value="Cash Wallet">Cash Wallet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-field">
+            <label for="contrib-note-input">Note (Optional)</label>
+            <input type="text" id="contrib-note-input" class="modal-input" placeholder="e.g. Monthly Savings Allocation">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary">
+            <i class="ri-checkbox-circle-line"></i> Record Contribution
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal C: Goal Details & Contribution History Modal -->
+  <div class="modal-backdrop" id="details-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="details-title">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h3 id="details-title">Goal Details</h3>
+          <p id="details-category">Travel · Priority: High</p>
+        </div>
+        <button class="modal-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Stats Summary -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: #F6F7FC; padding: 14px; border-radius: 12px;">
+          <div>
+            <span style="font-size: 0.75rem; color: #75809A;">Target</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #11183F;" id="details-target-val">₹1,00,000</div>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: #75809A;">Saved</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #23B981;" id="details-saved-val">₹65,000</div>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: #75809A;">Remaining</span>
+            <div style="font-size: 1.15rem; font-weight: 700; color: #7957FF;" id="details-remaining-val">₹35,000</div>
+          </div>
+        </div>
+
+        <div style="margin: 10px 0;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; margin-bottom: 6px;">
+            <span>Overall Milestone Progress</span>
+            <span style="font-weight: 700; color: #7957FF;" id="details-percent-val">65%</span>
+          </div>
+          <div style="height: 10px; background: #E8EBF3; border-radius: 5px; overflow: hidden;">
+            <div id="details-progress-fill" style="width: 65%; height: 100%; background: #7957FF; border-radius: 5px;"></div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: #11183F; margin-top: 8px;">Contribution History</h4>
+        <div style="overflow-x: auto; border: 1px solid #E8EBF3; border-radius: 10px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="background: #FAFAFD; font-size: 0.75rem; color: #75809A; text-transform: uppercase;">
+                <th style="padding: 10px 12px; border-bottom: 1px solid #E8EBF3;">Date</th>
+                <th style="padding: 10px 12px; border-bottom: 1px solid #E8EBF3;">Note</th>
+                <th style="padding: 10px 12px; border-bottom: 1px solid #E8EBF3;">Source</th>
+                <th style="padding: 10px 12px; border-bottom: 1px solid #E8EBF3;">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="details-history-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary modal-cancel-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notice" class="toast-notice" role="status" aria-live="polite">
+    <i class="ri-checkbox-circle-fill" style="color: #23B981; font-size: 18px;"></i>
+    <span id="toast-text">Operation completed</span>
+  </div>
+
+  <!-- Client Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/goals.js"></script>
+</body>
+</html>

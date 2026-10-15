@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Management — Finora Expense Tracker</title>
+  <meta name="description" content="Plan your spending, monitor category limits, track remaining balances, and stay on track with your financial goals using Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Budget Management Stylesheet -->
+  <link rel="stylesheet" href="css/budgets.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-dashboard-line"></i>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions -->
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-wallet-3-line"></i>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-shopping-bag-3-line"></i>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-pie-chart-line"></i>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets (ACTIVE: Violet rounded highlight, white icon and label) -->
+          <a href="budgets.html" class="nav-item-link active" id="nav-budgets" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-funds-fill"></i>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-flag-line"></i>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-price-tag-3-line"></i>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-repeat-line"></i>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-settings-4-line"></i>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">
+            <i class="ri-logout-box-r-line"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <span>Dashboard</span>
+              <span aria-hidden="true">/</span>
+              <span class="active">Budgets</span>
+            </div>
+            <h1>Budget Management</h1>
+            <p>Plan your spending, monitor limits, and stay on track with your financial goals.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search budgets & limits..." aria-label="Search budgets">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile -->
+          <div class="user-profile" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">User</span>
+            </div>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 9 Preview</span>
+            <span>Switch budget state to test all required UI behaviors:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-state="standard">Standard (Oct 2026)</button>
+            <button class="demo-btn" data-state="near-limit">Near Limit Only</button>
+            <button class="demo-btn" data-state="over-budget">Over Budget Only</button>
+            <button class="demo-btn" data-state="empty">Empty State</button>
+            <button class="demo-btn" data-state="api-error">API Error State</button>
+          </div>
+        </section>
+
+        <!-- API Error Alert Banner (Hidden by default) -->
+        <div id="api-error-banner" style="display: none; background: #FFF5F6; border: 1px solid #F06575; border-radius: 12px; padding: 16px 20px; color: #D63D4F;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="ri-error-warning-fill" style="font-size: 20px;"></i>
+              <div>
+                <strong>Failed to load budget data from server.</strong>
+                <div style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">Unable to reach <code>/api/budgets/summary</code>. Please retry.</div>
+              </div>
+            </div>
+            <button id="retry-btn" class="btn-secondary" style="border-color: #F06575; color: #D63D4F;">
+              <i class="ri-refresh-line"></i> Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty State Banner (Hidden by default) -->
+        <div id="empty-state-banner" style="display: none; text-align: center; padding: 48px 24px; background: #FFFFFF; border: 1px dashed #E8EBF3; border-radius: 16px;">
+          <div style="width: 56px; height: 56px; background-color: #F6F7FC; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; color: #7957FF; font-size: 1.6rem;">
+            <i class="ri-funds-line"></i>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #11183F; margin-bottom: 6px;">Start planning your spending</h3>
+          <p style="font-size: 0.84rem; color: #75809A; max-width: 420px; margin: 0 auto 20px auto;">
+            Create your first category budget to track expenses and understand how much you have left to spend.
+          </p>
+          <button class="btn-primary" onclick="document.getElementById('btn-create-budget').click()">
+            <i class="ri-add-line"></i> Create Your First Budget
+          </button>
+        </div>
+
+        <!-- 4. Budget Period & Main Action Row -->
+        <section class="budget-action-row" aria-label="Budget Period and Actions">
+          <div class="period-navigator">
+            <select id="budget-period-selector" class="period-select" aria-label="Select Budget Period">
+              <option value="This Month" selected>This Month</option>
+              <option value="Last Month">Last Month</option>
+              <option value="Next Month">Next Month</option>
+              <option value="Custom Period">Custom Period</option>
+            </select>
+
+            <div class="period-arrows-box">
+              <button class="period-arrow-btn" aria-label="Previous Month">
+                <i class="ri-arrow-left-s-line"></i>
+              </button>
+              <span class="period-label-badge" id="period-active-label">October 2026</span>
+              <button class="period-arrow-btn" aria-label="Next Month">
+                <i class="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="action-buttons-group">
+            <button class="btn-secondary" id="btn-copy-budget">
+              <i class="ri-file-copy-line"></i>
+              <span>Copy Previous Budget</span>
+            </button>
+            <button class="btn-primary" id="btn-create-budget">
+              <i class="ri-add-line"></i>
+              <span>Create Budget</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Main Budgets Container Area -->
+        <div id="main-budgets-area" style="display: flex; flex-direction: column; gap: 24px;">
+
+          <!-- 5. Overall Budget Summary Cards (Row of 4 Cards) -->
+          <section class="overview-cards-grid" aria-label="Budget Summary Cards">
+            <!-- Card 1: Total Budget -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Budget</span>
+                <div class="overview-icon-bubble bubble-violet">
+                  <i class="ri-calculator-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-total-budget">₹50,000</div>
+              <div class="overview-subtext">Total planned spending for this period.</div>
+            </div>
+
+            <!-- Card 2: Total Spent -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Total Spent</span>
+                <div class="overview-icon-bubble bubble-coral">
+                  <i class="ri-receipt-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-total-spent" style="color: #D63D4F;">₹28,450</div>
+              <div class="overview-subtext">Expenses recorded against your budgets.</div>
+            </div>
+
+            <!-- Card 3: Remaining Budget -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Remaining Budget</span>
+                <div class="overview-icon-bubble bubble-green">
+                  <i class="ri-wallet-3-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-remaining-budget" style="color: #23B981;">₹21,550</div>
+              <div class="overview-subtext">Budget amount not yet spent.</div>
+            </div>
+
+            <!-- Card 4: Budget Usage -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <span class="overview-card-title">Budget Usage</span>
+                <div class="overview-icon-bubble bubble-blue">
+                  <i class="ri-pie-chart-line"></i>
+                </div>
+              </div>
+              <div class="overview-val" id="overview-budget-usage" style="color: #48B9F5;">56.9%</div>
+              <div class="overview-subtext">Percentage of the total budget spent.</div>
+            </div>
+          </section>
+
+          <!-- 6. Full-Width Overall Budget Progress Card -->
+          <section class="overall-progress-card" aria-label="Overall Budget Progress">
+            <div class="progress-card-header">
+              <div>
+                <h2 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #11183F;">Overall Budget Progress</h2>
+                <p style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">See how your actual spending compares with your planned budget.</p>
+              </div>
+              <div style="font-size: 0.84rem; font-weight: 700; color: #7957FF;" id="overall-percent-text">
+                56.9% used
+              </div>
+            </div>
+
+            <div class="progress-metrics-row">
+              <div>
+                <span style="color: #75809A; font-weight: 500;">Spent: </span>
+                <span id="overall-spent-text" style="color: #11183F;">₹28,450</span>
+                <span style="color: #75809A; font-weight: 500;"> of </span>
+                <span id="overall-total-text" style="color: #11183F;">₹50,000</span>
+              </div>
+              <div id="overall-remaining-text" style="color: #23B981; font-weight: 700;">
+                ₹21,550 remaining
+              </div>
+            </div>
+
+            <div class="progress-track-large">
+              <div class="progress-fill-large" id="overall-progress-fill" style="width: 56.9%; background-color: #7957FF;"></div>
+            </div>
+
+            <div class="progress-legend-row">
+              <div class="legend-chips">
+                <div class="legend-chip">
+                  <span class="chip-dot dot-healthy"></span>
+                  <span>Under control (&lt; 70%)</span>
+                </div>
+                <div class="legend-chip">
+                  <span class="chip-dot dot-warning"></span>
+                  <span>Near limit (70% – 89%)</span>
+                </div>
+                <div class="legend-chip">
+                  <span class="chip-dot dot-danger"></span>
+                  <span>Limit reached or exceeded (≥ 90%)</span>
+                </div>
+              </div>
+              <div>October 2026 Budget Envelope</div>
+            </div>
+          </section>
+
+          <!-- 7. Category Budget Breakdown Section -->
+          <section class="category-budgets-section" aria-label="Category Budgets Breakdown">
+            <div class="cat-budgets-header">
+              <div class="cat-budgets-title-group">
+                <h2>Category Budgets</h2>
+                <p>Manage spending limits and monitor expenses category by category.</p>
+              </div>
+
+              <div class="cat-budgets-toolbar">
+                <div class="cat-search-box">
+                  <i class="ri-search-line"></i>
+                  <input type="text" id="cat-search-input" placeholder="Search categories..." aria-label="Search categories">
+                </div>
+
+                <select id="filter-select" class="filter-select" aria-label="Filter category status">
+                  <option value="All" selected>Filter: All</option>
+                  <option value="Under Budget">Under Budget</option>
+                  <option value="Near Limit">Near Limit</option>
+                  <option value="Over Budget">Over Budget</option>
+                </select>
+
+                <select id="sort-select" class="sort-select" aria-label="Sort category budgets">
+                  <option value="Category Name" selected>Sort: Category Name</option>
+                  <option value="Highest Budget">Highest Budget</option>
+                  <option value="Highest Spending">Highest Spending</option>
+                  <option value="Remaining Budget">Remaining Budget</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic Category Cards Grid (2 Columns on Desktop) -->
+            <div class="category-cards-grid" id="category-cards-grid">
+              <!-- Rendered dynamically via js/budgets.js -->
+            </div>
+          </section>
+
+          <!-- 8. Secondary Analytics Row: Budget vs Actual Chart (60%) & Alerts (40%) -->
+          <section class="budget-subsections-grid" aria-label="Budget Analytics and Alerts">
+            
+            <!-- 60% Grouped Bar Chart -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Budget vs Actual Spending</h3>
+                  <p>Compare your planned spending with your actual expenses.</p>
+                </div>
+                <div style="display: flex; gap: 14px; font-size: 0.8125rem;">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 10px; height: 10px; background-color: #7957FF; border-radius: 3px;"></span>
+                    <span>Planned Budget</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="width: 10px; height: 10px; background-color: #48B9F5; border-radius: 3px;"></span>
+                    <span>Actual Spent</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SVG Grouped Bar Chart -->
+              <div style="width: 100%; position: relative;">
+                <svg id="budget-chart-svg" viewBox="0 0 640 240" preserveAspectRatio="none" style="width: 100%; height: 240px; overflow: visible;"></svg>
+              </div>
+            </div>
+
+            <!-- 40% Budget Alerts Card -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Budget Alerts</h3>
+                  <p>Stay informed when your spending approaches a limit.</p>
+                </div>
+                <span class="status-pill status-near">3 Active Alerts</span>
+              </div>
+
+              <div class="alerts-stack">
+                <!-- Alert 1: Shopping Near Limit -->
+                <div class="alert-item-box warning">
+                  <div class="alert-icon-wrap" style="background-color: rgba(245, 181, 68, 0.15); color: #D97706;">
+                    <i class="ri-alert-line"></i>
+                  </div>
+                  <div class="alert-body">
+                    <div class="alert-title-row">
+                      <span class="alert-category-name">Shopping</span>
+                      <span class="status-pill status-near" style="font-size: 0.7rem; padding: 2px 6px;">93.8% Used</span>
+                    </div>
+                    <div class="alert-desc">You have used 93.75% of your Shopping budget. Only ₹500 remains.</div>
+                    <a href="transactions.html" class="alert-action-link">View Transactions →</a>
+                  </div>
+                </div>
+
+                <!-- Alert 2: Entertainment Over Budget -->
+                <div class="alert-item-box danger">
+                  <div class="alert-icon-wrap" style="background-color: rgba(240, 101, 117, 0.15); color: #F06575;">
+                    <i class="ri-error-warning-line"></i>
+                  </div>
+                  <div class="alert-body">
+                    <div class="alert-title-row">
+                      <span class="alert-category-name">Entertainment</span>
+                      <span class="status-pill status-over" style="font-size: 0.7rem; padding: 2px 6px;">Over Budget</span>
+                    </div>
+                    <div class="alert-desc">You have exceeded your Entertainment budget by ₹400 (113.3% used).</div>
+                    <a href="transactions.html" class="alert-action-link" style="color: #F06575;">Review Purchases →</a>
+                  </div>
+                </div>
+
+                <!-- Alert 3: Transportation Approaching Limit -->
+                <div class="alert-item-box warning">
+                  <div class="alert-icon-wrap" style="background-color: rgba(245, 181, 68, 0.15); color: #D97706;">
+                    <i class="ri-alert-line"></i>
+                  </div>
+                  <div class="alert-body">
+                    <div class="alert-title-row">
+                      <span class="alert-category-name">Transportation</span>
+                      <span class="status-pill status-near" style="font-size: 0.7rem; padding: 2px 6px;">76% Used</span>
+                    </div>
+                    <div class="alert-desc">You have used 76% of your Transportation budget with ₹1,200 remaining.</div>
+                    <a href="transactions.html" class="alert-action-link">View Budget →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 9. Bottom Grid: Period Overview (50%) & Recommendations (50%) -->
+          <section class="bottom-analytics-grid" aria-label="Period Overview and Recommendations">
+            
+            <!-- Period Overview -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Budget Period Overview</h3>
+                  <p>Status breakdown for October 2026.</p>
+                </div>
+              </div>
+
+              <div class="period-metric-chips">
+                <div class="period-chip">
+                  <span class="num" id="count-active-budgets" style="color: #7957FF;">8</span>
+                  <span class="desc">Active Category Budgets</span>
+                </div>
+                <div class="period-chip">
+                  <span class="num" id="count-within-limits" style="color: #23B981;">6</span>
+                  <span class="desc">Budgets Within Healthy Limits</span>
+                </div>
+                <div class="period-chip">
+                  <div style="display: flex; align-items: baseline; gap: 4px;">
+                    <span class="num" id="count-near-limits" style="color: #D97706;">2</span>
+                  </div>
+                  <span class="desc">Approaching Limits (≥ 75%)</span>
+                </div>
+                <div class="period-chip">
+                  <span class="num" id="count-over-budget" style="color: #F06575;">1</span>
+                  <span class="desc">Exceeded Spending Limit</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Budget Recommendations -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Budget Recommendations</h3>
+                  <p>Small adjustments can help you stay within your limits.</p>
+                </div>
+              </div>
+
+              <div class="recommendation-row">
+                <div style="width: 36px; height: 36px; background-color: #FFFFFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #F06575; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                  <i class="ri-lightbulb-line" style="font-size: 18px;"></i>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-size: 0.8125rem; font-weight: 700; color: #11183F;">Entertainment is ₹400 over budget</div>
+                  <div style="font-size: 0.775rem; color: #75809A;">Consider reviewing weekend dining or adjusting next month's envelope to ₹4,000.</div>
+                </div>
+                <button class="btn-secondary" style="height: 32px; padding: 0 10px; font-size: 0.75rem;" onclick="window.adjustBudget('b-5')">
+                  Adjust
+                </button>
+              </div>
+
+              <div class="recommendation-row">
+                <div style="width: 36px; height: 36px; background-color: #FFFFFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #23B981; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                  <i class="ri-thumb-up-line" style="font-size: 18px;"></i>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-size: 0.8125rem; font-weight: 700; color: #11183F;">Healthcare allocation is well-managed</div>
+                  <div style="font-size: 0.775rem; color: #75809A;">You've only utilized 37.5% of your healthcare allocation this month.</div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div> <!-- /main-budgets-area -->
+
+      </div> <!-- /content-container -->
+
+    </main>
+
+  </div> <!-- /app-layout -->
+
+  <!-- ======================================================================
+       3. CREATE / EDIT BUDGET MODAL
+       ====================================================================== -->
+  <div class="modal-backdrop" id="budget-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-title">Create New Budget</h3>
+          <p>Set a spending limit and choose the period you want to track.</p>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="budget-form">
+        <div class="modal-body">
+          <!-- A. Budget Name -->
+          <div class="modal-field">
+            <label for="budget-name-input">Budget Name *</label>
+            <input type="text" id="budget-name-input" class="modal-input" placeholder="e.g. Monthly Food Budget" required>
+          </div>
+
+          <!-- B. Category -->
+          <div class="modal-field">
+            <label for="budget-cat-select">Category *</label>
+            <select id="budget-cat-select" class="modal-input">
+              <option value="Food & Dining">Food & Dining</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Bills & Utilities">Bills & Utilities</option>
+              <option value="Housing & Rent">Housing & Rent</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Education">Education</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Travel">Travel</option>
+              <option value="Personal Care">Personal Care</option>
+              <option value="Subscriptions">Subscriptions</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- C. Budget Amount & Period -->
+          <div class="modal-row-2col">
+            <div class="modal-field">
+              <label for="budget-amount-input">Budget Limit (₹) *</label>
+              <input type="number" id="budget-amount-input" class="modal-input" placeholder="0.00" min="1" step="1" required>
+            </div>
+            <div class="modal-field">
+              <label for="budget-period-select">Budget Period</label>
+              <select id="budget-period-select" class="modal-input">
+                <option value="Monthly" selected>Monthly</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Quarterly">Quarterly</option>
+                <option value="Yearly">Yearly</option>
+                <option value="Custom Date Range">Custom Date Range</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- D. Start Date & End Date -->
+          <div class="modal-row-2col">
+            <div class="modal-field">
+              <label for="budget-start-date">Start Date</label>
+              <input type="date" id="budget-start-date" class="modal-input" value="2026-10-01">
+            </div>
+            <div class="modal-field">
+              <label for="budget-end-date">End Date</label>
+              <input type="date" id="budget-end-date" class="modal-input" value="2026-10-31">
+            </div>
+          </div>
+
+          <!-- E. Alert Threshold -->
+          <div class="modal-field">
+            <label for="budget-threshold-select">Notify me when spending reaches</label>
+            <select id="budget-threshold-select" class="modal-input">
+              <option value="50">50% of budget</option>
+              <option value="75">75% of budget</option>
+              <option value="80" selected>80% of budget</option>
+              <option value="90">90% of budget</option>
+              <option value="100">100% of budget</option>
+            </select>
+          </div>
+
+          <!-- F. Optional Description -->
+          <div class="modal-field">
+            <label for="budget-desc-input">Description (Optional)</label>
+            <textarea id="budget-desc-input" rows="2" class="modal-input" style="height: auto; padding: 10px 14px;" placeholder="Add a note about this budget…"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary" id="modal-submit-btn">
+            <i class="ri-checkbox-circle-line"></i> Save Budget
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notice" class="toast-notice" role="status" aria-live="polite">
+    <i class="ri-checkbox-circle-fill" style="color: #23B981; font-size: 18px;"></i>
+    <span id="toast-text">Budget saved successfully</span>
+  </div>
+
+  <!-- Client Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/budgets.js"></script>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions — Finora Expense Tracker</title>
+  <meta name="description" content="Search, filter, review, sort, and manage all your personal finance and expense transactions with Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Transactions Page Stylesheet -->
+  <link rel="stylesheet" href="css/transactions.css">
+</head>
+<body>
+
+  <!-- Full Application Layout (Sidebar + Main Workspace) -->
+  <div class="transactions-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Wallet/Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <span class="sidebar-brand-name">Finora</span>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+                <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+                <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+              </svg>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions (ACTIVE: Violet rounded highlight) -->
+          <a href="transactions.html" class="nav-item-link active" id="nav-transactions" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+              </svg>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories -->
+          <a href="categories.html" class="nav-item-link" id="nav-categories">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Sidebar Logout Item -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="nav-item-logout" id="btn-logout" aria-label="Sign out of Finora">
+          <span class="nav-icon" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ======================================================================
+         2. RIGHT MAIN WORKSPACE (Light #F6F7FC)
+         ====================================================================== -->
+    <main class="main-workspace" id="main-workspace">
+
+      <!-- Top Horizontal Header Bar (~72px) -->
+      <header class="workspace-header">
+        
+        <!-- Left: Page Title & Mobile Toggle -->
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Toggle navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div class="header-title-group">
+            <h1 class="page-title">Transactions</h1>
+            <p class="page-subtitle">Track and manage all your financial activity.</p>
+          </div>
+        </div>
+
+        <!-- Right: Search, Notifications, Avatar -->
+        <div class="header-actions-group">
+          <!-- Compact Global Search Field (~240 px) -->
+          <div class="header-search-box">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              class="header-search-input" 
+              id="header-search" 
+              placeholder="Search transactions..." 
+              aria-label="Global search across transactions"
+            />
+          </div>
+
+          <!-- Notification Bell -->
+          <button type="button" class="btn-notification" id="btn-notification" aria-label="Notifications" title="View notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Quick Link in Top-Right Bar -->
+          <a href="settings.html" class="btn-settings-header" id="btn-header-settings" aria-label="Account Settings" title="Account Settings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </a>
+
+          <!-- Notifications Dropdown Popover -->
+          <div class="notifications-popover" id="notifications-popover" role="dialog" aria-label="Notifications list">
+            <div class="notif-header">
+              <span>Notifications (3)</span>
+              <span style="font-size: 0.75rem; color: var(--color-primary-violet); cursor: pointer;">Mark all read</span>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item">
+                <strong>Salary Credited</strong>
+                ₹45,000 deposited by TechCorp India into HDFC account.
+              </div>
+              <div class="notif-item">
+                <strong>Internet Bill Due</strong>
+                Airtel fiber payment of ₹799 is pending autopay.
+              </div>
+              <div class="notif-item">
+                <strong>Large Expense Detected</strong>
+                Amazon purchase of ₹2,499 was categorized under Shopping.
+              </div>
+            </div>
+          </div>
+
+          <!-- Subtle Divider -->
+          <div class="header-divider" aria-hidden="true"></div>
+
+          <!-- Circular User Avatar & Name -->
+          <div class="user-profile-menu" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" 
+              alt="User Avatar" 
+              class="user-avatar"
+            />
+            <span class="user-name">User</span>
+            <span class="chevron-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </span>
+
+            <!-- Profile Popover -->
+            <div class="profile-dropdown-popover" id="profile-popover" role="menu">
+              <button class="dropdown-item" role="menuitem" onclick="window.location.href='settings.html#profile'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                My Profile
+              </button>
+              <button class="dropdown-item" role="menuitem" onclick="window.location.href='settings.html#preferences'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              Account Settings
+            </button>
+            <button class="dropdown-item text-danger btn-signout" role="menuitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Sign Out
+            </button>
+          </div>
+          </div>
+        </div>
+
+      </header>
+
+      <!-- Scrollable Workspace Content (28-32 px padding) -->
+      <div class="workspace-content">
+
+        <!-- ====================================================================
+             5. PAGE ACTIONS ROW (Date Selector, Export, + Add Transaction)
+             ==================================================================== -->
+        <section class="page-actions-row" aria-label="Page controls and actions">
+          <!-- Left: Date Selector & Export -->
+          <div class="actions-left-group">
+            <!-- Compact Date Selector -->
+            <button type="button" class="btn-date-selector" id="btn-date-selector" aria-haspopup="true" aria-expanded="false">
+              <span class="date-calendar-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </span>
+              <span id="selected-date-label">October 2026</span>
+              <span class="chevron-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Date Options Menu -->
+            <div class="date-dropdown-menu" id="date-dropdown-menu">
+              <button class="date-option-btn selected" data-period="October 2026">October 2026</button>
+              <button class="date-option-btn" data-period="September 2026">September 2026</button>
+              <button class="date-option-btn" data-period="August 2026">August 2026</button>
+              <button class="date-option-btn" data-period="Q3 2026">Q3 2026</button>
+              <button class="date-option-btn" data-period="Year 2026">Year 2026</button>
+            </div>
+
+            <!-- Small Secondary Action: Export -->
+            <button type="button" class="btn-export" id="btn-export-all" title="Export transactions as CSV file">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Export</span>
+            </button>
+
+            <!-- State Demonstration Switcher (Allows testing Section 16 states) -->
+            <div class="state-demo-bar" title="Preview UI states specified in Section 16">
+              <span style="font-weight: 600; color: var(--color-primary-violet);">States:</span>
+              <button type="button" class="state-demo-pill active" data-state-demo="normal">Live Data</button>
+              <button type="button" class="state-demo-pill" data-state-demo="empty">Empty</button>
+              <button type="button" class="state-demo-pill" data-state-demo="no-results">No Results</button>
+              <button type="button" class="state-demo-pill" data-state-demo="loading">Loading</button>
+              <button type="button" class="state-demo-pill" data-state-demo="error">Error</button>
+            </div>
+          </div>
+
+          <!-- Right: Prominent Violet Primary Button (+ Add Transaction) -->
+          <div>
+            <button type="button" class="btn-primary-add" id="btn-add-transaction" aria-haspopup="dialog">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>+ Add Transaction</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             6. TRANSACTION SUMMARY CARDS (Row of 3 Compact Cards)
+             ==================================================================== -->
+        <section class="summary-cards-row" aria-label="Transaction Financial Key Metrics">
+          
+          <!-- Card 1: Total Income -->
+          <div class="summary-card" id="card-total-income">
+            <div class="summary-card-info">
+              <span class="summary-card-label">Total Income</span>
+              <span class="summary-card-amount text-income" id="summary-total-income">₹0.00</span>
+              <span class="summary-card-subtext">For selected period</span>
+            </div>
+            <div class="summary-card-icon-wrap icon-wrap-income" aria-hidden="true">
+              <!-- Green Income Icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 2: Total Expenses -->
+          <div class="summary-card" id="card-total-expenses">
+            <div class="summary-card-info">
+              <span class="summary-card-label">Total Expenses</span>
+              <span class="summary-card-amount text-expense" id="summary-total-expenses">₹0.00</span>
+              <span class="summary-card-subtext">For selected period</span>
+            </div>
+            <div class="summary-card-icon-wrap icon-wrap-expense" aria-hidden="true">
+              <!-- Coral Expense Icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 3: Net Cash Flow -->
+          <div class="summary-card" id="card-net-cashflow">
+            <div class="summary-card-info">
+              <span class="summary-card-label">Net Cash Flow</span>
+              <span class="summary-card-amount text-net" id="summary-net-cashflow">₹0.00</span>
+              <span class="summary-card-subtext">Income minus expenses</span>
+            </div>
+            <div class="summary-card-icon-wrap icon-wrap-net" aria-hidden="true">
+              <!-- Violet Analytics / Scale Icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ====================================================================
+             7. TRANSACTION MANAGEMENT CARD (Search, Filters, Table, Pagination)
+             ==================================================================== -->
+        <section class="transactions-management-card" aria-label="Transactions Management Panel">
+          
+          <!-- Section Heading Bar -->
+          <div class="card-header-bar">
+            <div class="card-title-group">
+              <h2>All Transactions</h2>
+              <p>View, search, and manage your transactions.</p>
+            </div>
+            <div class="card-result-count" id="card-result-count">
+              0 transactions
+            </div>
+          </div>
+
+          <!-- ==================================================================
+               8. SEARCH AND FILTER TOOLBAR
+               ================================================================== -->
+          <div class="toolbar-container">
+            <div class="filter-toolbar">
+              
+              <!-- Search Field -->
+              <div class="toolbar-search">
+                <span class="search-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </span>
+                <input 
+                  type="text" 
+                  class="toolbar-search-input" 
+                  id="toolbar-search-input" 
+                  placeholder="Search transactions..." 
+                  aria-label="Search transactions by title, category, merchant, or notes"
+                />
+              </div>
+
+              <!-- Transaction Type Filter Dropdown -->
+              <div class="filter-select-wrapper">
+                <select class="filter-select" id="filter-type-select" aria-label="Filter by transaction type">
+                  <option value="all">All Types</option>
+                  <option value="income">Income</option>
+                  <option value="expense">Expense</option>
+                </select>
+              </div>
+
+              <!-- Category Filter Dropdown -->
+              <div class="filter-select-wrapper">
+                <select class="filter-select" id="filter-category-select" aria-label="Filter by category">
+                  <option value="all">All Categories</option>
+                  <option value="Food">Food</option>
+                  <option value="Transport">Transport</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Bills">Bills</option>
+                  <option value="Health">Health</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Salary">Salary</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Date Filter Dropdown -->
+              <div class="filter-select-wrapper">
+                <select class="filter-select" id="filter-date-select" aria-label="Filter by date range">
+                  <option value="all">All Dates</option>
+                  <option value="today">Today</option>
+                  <option value="this-week">This Week</option>
+                  <option value="this-month">This Month</option>
+                  <option value="this-year">This Year</option>
+                </select>
+              </div>
+
+              <!-- Sort Control Dropdown -->
+              <div class="filter-select-wrapper">
+                <select class="filter-select" id="filter-sort-select" aria-label="Sort transactions">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="amount-high">Amount: High to Low</option>
+                  <option value="amount-low">Amount: Low to High</option>
+                </select>
+              </div>
+
+              <!-- Reset Filters Action -->
+              <button type="button" class="btn-clear-filters" id="btn-clear-filters" title="Reset all active search and filter parameters">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span>Clear Filters</span>
+              </button>
+
+            </div>
+
+            <!-- ================================================================
+                 9. ACTIVE FILTER INDICATOR CHIPS
+                 ================================================================ -->
+            <div class="active-filters-bar" id="active-filters-bar" aria-live="polite">
+              <span class="active-filters-label">Active Filters:</span>
+              <div id="active-chips-container" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+            </div>
+
+            <!-- ================================================================
+                 12. BULK SELECTION ACTIONS BAR (Shows when rows are checked)
+                 ================================================================ -->
+            <div class="bulk-actions-bar" id="bulk-actions-bar" role="toolbar" aria-label="Bulk actions">
+              <div class="bulk-info-group">
+                <span class="bulk-count-badge" id="bulk-count-text">0 selected</span>
+                <span class="bulk-info-text">Selected transactions</span>
+              </div>
+              <div class="bulk-buttons-group">
+                <button type="button" class="btn-bulk-export" id="btn-bulk-export">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Export Selected</span>
+                </button>
+                <button type="button" class="btn-bulk-delete" id="btn-bulk-delete">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                  <span>Delete Selected</span>
+                </button>
+                <button type="button" class="btn-bulk-deselect" id="btn-bulk-deselect">
+                  Deselect All
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Empty / No-Results / Loading / Error Container -->
+          <div class="state-container" id="state-container" style="display: none;"></div>
+
+          <!-- ==================================================================
+               10. TRANSACTIONS TABLE
+               ================================================================== -->
+          <div class="table-responsive-wrapper" id="table-wrapper">
+            <table class="transactions-table" id="transactions-table">
+              <thead>
+                <tr>
+                  <th class="th-checkbox">
+                    <input 
+                      type="checkbox" 
+                      class="table-checkbox" 
+                      id="select-all-checkbox" 
+                      aria-label="Select all transactions on this page"
+                    />
+                  </th>
+                  <th>Transaction</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Payment Method</th>
+                  <th class="th-amount">Amount</th>
+                  <th>Status</th>
+                  <th class="th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-table-body">
+                <!-- Dynamically rendered via js/transactions.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ==================================================================
+               13. PAGINATION FOOTER
+               ================================================================== -->
+          <div class="table-pagination-footer" id="table-pagination-footer">
+            <div class="pagination-info" id="pagination-info">
+              Showing 1–10 of 128 transactions
+            </div>
+            <div class="pagination-controls-group">
+              <div class="pagination-buttons" id="pagination-buttons">
+                <!-- Injected dynamically -->
+              </div>
+              <select class="page-size-select" id="page-size-select" aria-label="Rows per page">
+                <option value="10">10 per page</option>
+                <option value="25">25 per page</option>
+                <option value="50">50 per page</option>
+              </select>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ========================================================================
+       14. ADD / EDIT TRANSACTION MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="modal-add-edit" role="dialog" aria-modal="true" aria-labelledby="modal-add-edit-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-add-edit-title">Add Transaction</h3>
+        <button type="button" class="btn-close-modal" data-close-modal aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="form-add-edit">
+        <div class="modal-body">
+          
+          <!-- Transaction Type Toggle (Income / Expense) -->
+          <div class="form-group">
+            <label class="form-label">Transaction Type</label>
+            <div class="type-toggle-wrapper">
+              <button type="button" class="btn-type-toggle active type-expense" id="btn-toggle-expense">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                <span>Expense</span>
+              </button>
+              <button type="button" class="btn-type-toggle" id="btn-toggle-income">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                <span>Income</span>
+              </button>
+            </div>
+            <input type="hidden" id="tx-type" value="expense" />
+          </div>
+
+          <!-- Transaction Title -->
+          <div class="form-group">
+            <label class="form-label" for="tx-title">Transaction Title <span class="required">*</span></label>
+            <input 
+              type="text" 
+              class="form-input" 
+              id="tx-title" 
+              placeholder="e.g. Grocery Shopping, Monthly Salary" 
+              required 
+            />
+          </div>
+
+          <!-- Amount in INR -->
+          <div class="form-group">
+            <label class="form-label" for="tx-amount">Amount (INR) <span class="required">*</span></label>
+            <div class="form-input-prefix-wrapper">
+              <span class="input-prefix">₹</span>
+              <input 
+                type="number" 
+                step="0.01" 
+                class="form-input form-input-prefixed" 
+                id="tx-amount" 
+                placeholder="0.00" 
+                required 
+              />
+            </div>
+          </div>
+
+          <!-- Category & Date Row -->
+          <div class="form-row-grid">
+            <div class="form-group">
+              <label class="form-label" for="tx-category">Category <span class="required">*</span></label>
+              <select class="form-select" id="tx-category" required>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Health">Health</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Salary">Salary</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Income">Income</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="tx-date">Date <span class="required">*</span></label>
+              <input 
+                type="date" 
+                class="form-input" 
+                id="tx-date" 
+                value="2026-10-15" 
+                required 
+              />
+            </div>
+          </div>
+
+          <!-- Payment Method & Status Row -->
+          <div class="form-row-grid">
+            <div class="form-group">
+              <label class="form-label" for="tx-payment">Payment Method <span class="required">*</span></label>
+              <select class="form-select" id="tx-payment" required>
+                <option value="UPI">UPI</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Cash">Cash</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="tx-status">Status</label>
+              <select class="form-select" id="tx-status">
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
+                <option value="Failed">Failed</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Optional Description -->
+          <div class="form-group">
+            <label class="form-label" for="tx-notes">Description / Notes</label>
+            <textarea 
+              class="form-textarea" 
+              id="tx-notes" 
+              rows="2" 
+              placeholder="Optional notes or merchant details..."
+            ></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-close-modal>Cancel</button>
+          <button type="submit" class="btn-primary-modal" id="btn-save-transaction">Save Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       15. VIEW TRANSACTION DETAILS MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="modal-details" role="dialog" aria-modal="true" aria-labelledby="modal-details-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-details-title">Transaction Receipt</h3>
+        <button type="button" class="btn-close-modal" data-close-modal aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-details-body">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" data-close-modal>Close</button>
+        <button type="button" class="btn-primary-modal" id="btn-details-edit">Edit Transaction</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       15. DELETE CONFIRMATION MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="modal-delete" role="alertdialog" aria-modal="true" aria-labelledby="modal-delete-title">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 34px; height: 34px; border-radius: var(--radius-full); background-color: var(--color-expense-bg); color: var(--color-expense); display: flex; align-items: center; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
+          <h3 class="modal-title" id="modal-delete-title">Confirm Deletion</h3>
+        </div>
+        <button type="button" class="btn-close-modal" data-close-modal aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;" id="modal-delete-desc">
+          Are you sure you want to delete this transaction? This action cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" data-close-modal>Cancel</button>
+        <button type="button" class="btn-danger-modal" id="btn-confirm-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Auth Session, Currency Utility & Page Logic Script -->
+  <script src="js/auth.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/transactions.js"></script>
+
+</body>
+</html>

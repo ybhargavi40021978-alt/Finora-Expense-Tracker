@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories Management — Finora Expense Tracker</title>
+  <meta name="description" content="Organize your income and expense categories, customize icons and colors, track category usage, and streamline your personal financial records with Finora.">
+
+  <!-- Typography: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Remixicon for Clean Modern Line Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Categories Stylesheet -->
+  <link rel="stylesheet" href="css/categories.css">
+</head>
+<body>
+
+  <!-- Full Application Layout -->
+  <div class="app-layout">
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR NAVIGATION (~220 px wide, Dark Indigo #171D4C)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <div class="sidebar-top">
+        <!-- Logo Section with Brand & Tagline -->
+        <div class="sidebar-logo-area">
+          <a href="index.html" class="sidebar-brand-link" title="Finora Home">
+            <div class="sidebar-brand-icon" aria-hidden="true">
+              <!-- Finora Finance Symbol -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="4" height="9" rx="1.5" fill="white" />
+                <rect x="10" y="7" width="4" height="13" rx="1.5" fill="white" fill-opacity="0.9" />
+                <rect x="17" y="4" width="4" height="16" rx="1.5" fill="white" />
+                <path d="M5 8L12 4L19 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="19" cy="2" r="2" fill="#23B981"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-text">
+              <span class="sidebar-brand-name">Finora</span>
+              <span class="sidebar-brand-tagline">Track. Plan. Save. Grow.</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 10 Navigation Items Vertically in Exact Required Order -->
+        <nav class="sidebar-nav" aria-label="Sidebar Menu">
+          <!-- 1. Dashboard -->
+          <a href="dashboard.html" class="nav-item-link" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-dashboard-line"></i>
+            </span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- 2. Transactions -->
+          <a href="transactions.html" class="nav-item-link" id="nav-transactions">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-exchange-dollar-line"></i>
+            </span>
+            <span>Transactions</span>
+          </a>
+
+          <!-- 3. Income -->
+          <a href="add-income.html" class="nav-item-link" id="nav-income">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-wallet-3-line"></i>
+            </span>
+            <span>Income</span>
+          </a>
+
+          <!-- 4. Expenses -->
+          <a href="add-expense.html" class="nav-item-link" id="nav-expenses">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-shopping-bag-3-line"></i>
+            </span>
+            <span>Expenses</span>
+          </a>
+
+          <!-- 5. Analytics -->
+          <a href="analytics.html" class="nav-item-link" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-pie-chart-line"></i>
+            </span>
+            <span>Analytics</span>
+          </a>
+
+          <!-- 6. Budgets -->
+          <a href="budgets.html" class="nav-item-link" id="nav-budgets">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-funds-line"></i>
+            </span>
+            <span>Budgets</span>
+          </a>
+
+          <!-- 7. Goals -->
+          <a href="goals.html" class="nav-item-link" id="nav-goals">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-flag-line"></i>
+            </span>
+            <span>Goals</span>
+          </a>
+
+          <!-- 8. Categories (ACTIVE: Violet rounded highlight, white icon and label) -->
+          <a href="categories.html" class="nav-item-link active" id="nav-categories" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-price-tag-3-fill"></i>
+            </span>
+            <span>Categories</span>
+          </a>
+
+          <!-- 9. Recurring -->
+          <a href="recurring.html" class="nav-item-link" id="nav-recurring">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-repeat-line"></i>
+            </span>
+            <span>Recurring</span>
+          </a>
+
+          <!-- 10. Settings -->
+          <a href="settings.html" class="nav-item-link" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <i class="ri-settings-4-line"></i>
+            </span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout-link" title="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">
+            <i class="ri-logout-box-r-line"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. MAIN WORKSPACE CONTENT
+         ====================================================================== -->
+    <main class="main-workspace">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+            <i class="ri-menu-line" style="font-size: 22px;"></i>
+          </button>
+          <div class="header-title-group">
+            <div class="breadcrumb">
+              <span>Dashboard</span>
+              <span aria-hidden="true">/</span>
+              <span class="active">Categories</span>
+            </div>
+            <h1>Categories Management</h1>
+            <p>Organize your income and expenses your way.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Control -->
+          <div class="header-search">
+            <i class="ri-search-line header-search-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Search categories..." aria-label="Search categories">
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications, 1 unread update">
+            <i class="ri-notification-3-line" style="font-size: 18px;"></i>
+            <span class="notification-badge" aria-hidden="true"></span>
+          </button>
+
+          <!-- Settings Header Link -->
+          <a href="settings.html" class="notification-btn btn-settings-header" aria-label="Settings" title="Settings" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;">
+            <i class="ri-settings-4-line" style="font-size: 18px;"></i>
+          </a>
+
+          <!-- User Profile -->
+          <div class="user-profile" id="user-profile-menu" tabindex="0" role="button" aria-haspopup="true" aria-label="User profile menu">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" 
+              alt="User avatar" 
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">User</span>
+            </div>
+            <i class="ri-arrow-down-s-line user-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-container">
+
+        <!-- Interactive Demo State Switcher Toolbar -->
+        <section class="demo-switcher-bar" aria-label="Interactive State Preview Switcher">
+          <div class="demo-switcher-info">
+            <span class="demo-badge">Screen 11 Preview</span>
+            <span>Switch category views and states to test interactions:</span>
+          </div>
+          <div class="demo-buttons">
+            <button class="demo-btn active" data-state="standard">Standard (All)</button>
+            <button class="demo-btn" data-state="income-only">Income Only</button>
+            <button class="demo-btn" data-state="expenses-only">Expenses Only</button>
+            <button class="demo-btn" data-state="custom-only">Custom Only</button>
+            <button class="demo-btn" data-state="archived-only">Archived</button>
+            <button class="demo-btn" data-state="empty">Empty State</button>
+            <button class="demo-btn" data-state="api-error">API Error</button>
+          </div>
+        </section>
+
+        <!-- API Error Alert Banner (Hidden by default) -->
+        <div id="api-error-banner" style="display: none; background: #FFF5F6; border: 1px solid #F06575; border-radius: 12px; padding: 16px 20px; color: #D63D4F;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="ri-error-warning-fill" style="font-size: 20px;"></i>
+              <div>
+                <strong>Failed to load categories from server.</strong>
+                <div style="font-size: 0.8125rem; color: #75809A; margin-top: 2px;">Unable to reach <code>/api/categories</code>. Please check network connection.</div>
+              </div>
+            </div>
+            <button id="retry-btn" class="btn-secondary" style="border-color: #F06575; color: #D63D4F;">
+              <i class="ri-refresh-line"></i> Retry
+            </button>
+          </div>
+        </div>
+
+        <!-- Page Introduction & Actions Row -->
+        <div class="page-intro-row">
+          <div class="intro-text">
+            <h2>Your Financial Categories</h2>
+            <p>Structure your accounting with predefined system defaults or create tailored custom classifications.</p>
+          </div>
+          <div class="intro-actions">
+            <button class="btn-secondary" id="manage-defaults-btn">
+              <i class="ri-settings-3-line"></i> Manage Defaults
+            </button>
+            <button class="btn-primary" id="create-category-btn">
+              <i class="ri-add-line"></i> + Create Category
+            </button>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             3. CATEGORY OVERVIEW CARDS (Row of 3 Summary Cards)
+             ====================================================================== -->
+        <section class="overview-cards-grid" aria-label="Category Summaries">
+          <!-- Card 1: Income Categories -->
+          <div class="summary-card">
+            <div class="summary-icon-tile income">
+              <i class="ri-arrow-up-circle-line"></i>
+            </div>
+            <div class="summary-card-body">
+              <span class="summary-label">Income Categories</span>
+              <span class="summary-value" id="count-income">8</span>
+              <span class="summary-subtext">Available income types</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Expense Categories -->
+          <div class="summary-card">
+            <div class="summary-icon-tile expense">
+              <i class="ri-arrow-down-circle-line"></i>
+            </div>
+            <div class="summary-card-body">
+              <span class="summary-label">Expense Categories</span>
+              <span class="summary-value" id="count-expense">12</span>
+              <span class="summary-subtext">Available expense types</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Custom Categories -->
+          <div class="summary-card">
+            <div class="summary-icon-tile custom">
+              <i class="ri-folder-add-line"></i>
+            </div>
+            <div class="summary-card-body">
+              <span class="summary-label">Custom Categories</span>
+              <span class="summary-value" id="count-custom">5</span>
+              <span class="summary-subtext">Created by you</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================================================================
+             4. CATEGORY TYPE SWITCHER (Segmented Control)
+             ====================================================================== -->
+        <div class="type-switcher-container">
+          <div class="type-segmented-control" role="tablist" aria-label="Category Type Filter">
+            <button class="segment-btn active" id="segment-all" role="tab" aria-selected="true">
+              <i class="ri-apps-2-line"></i> All Categories
+              <span class="segment-count-badge" id="segment-all-count">25</span>
+            </button>
+            <button class="segment-btn" id="segment-income" role="tab" aria-selected="false">
+              <i class="ri-arrow-up-line"></i> Income
+              <span class="segment-count-badge" id="segment-income-count">10</span>
+            </button>
+            <button class="segment-btn" id="segment-expense" role="tab" aria-selected="false">
+              <i class="ri-arrow-down-line"></i> Expenses
+              <span class="segment-count-badge" id="segment-expense-count">15</span>
+            </button>
+          </div>
+
+          <div class="active-filter-stats">
+            Showing <strong id="active-stats-count">25</strong> categories in current view
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             5. SEARCH & FILTER TOOLBAR
+             ====================================================================== -->
+        <div class="toolbar-card">
+          <div class="toolbar-left">
+            <div class="toolbar-search">
+              <i class="ri-search-line toolbar-search-icon" aria-hidden="true"></i>
+              <input type="text" id="search-categories" placeholder="Search categories by name..." aria-label="Search categories by name">
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- Type Dropdown -->
+            <select class="filter-select" id="filter-type" aria-label="Filter by type">
+              <option value="all">All Types</option>
+              <option value="income">Income Only</option>
+              <option value="expense">Expense Only</option>
+            </select>
+
+            <!-- Source Dropdown -->
+            <select class="filter-select" id="filter-source" aria-label="Filter by source">
+              <option value="all">All Sources</option>
+              <option value="default">Default Only</option>
+              <option value="custom">Custom Only</option>
+            </select>
+
+            <!-- Sort Dropdown -->
+            <select class="filter-select" id="sort-categories" aria-label="Sort categories">
+              <option value="name-asc">Name A–Z</option>
+              <option value="name-desc">Name Z–A</option>
+              <option value="most-used">Most Used</option>
+              <option value="highest-amount">Highest Amount</option>
+            </select>
+
+            <!-- View Switcher (Grid / List) -->
+            <div class="view-toggle-group" role="group" aria-label="Layout view">
+              <button class="view-toggle-btn active" id="view-grid" title="Grid View" aria-label="Grid view">
+                <i class="ri-grid-fill"></i>
+              </button>
+              <button class="view-toggle-btn" id="view-list" title="List View" aria-label="List view">
+                <i class="ri-list-check"></i>
+              </button>
+            </div>
+
+            <!-- Clear Filters -->
+            <button class="btn-clear-filters" id="clear-filters-btn">
+              Clear Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             6. CATEGORIES DISPLAY AREA: 3-Column Responsive Grid
+             ====================================================================== -->
+        <section class="categories-grid" id="categories-grid" aria-label="Categories List">
+          <!-- Populated dynamically by js/categories.js -->
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ======================================================================
+       MODAL: CREATE / EDIT CATEGORY
+       ====================================================================== -->
+  <div class="modal-overlay" id="category-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-title">Create New Category</h3>
+          <p id="modal-subtitle">Personalize how you organize your money.</p>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <form id="category-form">
+        <div class="modal-body">
+          <!-- Category Name -->
+          <div class="form-group">
+            <label class="form-label" for="cat-name">Category Name <span class="req">*</span></label>
+            <input type="text" id="cat-name" class="form-input" placeholder="e.g., Pet Care" required>
+            <span class="form-error" id="name-error">Please enter a unique category name.</span>
+          </div>
+
+          <!-- Category Type -->
+          <div class="form-group">
+            <label class="form-label">Category Type <span class="req">*</span></label>
+            <div class="type-radio-grid">
+              <div class="type-radio-card expense selected" data-type="expense" tabindex="0" role="radio" aria-checked="true">
+                <div class="type-icon-bubble">
+                  <i class="ri-arrow-down-line"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.875rem; color: #18213D;">Expense</div>
+                  <div style="font-size: 0.72rem; color: #75809A;">Money paid out</div>
+                </div>
+              </div>
+
+              <div class="type-radio-card income" data-type="income" tabindex="0" role="radio" aria-checked="false">
+                <div class="type-icon-bubble">
+                  <i class="ri-arrow-up-line"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.875rem; color: #18213D;">Income</div>
+                  <div style="font-size: 0.72rem; color: #75809A;">Money received</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Choose Icon -->
+          <div class="form-group">
+            <label class="form-label">Choose Icon</label>
+            <div class="icon-selector-grid">
+              <button type="button" class="icon-choice-btn selected" data-icon="ri-restaurant-line" title="Restaurant"><i class="ri-restaurant-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-shopping-basket-line" title="Groceries"><i class="ri-shopping-basket-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-car-line" title="Transportation"><i class="ri-car-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-shopping-bag-3-line" title="Shopping"><i class="ri-shopping-bag-3-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-file-text-line" title="Bills"><i class="ri-file-text-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-home-4-line" title="Housing"><i class="ri-home-4-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-heart-pulse-line" title="Healthcare"><i class="ri-heart-pulse-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-book-open-line" title="Education"><i class="ri-book-open-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-film-line" title="Entertainment"><i class="ri-film-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-plane-line" title="Travel"><i class="ri-plane-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-repeat-line" title="Subscriptions"><i class="ri-repeat-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-wallet-3-line" title="Salary / Wallet"><i class="ri-wallet-3-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-macbook-line" title="Freelance"><i class="ri-macbook-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-briefcase-line" title="Business"><i class="ri-briefcase-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-line-chart-line" title="Investments"><i class="ri-line-chart-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-gift-line" title="Bonus / Gifts"><i class="ri-gift-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-footprint-line" title="Pet Care"><i class="ri-footprint-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-riding-line" title="Fitness"><i class="ri-riding-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-camera-3-line" title="Photography"><i class="ri-camera-3-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-youtube-line" title="Media / Video"><i class="ri-youtube-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-copper-coin-line" title="Crypto / Coins"><i class="ri-copper-coin-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-cup-line" title="Coffee / Drinks"><i class="ri-cup-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-tools-line" title="Repairs"><i class="ri-tools-line"></i></button>
+              <button type="button" class="icon-choice-btn" data-icon="ri-shield-cross-line" title="Insurance"><i class="ri-shield-cross-line"></i></button>
+            </div>
+          </div>
+
+          <!-- Category Color -->
+          <div class="form-group">
+            <label class="form-label">Category Color</label>
+            <div class="color-swatches-grid">
+              <button type="button" class="color-swatch-btn selected" data-color="#F06575" style="background: #F06575;" title="Coral Red"></button>
+              <button type="button" class="color-swatch-btn" data-color="#23B981" style="background: #23B981;" title="Income Green"></button>
+              <button type="button" class="color-swatch-btn" data-color="#7957FF" style="background: #7957FF;" title="Primary Violet"></button>
+              <button type="button" class="color-swatch-btn" data-color="#48B9F5" style="background: #48B9F5;" title="Electric Blue"></button>
+              <button type="button" class="color-swatch-btn" data-color="#F5B544" style="background: #F5B544;" title="Warning Amber"></button>
+              <button type="button" class="color-swatch-btn" data-color="#0EA5E9" style="background: #0EA5E9;" title="Teal Sky"></button>
+              <button type="button" class="color-swatch-btn" data-color="#EC4899" style="background: #EC4899;" title="Pink Rose"></button>
+              <button type="button" class="color-swatch-btn" data-color="#8B5CF6" style="background: #8B5CF6;" title="Deep Purple"></button>
+              <button type="button" class="color-swatch-btn" data-color="#FB923C" style="background: #FB923C;" title="Warm Orange"></button>
+              <button type="button" class="color-swatch-btn" data-color="#64748B" style="background: #64748B;" title="Neutral Slate"></button>
+            </div>
+          </div>
+
+          <!-- Description (Optional) -->
+          <div class="form-group">
+            <label class="form-label" for="cat-desc">Description (Optional)</label>
+            <textarea id="cat-desc" class="form-textarea" placeholder="Add a short description about this category..."></textarea>
+          </div>
+
+          <!-- Optional Budget Association -->
+          <div class="form-group">
+            <label class="form-label" for="cat-budget">Linked Budget (Optional)</label>
+            <select id="cat-budget" class="form-select">
+              <option value="No budget linked">No budget linked</option>
+              <option value="Food & Dining (₹10,000)">Food & Dining (₹10,000)</option>
+              <option value="Groceries & Kitchen (₹9,000)">Groceries & Kitchen (₹9,000)</option>
+              <option value="Transportation (₹5,000)">Transportation (₹5,000)</option>
+              <option value="Shopping & Retail (₹8,000)">Shopping & Retail (₹8,000)</option>
+              <option value="Bills & Utilities (₹6,000)">Bills & Utilities (₹6,000)</option>
+              <option value="Entertainment (₹3,000)">Entertainment (₹3,000)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary" id="modal-submit-btn">
+            <i class="ri-add-line"></i> Create Category
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       CATEGORY DETAILS SIDE DRAWER
+       ====================================================================== -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="details-drawer" id="details-drawer" aria-label="Category Details Panel">
+    <div class="drawer-header">
+      <h3>Category Details</h3>
+      <button class="modal-close-btn" id="drawer-close-btn" aria-label="Close details panel">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Hero Card -->
+      <div class="drawer-hero-card">
+        <div class="category-icon-tile" style="width: 56px; height: 56px; font-size: 1.75rem;">
+          <i id="drawer-icon" class="ri-restaurant-line"></i>
+        </div>
+        <div>
+          <h4 id="drawer-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #18213D;">Food & Dining</h4>
+          <div id="drawer-badges" style="display: flex; gap: 6px; margin-top: 4px;"></div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <div class="drawer-section-title">Description</div>
+        <p id="drawer-desc" style="font-size: 0.84rem; color: #75809A; line-height: 1.5;"></p>
+      </div>
+
+      <!-- Metrics Grid -->
+      <div class="drawer-metric-grid">
+        <div class="drawer-metric-card">
+          <div class="label" id="drawer-amt-label">Total Spent This Month</div>
+          <div class="val" id="drawer-amt">₹6,450</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="label">Transactions</div>
+          <div class="val" id="drawer-txn-count">32 recorded</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="label">Average Transaction</div>
+          <div class="val" id="drawer-avg-amt">₹202</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="label">Monthly Status</div>
+          <div class="val" style="color: #23B981; font-size: 1.1rem;"><i class="ri-checkbox-circle-fill"></i> Healthy</div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions Section -->
+      <div>
+        <div class="drawer-section-title">Recent Transactions</div>
+        <div class="mini-txns-list" id="drawer-txns-list">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="drawer-footer">
+      <button class="btn-primary" id="drawer-txns-btn" style="width: 100%; justify-content: center;">
+        <i class="ri-exchange-dollar-line"></i> View All Transactions
+      </button>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-secondary" id="drawer-edit-btn" style="flex: 1; justify-content: center;">
+          <i class="ri-edit-line"></i> Edit
+        </button>
+        <button class="btn-secondary" id="drawer-archive-btn" style="flex: 1; justify-content: center;">
+          <i class="ri-archive-line"></i> Archive
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MANAGE DEFAULTS MODAL
+       ====================================================================== -->
+  <div class="modal-overlay" id="defaults-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h3>System Default Categories</h3>
+          <p>Protected standard classifications available across Finora.</p>
+        </div>
+        <button class="modal-close-btn" id="defaults-close-btn" aria-label="Close modal">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+        <div style="background: #F2EFFF; border: 1px solid #C7B8FF; border-radius: 8px; padding: 12px 16px; font-size: 0.8125rem; color: #18213D; display: flex; gap: 10px; align-items: flex-start;">
+          <i class="ri-information-fill" style="color: #7957FF; font-size: 1.15rem; flex-shrink: 0; margin-top: 2px;"></i>
+          <div>
+            <strong>System Safeguard:</strong> Default categories ensure standard financial reporting remains consistent. They cannot be permanently deleted, but can be safely archived if not in use.
+          </div>
+        </div>
+
+        <div id="defaults-list-container" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="restore-defaults-btn">
+          <i class="ri-refresh-line"></i> Restore All System Defaults
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       CONFIRMATION MODAL
+       ====================================================================== -->
+  <div class="modal-overlay" id="confirm-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 id="confirm-title">Are you sure?</h3>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-desc" style="font-size: 0.875rem; color: #75809A; line-height: 1.5;"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="confirm-cancel-btn">Cancel</button>
+        <button class="btn-primary" id="confirm-action-btn" style="background-color: #F06575;">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/categories.js"></script>
+</body>
+</html>
