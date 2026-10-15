@@ -116,13 +116,15 @@ app.use('/api', (req, res) => {
   });
 });
 
-// Static assets & pages serving (root directory)
+// Static assets & pages serving (prefer frontend/ directory)
+const frontendDir = path.resolve(__dirname, '../../frontend');
 const rootDir = path.resolve(__dirname, '../../');
+const clientDir = fs.existsSync(frontendDir) ? frontendDir : rootDir;
 
 // Favicon shortcut
 app.get('/favicon.ico', (req, res) => {
-  const icoPath = path.join(rootDir, 'favicon.ico');
-  const svgPath = path.join(rootDir, 'favicon.svg');
+  const icoPath = path.join(clientDir, 'favicon.ico');
+  const svgPath = path.join(clientDir, 'favicon.svg');
   if (fs.existsSync(icoPath)) {
     return res.sendFile(icoPath);
   } else if (fs.existsSync(svgPath)) {
@@ -141,7 +143,7 @@ app.use((req, res, next) => {
     reqPath = '/index.html';
   }
 
-  let filePath = path.join(rootDir, reqPath);
+  let filePath = path.join(clientDir, reqPath);
   if (!fs.existsSync(filePath) && !path.extname(reqPath)) {
     const htmlCandidate = filePath + '.html';
     if (fs.existsSync(htmlCandidate)) {
@@ -153,11 +155,11 @@ app.use((req, res, next) => {
 });
 
 // Static files middleware
-app.use(express.static(rootDir, { index: 'index.html' }));
+app.use(express.static(clientDir, { index: 'index.html' }));
 
 // 404 handler for non-existent frontend routes
 app.use((req, res) => {
-  const notFoundPath = path.join(rootDir, '404.html');
+  const notFoundPath = path.join(clientDir, '404.html');
   if (fs.existsSync(notFoundPath)) {
     res.status(404).sendFile(notFoundPath);
   } else {

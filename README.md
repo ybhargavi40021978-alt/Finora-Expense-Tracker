@@ -112,64 +112,59 @@ graph TD
 
 ```text
 Finora-Expense-Tracker/
-├── add-expense.html          # Add new expense entry screen
-├── add-income.html           # Add new income entry screen
-├── analytics.html            # Reports, analytics & breakdowns
-├── budgets.html              # Category budgets & threshold alerts
-├── categories.html           # Category management screen
-├── dashboard.html            # Main financial overview dashboard
-├── empty-state.html          # Single empty state preview
-├── empty-states.html         # Multi-scenario empty states gallery
-├── goals.html                # Savings goals & milestones
-├── index.html                # Modern fintech landing page
-├── loading-states.html       # Skeleton loaders & loading UI showcase
-├── loading.html              # Fullscreen spinner & loading indicator
-├── login.html                # User login screen
-├── package.json              # Dependencies and run scripts
-├── recurring.html            # Recurring bills & subscription manager
-├── register.html             # User registration screen
-├── server.js                 # Server entry point
-├── settings.html             # User profile, preferences & security
+├── backend/                  # Node.js + Express REST API Server
+│   ├── src/
+│   │   ├── app.js            # Express app configuration & static middleware
+│   │   ├── server.js         # HTTP server bootstrap & DB initialization
+│   │   ├── controllers/      # Route controllers (Auth, Expense, Income, etc.)
+│   │   ├── middleware/       # JWT auth, error handler, and request validators
+│   │   ├── models/           # Model delegates (points to database/models/)
+│   │   ├── routes/           # Express API route declarations
+│   │   └── services/         # Aggregation & financial summary logic
+│   └── README.md             # Backend architecture documentation
+│
+├── database/                 # MongoDB Database Connection & Schemas
+│   ├── index.js              # Unified exports for connection & models
+│   ├── connection.js         # MongoDB connection setup with auto-reconnect
+│   ├── models/               # Canonical Mongoose Schemas
+│   │   ├── User.js           # User schema with bcrypt password hashing
+│   │   ├── Income.js         # Income schema with user isolation
+│   │   └── Expense.js        # Expense schema with user isolation
+│   └── README.md             # Database schema documentation
+│
+├── frontend/                 # Client-Side Presentation Layer
+│   ├── index.html            # Public marketing landing page
+│   ├── login.html            # Authentication login screen
+│   ├── register.html         # User registration with password meter
+│   ├── dashboard.html        # Main financial overview dashboard
+│   ├── transactions.html     # Transaction ledger with search & filters
+│   ├── add-income.html       # Income recording screen
+│   ├── add-expense.html      # Expense recording screen
+│   ├── analytics.html        # Reports & analytics breakdown
+│   ├── budgets.html          # Category budgets & threshold alerts
+│   ├── goals.html            # Milestone savings goals & progress rings
+│   ├── categories.html       # Custom category manager
+│   ├── recurring.html        # Subscriptions & recurring bills
+│   ├── transaction-details.html # Single transaction detail audit view
+│   ├── settings.html         # Profile, preferences, and security settings
+│   ├── 404.html              # 404 error page
+│   ├── empty-states.html     # Empty state scenarios
+│   ├── loading-states.html   # Shimmer skeleton loader showcase
+│   ├── favicon.svg           # Brand favicon
+│   ├── assets/               # 3D fintech illustrations & graphics
+│   ├── css/                  # Modular CSS stylesheets & design tokens
+│   ├── js/                   # Client-side JavaScript controllers
+│   ├── src/                  # React.js JSX component library
+│   └── README.md             # Frontend architecture documentation
+│
+├── package.json              # Project dependencies & scripts
+├── package-lock.json         # Pinned dependency tree
+├── server.js                 # Application root entry point
 ├── test_e2e.js               # E2E integration verification script
 ├── test_two_accounts.js      # Multi-user data isolation test suite
-├── transaction-details.html  # Single transaction audit modal/page
-├── transactions.html         # Full transaction ledger with filters
-│
-├── assets/                   # High-resolution fintech 3D character illustrations
-├── css/                      # Modular style sheets
-│   ├── dashboard.css         # Dashboard and workspace styling
-│   ├── login.css             # Authentication split-screen layout
-│   ├── settings.css          # Tabbed settings & preference styling
-│   ├── styles.css            # Landing page core styling
-│   └── ...                   # Page-specific CSS files
-│
-├── js/                       # Client-side JavaScript controllers
-│   ├── app.js                # Landing page interactions & animations
-│   ├── auth.js               # Global auth state, session & popovers
-│   ├── dashboard.js          # Live dashboard data fetcher & aggregators
-│   ├── login.js              # Login form handler & API client
-│   ├── register.js           # Registration validator & API client
-│   ├── settings.js           # Settings manager & tab router
-│   └── ...                   # Page-specific client scripts
-│
-├── server/                   # Backend Express application
-│   └── src/
-│       ├── app.js            # Express app configuration & middleware
-│       ├── server.js         # HTTP server lifecycle & DB connection
-│       ├── config/           # Database connection configuration
-│       ├── controllers/      # Route handler controllers (Auth, Income, Expense, etc.)
-│       ├── middleware/       # JWT auth, error handlers, and validators
-│       ├── models/           # Mongoose schemas (User, Income, Expense)
-│       ├── routes/           # REST API endpoints
-│       └── services/         # Aggregation and business logic services
-│
-└── src/                      # React.js JSX component library
-    ├── FinoraDashboardPage.jsx
-    ├── FinoraLoginPage.jsx
-    ├── FinoraRegisterPage.jsx
-    ├── FinoraSettingsPage.jsx
-    ├── FinoraTransactionsPage.jsx
-    └── ...
+├── .env.example              # Environment variables template
+├── .gitignore                # Git exclusions (node_modules, .env, logs)
+└── README.md                 # Complete project documentation
 ```
 
 ---
